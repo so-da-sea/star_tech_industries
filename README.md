@@ -15,12 +15,13 @@
                 background-color: powderblue;
                 border-color: black;
                 font-size: 20px;
-                
-/*change margin left back later maybe*/
-                margin-left: 25px;
+                 margin-left: 25px;
                 text-align: right;
                 position:absolute;
             }
+                
+/*change margin left back later maybe*/
+               
             .calender{
                 display:grid;
                 padding: 20px;
