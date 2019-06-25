@@ -1,119 +1,162 @@
-# star_tech_industries
 
-<header>
-    <link rel="stylesheet" href="styles.css">
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="cal-actions.js"> </script>
 
-    <Title> Star Tech Industries</Title> </header>
-<header>Star Tech Planners, inc.</header>
+        <Title> Star Tech Industries</Title>
+    </head>
+           
+    <body>
+         <header>Star Tech Planners, inc.</header>
+        
+        <button class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
+        <button class="tablink" onclick="openPage('List', this,'#58D68D')">List</button>
+        <button class="tablink" onclick="openPage('Habits', this,'#8E24AA')">Habits</button>
+        
 
-<body>
-
-
-<button class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
-<button class="tablink" onclick="openPage('List', this,'green')">List</button>
-<button class="tablink" onclick="openPage('Habits', this,'#8E24AA')">Habits</button>
-
-<div id="Home" class="tabcontent">
-    <button class="tablnk" onclick="openSubTab('Daily',this,'#0D47A1')">Daily Calendar</button>
-    <div id="Daily" class="tabcontnt">
-        <h4>daily stuff</h4>
-        <p>this is where the daily planner will go...</p>
-    </div>
-
-
-    <button class="tablnk" onclick="openSubTab('Weekly',this,'#0D46A1')">Weekly Calendar</button>
-    <div id="Weekly" class="tabcontnt">
-        <h4>weekly stuff...</h4>
-        <p>this is where the weekly calendar will go...</p>
-    </div>
-
-    <button class="tablnk" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
-    <div id="Monthly" class="tabcontnt">
-        <h4>June 2019</h4>
-
-        <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
-            <span class="eventText" id="eventNew"></span>
+        
+        <div id="Home" class="tabcontent">
+            <button class="tablnk" onclick="openSubTab('Daily',this,'#A2D9CE')">Daily Calendar</button>
+                <div id="Daily" class="tabcontnt">
+                <h4>daily stuff</h4>
+                    <p>this is where the daily planner will go...</p>
+                </div>
+            
+            
+            <button class="tablnk" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
+                <div id="Weekly" class="tabcontnt">
+                <h5>weekly stuff...</h5>
+                     <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
+                                <span class="eventText" id="eventNew"></span>
+                            </div>        
+                    <div class= "week2">
+                           <div class="weekday">sun</div>
+                           <div class="weekday">mon</div>
+                           <div class="weekday">tue</div>
+                           <div class="weekday">wed</div>
+                           <div class="weekday">thu</div>
+                           <div class="weekday">fri</div>
+                           <div class="weekday">sat</div>
+                           <div class="day" id="2">2</div>
+                           <div class="day" id= "3">3</div>
+                           <div class="day" id= "4">4</div>
+                           <div class= "day" id= "5">5</div>
+                           <div class= "day" id= "4">6</div>
+                           <div class="day" id= "7">7</div>
+                           <div class="day" id= "8">8</div>
+   </div>
+                </div>
+            
+            <button class="tablnk" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
+                <div id="Monthly" class="tabcontnt">
+                    <h4>June 2019</h4>
+    
+                        <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
+                                <span class="eventText" id="eventNew"></span>
+                            </div>        
+                                    <div class="calendar">
+                                       <div class="weekday">sun</div>
+                                       <div class="weekday">mon</div>
+                                       <div class="weekday">tue</div>
+                                       <div class="weekday">wed</div>
+                                       <div class="weekday">thu</div>
+                                       <div class="weekday">fri</div>
+                                       <div class="weekday">sat</div>
+                                       <div class="may">26</div>
+                                       <div class="may">27</div>
+                                       <div class="may">28</div>
+                                       <div class="may">29</div>
+                                       <div class="may">30</div>
+                                       <div class="may">31</div>
+                                       <div class="day 1" id="1">1</div>
+                                       <div class="day 2" id="2">2</div>
+                                       <div class="day 3" id="3">3</div>
+                                       <div class="day 4" id="4">4</div>
+                                       <div class="day 5" id="5">5</div>
+                                       <div class="day 6" id="6">6</div>
+                                       <div class="day 7" id="7">7</div>
+                                       <div class="day 8" id= "8">8</div>
+                                       <div class="day 9" id= "9">9</div>
+                                       <div class="day 10" id= "10">10</div>
+                                       <div class="day 11" id= "11">11</div>
+                                       <div class="day 12" id= "12">12</div>
+                                       <div class="day 13" id= "13">13</div>
+                                       <div class="day 14" id= "14">14</div>
+                                       <div class="day 15" id= "15">15</div>
+                                       <div class="day 16" id= "16">16</div>
+                                       <div class="day 17" id= "17">17</div>
+                                       <div class="day 18" id= "18">18</div>
+                                       <div class="day 19" id= "19">19</div>
+                                       <div class="day 20" id= "20">20</div>
+                                       <div class="day 21" id= "21">21</div>
+                                       <div class="day 22" id= "22">22</div>
+                                       <div class="day 23" id= "23">23</div>
+                                       <div class="day 24" id= "24">24</div>
+                                       <div class="day 25" id= "25">25</div>
+                                       <div class="day 26" id= "26">26</div>
+                                       <div class="day 27" id= "27">27</div>
+                                       <div class="day 28" id= "28">28</div>
+                                       <div class="day 29" id= "29">29</div>
+                                       <div class="day 30" id= "30">30</div>
+                                       <div class="may">1</div>
+                                       <div class="may">2</div>
+                                       <div class="may">3</div>
+                                       <div class="may">4</div>
+                                       <div class="may">5</div>
+                                       <div class="may">6</div>
+                    </div>
+                 </div>            
         </div>
+        
+        <div id="List" class="tabcontent">
+             <div id="List" class="header">
+               <h3>List</h3>
+                 <button class="tablnk" onclick="openSubTab('Lists',this,'#82E0AA')"> Lists</button>
+                <div id="Lists" class="tabcontnt">
+                    <h4>this is where the personal lists/to dos will go...</h4>
+                         <div id="todoContainer">
+                                <div>
+                                <label>Input: <input type="text" id="todoInput"/></label>
+                                    <br>
+                                <button id="todoButton">Add Todos</button>
+                                    <ul id="todos">
+                                      <li>Do Homework...</li>
+                                    </ul>
+                                </div>
+                                <script>                 
+                  function addTodosHandler(event) {
+                  // Get User Input
+                  var inputElement = document.getElementById("todoInput");
+                  var inputValue = inputElement.value;
+                  // Create List Item
+                  let newListItem = document.createElement("li");
+                  // Use Input to Populate List Item
+                  newListItem.innerText = inputValue;
+                  // Add Element to the todos list.
+                  var todosList = document.getElementById("todos");
+                  todosList.append(newListItem);
 
-        <div class= "calender">
-            <div class= "weekday">Sun.</div>
-            <div class= "weekday">Mon.</div>
-            <div class= "weekday">Tue.</div>
-            <div class= "weekday">Wed.</div>
-            <div class= "weekday">Thu.</div>
-            <div class= "weekday">Fri.</div>
-            <div class= "weekday">Sat.</div>
-            <div class= "may">26</div>
-            <div class= "may">27</div>
-            <div class= "may">28</div>
-            <div class= "may">29</div>
-            <div class= "may">30</div>
-            <div class= "may">31</div>
+                  // Clear input
+                  inputElement.value = "";
+                }
 
-            <div class= "day" id="1"><div class="popup" id= "day1" onclick="showEvents()">1
-                <span class="popuptext" id="myPopup" > Events: </span>
+                  var todoButton = document.getElementById("todoButton")
+                  todoButton.addEventListener("click", addTodosHandler);
+
+                </script>    
+                            </div>
+                 </div>  
             </div>
-            </div>
-            <div class= "day" id="2">2 </div>
-            <div class= "day" id="3">3 </div>
-            <div class= "day" id="4">4 </div>
-            <div class= "day" id="5">5 </div>
-            <div class= "day" id="6">6 </div>
-            <div class= "day" id="7">7 </div>
-            <div class= "day" id="8">8 </div>
-            <div class= "day" id="9">9 </div>
-            <div class= "day" id="10">10 </div>
-            <div class= "day" id="11">11 </div>
-            <div class= "day" id="12">12 </div>
-            <div class= "day" id="13">13 </div>
-            <div class= "day" id="14">14 </div>
-            <div class= "day" id="15">15 </div>
-            <div class= "day" id="16">16 </div>
-            <div class= "day" id="17">17 </div>
-            <div class= "day" id="18">18 </div>
-            <div class= "day" id="19">19 </div>
-            <div class= "day" id="20">20 </div>
-            <div class= "day" id="21">21 </div>
-            <div class= "day" id="22">22 </div>
-            <div class= "day" id="23">23 </div>
-            <div class= "day" id="24">24 </div>
-            <div class= "day" id="25">25 </div>
-            <div class= "day" id="26">26 </div>
-            <div class= "day" id="27">27 </div>
-            <div class= "day" id="28">28 </div>
-            <div class= "day" id="29">29 </div>
-            <div class= "day" id="30">30 </div>
-            <div class= "may">1</div>
-            <div class= "may">2</div>
-            <div class= "may">3</div>
-            <div class= "may">4</div>
-            <div class= "may">5</div>
-            <div class= "may">6</div>
         </div>
-    </div>
-</div>
-
-<div id="List" class="tabcontent">
-    <div id="List" class="header">
-        <h3>List</h3>
-        <button class="tablnk" onclick="openSubTab('Lists',this,'#4CAF50')"> Lists</button>
-        <div id="Lists" class="tabcontnt">
-            <h4>this is where the personal lists/to dos will go...</h4>
-            <button class="button" onclick="newElement()">Add</button>
-            <input type="text" id="input" placeholder="eggs, shampoo,...">
-
+        
+        <div id="Habits" class="tabcontent">
+        <h3>Habits</h3>
+        <p>This is where you will keep track of your habits...</p>
         </div>
-    </div>
-</div>
+        
 
-<div id="Habits" class="tabcontent">
-    <h3>Habits</h3>
-    <p>This is where you will keep track of your habits...</p>
-</div>
-
-
-<link rel="script" href="cal-actions.js">
-
-</body>
-
-
+        
+       
+    </body>
+</html>
