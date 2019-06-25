@@ -83,3 +83,22 @@ function openSubTab(pageName,elmnt,color) {
     document.getElementById("defaultOpen").click();
 
 }
+
+function addTodosHandler(event) {
+    // Get User Input
+    var inputElement = document.getElementById("todoInput");
+    var inputValue = inputElement.value;
+    // Create List Item
+    let newListItem = document.createElement("li");
+    // Use Input to Populate List Item
+    newListItem.innerText = inputValue;
+    // Add Element to the todos list.
+    var todosList = document.getElementById("todos");
+    todosList.append(newListItem);
+
+    // Clear input
+    inputElement.value = "";
+}
+
+var todoButton = document.getElementById("todoButton")
+todoButton.addEventListener("click", addTodosHandler);
