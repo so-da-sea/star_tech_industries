@@ -6,21 +6,7 @@
             var eventStart="";
             var eventEnd= "";
             var eventAlert="";
-function openPage(pageName,elmnt,color) {
-        //hide all elements with tabcontent by default
-        var i,tabcontent,tablinks;
-        tabcontent= document.getElementsByClassName("tabcontent");
-        for(i=0;i<tabcontent.length;i++)
-            tabcontent[i].style.display="none";
-        
-        tablinks=document.getElementsByClassName("tablink");
-        for(i=0;i<tablinks.length;i++)
-            tablinks[i].style.backgroundColor="";
-        
-        document.getElementById(pageName).style.display="block";
-        elmnt.style.backgroundColor=color;
-    }
-            
+
             function infoEvent(){
                 eventAlert="";
               
@@ -58,26 +44,23 @@ function openPage(pageName,elmnt,color) {
                 window.alert(eventAlert);
             document.getElementById(eventDay).innerHTML += "<br>" + eventTitle;
             }
+
             function showEvents() {
                 var popup = document.getElementById("myPopup");
                 popup.classList.toggle("show");
                 document.getElementById("myPopup").innerHTML+= "<br>" + fullevent;
                 fullevent = "";}
-     
-      /*   function homePg(){
-                    var hoMe=document.getElementsByClassName("tabcontent".getElementById("Home");
-                    window.defaultStatus("show");
 
-                    var pG=document.getElementById("Monthly");
-                    window.defaultstatus("show");
-                    
-                    openPage('Home', this,'#73C6B6');
-                    openSubTab('Monthly',this,'#A2D9CE');
-                }
-           
-           */ 
-           
-function addTodosHandler(event) {
+            window.onload= function homePg(){
+                var x=document.getElementById("me");
+                var y=document.getElementById("em");
+
+                openPage('Home', x,'#73C6B6');
+                openSubTab('Monthly',y,'#A2D9CE');
+            }
+
+
+            function addTodosHandler(event) {
                   // Get User Input
                   var inputElement = document.getElementById("todoInput");
                   var inputValue = inputElement.value;
@@ -96,8 +79,23 @@ function addTodosHandler(event) {
                   var todoButton = document.getElementById("todoButton")
                   todoButton.addEventListener("click", addTodosHandler);
 
-    
-    function openSubTab(pageName,elmnt,color){
+    function openPage(pageName,elmnt,color) {
+                //hide all elements with tabcontent by default
+                var i,tabcontent,tablinks;
+                tabcontent= document.getElementsByClassName("tabcontent");
+                for(i=0;i<tabcontent.length;i++)
+                    tabcontent[i].style.display="none";
+
+                tablinks=document.getElementsByClassName("tablink");
+                for(i=0;i<tablinks.length;i++)
+                    tablinks[i].style.backgroundColor="";
+
+                document.getElementById(pageName).style.display="block";
+                elmnt.style.backgroundColor=color;
+            }
+
+
+            function openSubTab(pageName,elmnt,color){
         var i,tabcontnt, tablnks;
         
         tabcontnt=document.getElementsByClassName("tabcontnt");
