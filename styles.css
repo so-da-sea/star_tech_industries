@@ -120,44 +120,7 @@ body, html {
                 background-color: aliceblue
                 
             }
-           .popup {
-                position: relative;
-                display: inline-block;
-                cursor: pointer;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-           .popup .popuptext {
-                visibility: hidden;
-                width: 300px;
-                height: 150px;
-                background-color: gainsboro;
-                color: black;
-                text-align: center;
-                border-radius: 6px;
-                padding: 10px;
-                position: absolute;
-                z-index: 1;
-                bottom: %;
-                left: -335%;
-                margin-left: -100px;
-            }
-           .popup .popuptext::after {
-                content: "";
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                margin-left: -5px;
-                border-width: 5px;
-                border-style: solid;
-                border-color: #555 transparent transparent transparent;
-            }
-           .popup .show {
-                visibility: visible;
-                -webkit-animation: fadeIn 1s;
-                animation: fadeIn 1s;}
+
             
             /*weekly calendar stuff*/
             .week2{
@@ -174,18 +137,45 @@ body, html {
                 font-size: 180%;
             }
 
-
-        
-            @-webkit-keyframes fadeIn {
-                from {opacity: 0;} 
-                to {opacity: 1;}
-            }
-            @keyframes fadeIn {
-                from {opacity: 0;}
-                to {opacity:1 ;}
-            }
            .events{
                 color:black;
                 text-align: center;
                 
             }
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+/* Modal Content */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: gainsboro;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
