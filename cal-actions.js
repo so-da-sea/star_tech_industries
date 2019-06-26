@@ -108,4 +108,31 @@
         
         document.getElementById(pageName).style.display="block";
         elmnt.style.backgroundColor=color;
-    }  
+    }
+
+
+            //ONLY WORKS FOR DAY 1 SO FAR
+            var modal = document.getElementById("myModal");
+
+
+            var certainDay = document.getElementById("1");
+
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            certainDay.onclick = function displayModal() {
+                modal.style.display = "block";
+                document.getElementById("events").innerHTML+=fullevent;
+                fullevent="";
+            }
+
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
