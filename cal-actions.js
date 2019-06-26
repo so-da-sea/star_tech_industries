@@ -130,7 +130,7 @@ function setUpMonth(weekDayStart, numDays, monthName){
             document.getElementById(i).style.backgroundColor="white";
         }
 }
-
+//wow comments
 function getStartingIndex(monthName){
     var startingIndex;
     if(monthName=='march' || monthName=='november'){
