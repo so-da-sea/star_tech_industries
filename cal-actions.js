@@ -53,19 +53,14 @@
                 document.getElementById(findId.toString()).innerHTML += "<br>" + eventTitle;
             }
 
-            function showEvents() {
-                var popup = document.getElementById("myPopup");
-                popup.classList.toggle("show");
-                document.getElementById("myPopup").innerHTML+= "<br>" + fullevent;
-                fullevent = "";}
 
-            window.onload= function homePg(){
+window.onload= function homePg(){
                 var x=document.getElementById("me");
                 var y=document.getElementById("em");
 
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
-            }
+}
 
 
             function addTodosHandler(event) {
@@ -73,7 +68,7 @@
                   var inputElement = document.getElementById("todoInput");
                   var inputValue = inputElement.value;
                   // Create List Item
-                  let newListItem = document.createElement("li");
+                  var newListItem = document.createElement("li");
                   // Use Input to Populate List Item
                   newListItem.innerText = inputValue;
                   // Add Element to the todos list.
@@ -103,7 +98,7 @@
             }
 
 
-            function openSubTab(pageName,elmnt,color){
+function openSubTab(pageName,elmnt,color){
         var i,tabcontnt, tablnks;
         
         tabcontnt=document.getElementsByClassName("tabcontnt");
@@ -151,22 +146,24 @@ function getStartingIndex(monthName){
 }
 
             //ONLY WORKS FOR DAY 1 SO FAR
-            var modal = document.getElementById("myModal");
+var modal = window.document.getElementById("myModal");
 
 
-            var certainDay = document.getElementById("1");
+var certainDay = document.getElementById("1");
 
-            var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close")[0];
+
+function displayModal() {
+    modal.style.display = "block";
+    document.getElementById("events").innerHTML+=fullevent;
+    fullevent="";
+}
+
 
             // When the user clicks the button, open the modal
-            certainDay.onclick = function displayModal() {
-                modal.style.display = "block";
-                document.getElementById("events").innerHTML+=fullevent;
-                fullevent="";
-            }
+           
 
-
-            span.onclick = function() {
+            function close() {
                 modal.style.display = "none";
             }
 

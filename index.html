@@ -2,7 +2,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles.css" />
-        <script src="cal-actions.js"> </script>
 
         <Title> Star Tech Industries</Title>
     </head>
@@ -23,7 +22,7 @@
                 <h4>daily stuff</h4>
                     <p>this is where the daily planner will go...</p>
                 </div>
-            
+        </div>
             
             <button class="tablnk" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
                 <div id="Weekly" class="tabcontnt">
@@ -51,7 +50,7 @@
             
             <button id="em" class="tablnk" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
                 <div id="Monthly" class="tabcontnt">
-                    <h4>June 2019</h4>
+                    <h4>June 2020</h4>
     
                         <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
                                 <span class="eventText" id="eventNew"></span>
@@ -64,7 +63,8 @@
                                         <div class="weekday">thu</div>
                                         <div class="weekday">fri</div>
                                         <div class="weekday">sat</div>
-                                        <div class="day" id="1"></div>
+                                        <div class="day" id="1" onclick="displayModal()">
+                                        </div>
                                         <div class="day" id="2"></div>
                                         <div class="day" id="3"></div>
                                         <div class="day" id="4"></div>
@@ -99,20 +99,31 @@
                                         <div class="day" id="33"></div>
                                         <div class="day" id="34"></div>
                                         <div class="day" id="35"></div>
-                                        <div class="day lastRow" id="36"></div>
-                                        <div class="day lastRow" id="37"></div>
-                                        <div class="day lastRow" id="38"></div>
-                                        <div class="day lastRow" id="39"></div>
-                                        <div class="day lastRow" id="40"></div>
-                                        <div class="day lastRow" id="41"></div>
-                                        <div class="day lastRow" id="42"></div>    
-                                    </div>
-                 </div>            
-        </div>
+                                        <div class="day-lastRow" id="36"></div>
+                                        <div class="day-lastRow" id="37"></div>
+                                        <div class="day-lastRow" id="38"></div>
+                                        <div class="day-lastRow" id="39"></div>
+                                        <div class="day-lastRow" id="40"></div>
+                                        <div class="day-lastRow" id="41"></div>
+                                       <div class="day-lastRow" id="42"></div>  
+    <div id="myModal" class="modal">
+ <!-- Modal content -->
+             <div class="modal-content">
+                 <span class="close" onclick="close()">&times;</span>
+                 <p id="events">Events: </p>
+             </div>
+         </div>
+                    </div>
+                    
+        <button onclick="setUpMonth('sun',31,'march')">March</button>
         <button onclick="setUpMonth('mon', 30, 'june')">June</button>
         <button onclick="setUpMonth('wed', 31, 'july')">July</button>
         <button onclick="setUpMonth('sun', 31, 'august')">August</button>
         <button onclick="setUpMonth('tue', 30, 'september')">September</button>
+                    
+
+        </div>
+        
         
         <div id="List" class="tabcontent">
                <h3>List</h3>
@@ -134,10 +145,11 @@
             </div>
 
          
-        
+      
+                  
 
-
-        
+                <script src="cal-actions.js"> </script>
        
     </body>
+        
 </html>

@@ -47,14 +47,7 @@ body, html {
         .tablnk:hover{
             background-color: #777;
         }
-   /*         .button .show{
-                visibility: visible;
-            }
-           
-            .tabcontent .tabcontnt .tablink .tanlnk .show{
-                visibility: visible;
-            }
-  */        
+     
             #Home {background-color: #73C6B6;}
                 #Monthly{background-color: #A2D9CE;}
                 #Weekly{background-color: #A2D9CE}
