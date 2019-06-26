@@ -58,11 +58,6 @@ function openPage(pageName,elmnt,color) {
                 window.alert(eventAlert);
             document.getElementById(eventDay).innerHTML += "<br>" + eventTitle;
             }
-            function showEvents() {
-                var popup = document.getElementById("myPopup");
-                popup.classList.toggle("show");
-                document.getElementById("myPopup").innerHTML+= "<br>" + fullevent;
-                fullevent = "";}
      
       /*   function homePg(){
                     var hoMe=document.getElementsByClassName("tabcontent".getElementById("Home");
@@ -110,4 +105,30 @@ function addTodosHandler(event) {
         
         document.getElementById(pageName).style.display="block";
         elmnt.style.backgroundColor=color;
-    }  
+    }
+
+            //ONLY WORKS FOR DAY 1 SO FAR
+            var modal = document.getElementById("myModal");
+
+
+            var certainDay = document.getElementById("1");
+
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            certainDay.onclick = function displayModal() {
+                modal.style.display = "block";
+                document.getElementById("events").innerHTML+=fullevent;
+                fullevent="";
+            }
+
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
