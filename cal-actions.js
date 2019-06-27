@@ -23,7 +23,7 @@
                         fullevent+= "<br>" + eventLocation;
                         eventAlert+= "\n" + eventLocation
                     }
-                 eventMonth= window.prompt ("Month of the Event: ", "June");
+                 eventMonth= window.prompt ("Month of the Event: ", "March");
                     if (eventMonth != ""){
                         fullevent+="<br>" + eventMonth + " ";
                         eventAlert+="\n" + eventMonth + " ";
@@ -147,25 +147,27 @@ function getStartingIndex(monthName){
     return startingIndex;
 }
 
-            //ONLY WORKS FOR DAY 1 SO FAR
-var modal = window.document.getElementById("myModal");
+  //ONLY WORKS FOR DAY 1 SO FAR
+            var modal = document.getElementById("myModal");
+            
+            var z= document.getElementById("events");
 
+            var certainDay = document.getElementById("1");
+            certainDay.addEventListener("onclick",displayModal);
 
-var certainDay = document.getElementById("1");
+            var span = document.getElementsByClassName("close")[0];
 
-var span = document.getElementsByClassName("close")[0];
-
-function displayModal() {
-    modal.style.display = "block";
-    document.getElementById("events").innerHTML+=fullevent;
-    fullevent="";
-}
+            function displayModal() {
+                modal.style.display = "block";
+                window.z.innerHTML += "<br>" + fullevent;
+                fullevent="";
+            }
 
 
             // When the user clicks the button, open the modal
-           
 
-            function close() {
+
+            span.onclick=function clos() {
                 modal.style.display = "none";
             }
 
@@ -175,3 +177,4 @@ function displayModal() {
                 }
             }
 
+           
