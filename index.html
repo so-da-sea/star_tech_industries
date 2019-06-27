@@ -50,7 +50,8 @@
             <button id="em" class="tablnk" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
                 <div id="Monthly" class="tabcontnt">
                     <h4 id="heading"></h4>
-    
+                    <button onclick = "moveBackwardsThroughMonths()">move backwards</button>
+                    <button onclick = "moveForwardsThroughMonths()">move forwards</button>
                         <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
                                 <span class="eventText" id="eventNew"></span>
                             </div>        
@@ -62,8 +63,7 @@
                                         <div class="weekday">thu</div>
                                         <div class="weekday">fri</div>
                                         <div class="weekday">sat</div>
-                                        <div class="day" id="1" onclick="displayModal()">
-                                        </div>
+                                        <div class="day" id="1"></div>
                                         <div class="day" id="2"></div>
                                         <div class="day" id="3"></div>
                                         <div class="day" id="4"></div>
