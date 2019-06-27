@@ -57,7 +57,8 @@
 window.onload= function homePg(){
                 var x=document.getElementById("me");
                 var y=document.getElementById("em");
-
+                
+                setUpMonth(30, 'june');
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
 }
@@ -113,12 +114,13 @@ function openSubTab(pageName,elmnt,color){
         elmnt.style.backgroundColor=color;
     }  
 
-function setUpMonth(weekDayStart, numDays, monthName){
+function setUpMonth(numDays, monthName){
         var startingIndex = getStartingIndex(monthName);
         for(var i = 1; i<=42; i++){
             document.getElementById(i).innerHTML="";
             document.getElementById(i).style.backgroundColor="#f2f2f2";
         }
+    document.getElementById("heading").innerHTML = monthName.substring(0,1).toUpperCase()+monthName.substring(1)+ " 2020";
     //startingIndex==7 || startingIndex==6 && numsDays==31
         for(var i = startingIndex; i<(numDays+startingIndex); i++){
             document.getElementById(i).innerHTML+=i-(startingIndex-1);
