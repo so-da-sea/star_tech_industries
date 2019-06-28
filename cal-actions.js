@@ -66,6 +66,21 @@
     var monthDays = new Array(31,29,31,30,31,30,31,31,30,31,30,31);
     var monthNames = new Array('january','february','march','april'
     ,'may','june','july','august','september','october','november','december');
+
+    var january= new Month(31, "january", 1);
+    var february = new Month(29,'February',2);
+    var march = new Month(31,'March',3);
+    var april = new Month(30,'April',4);
+    var  may = new Month(31,'May',5);
+    var june = new Month(30,'June',6);
+    var july = new Month(31,'July',7);
+    var august = new Month(31,'August',8);
+    var september = new Month(30,'September',9);
+    var october = new Month(31,'October',10);
+    var november = new Month(30,'November',11);
+    var december = new Month(31,'December',12);
+
+    var monthArray = new Array(january, february, march, april, may, june, july, august, september, october, november, december);
      
 
             function getStartingIndex(monthName){
@@ -130,6 +145,7 @@
 
             function infoEvent(){
                 eventAlert="";
+                var month;
               
               
                 eventTitle= window.prompt("Title of Event: ", "Meeting");
@@ -148,6 +164,10 @@
                         fullevent+="<br>" + eventMonth + " ";
                         eventAlert+="\n" + eventMonth + " ";
                     }
+                for (var i = 0; i<12;i++){
+                    eventMonth==monthArray[i].getMonthName();
+                    month=monthArray[i];
+                }
 
                 eventDay= window.prompt ("Day of the Event: ", "1");
                     if (eventDay != ""){
@@ -171,6 +191,8 @@
                 window.alert(eventAlert);
                 var findId = parseInt(eventDay)+ (parseInt(getStartingIndex(eventMonth.toLocaleLowerCase()))-1);
                 document.getElementById(findId.toString()).innerHTML += "<br>" + eventTitle;
+                var event = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
+                month.addNewEvent(event);
             }
 
 
