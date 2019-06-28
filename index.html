@@ -17,14 +17,14 @@
 
         
         <div id="Home" class="tabcontent">
-            <button class="tablnk" onclick="openSubTab('Daily',this,'#A2D9CE')">Daily Calendar</button>
-                <div id="Daily" class="tabcontnt">
+            <button class="tablinkSubTab" onclick="openSubTab('Daily',this,'#A2D9CE')">Daily Calendar</button>
+                <div id="Daily" class="tabcontentSubTab">
                 <h4>daily stuff</h4>
                     <p>this is where the daily planner will go...</p>
                 </div>
             
-            <button class="tablnk" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
-                <div id="Weekly" class="tabcontnt">
+            <button class="tablinkSubTab" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
+                <div id="Weekly" class="tabcontentSubTab">
                 <h5>weekly stuff...</h5>
                      <div class="weekAddingEvent" onclick="infoEvent()" ><button id="weekAddEvent">Add Event </button>
                                 <span class="eventText" id="weekEventNew"></span>
@@ -47,8 +47,8 @@
                     </div>
                 </div>
             
-            <button id="em" class="tablnk" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
-                <div id="Monthly" class="tabcontnt">
+            <button id="em" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
+                <div id="Monthly" class="tabcontentSubTab">
                     <h4 id="heading"></h4>
                     <button onclick = "moveBackwardsThroughMonths()">move backwards</button>
                     <button onclick = "moveForwardsThroughMonths()">move forwards</button>
@@ -130,8 +130,8 @@
         
         <div id="List" class="tabcontent">
                <h3>List</h3>
-                 <button class="tablnk" onclick="openSubTab('Lists',this,'#82E0AA')"> Lists</button>
-                <div id="Lists" class="tabcontnt">
+                 <button class="tablinkSubTab" onclick="openSubTab('listSubTab',this,'#82E0AA')"> Lists</button>
+                <div id="listSubTab" class="tabcontentSubTab">
                     <h4>this is where the personal lists/to dos will go...</h4>
                          <div id="todoContainer">
                                 <div>

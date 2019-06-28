@@ -1,18 +1,24 @@
-      
-
-
-
-
-
-
-
-
-
 
 
 //TAB FUNCTIONS
 
-window.onload= function homePg(){
+    var homeOpen=document.getElementById("Home");
+    var listOpen=document.getElementById("List");
+
+                homeOpen.addEventListener("onclick",defaultOpenH)
+                function defaultOpenH(){
+                                var openH=document.getElementById("em");
+                                openSubTab('Monthly',openH,'#82E0AA');
+                }
+
+                
+                listOpen.addEventListener("onclick",defaultOpenL)
+                function defaultOpenL(){
+                                var openL=document.getElementById("listSubTab");
+                                openSubTab('listSubTab',openL,'#A2D9CE');
+                }
+
+    window.onload= function homePg(){
                 var x=document.getElementById("me");
                 var y=document.getElementById("em");
                 
@@ -39,15 +45,15 @@ window.onload= function homePg(){
 
 
         function openSubTab(pageName,elmnt,color){
-                var i,tabcontnt, tablnks;
+                var i,tabcontent, tablinks;
 
-                tabcontnt=document.getElementsByClassName("tabcontnt");
-                for(i=0;i<tabcontnt.length;i++)
-                        tabcontnt[i].style.display="none";
+                tabcontent=document.getElementsByClassName("tabcontentSubTab");
+                for(i=0;i<tabcontent.length;i++)
+                        tabcontent[i].style.display="none";
 
-               tablnks=document.getElementsByClassName("tablnk");
-                for(i=0;i<tablnks.length;i++)
-                    tablnks[i].style.backgroundColor="";
+               tablinks=document.getElementsByClassName("tablinkSubTab");
+                for(i=0;i<tablinks.length;i++)
+                    tablinks[i].style.backgroundColor="";
 
                 document.getElementById(pageName).style.display="block";
                 elmnt.style.backgroundColor=color;
