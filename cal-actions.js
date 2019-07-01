@@ -1,31 +1,21 @@
 
 //TAB FUNCTIONS
 
-    var homeOpen=document.getElementById("Home");
-    var listOpen=document.getElementById("List");
-
-                homeOpen.addEventListener("onclick",defaultOpenH)
-                function defaultOpenH(){
-                                var openH=document.getElementById("em");
-                                openSubTab('Monthly',openH,'#82E0AA');
-                }
-
+ 
                 
-                listOpen.addEventListener("onclick",defaultOpenL)
-                function defaultOpenL(){
-                                var openL=document.getElementById("listSubTab");
-                                openSubTab('listSubTab',openL,'#A2D9CE');
-                }
+//
 
     window.onload= function homePg(){
-                var x=document.getElementById("me");
-                var y=document.getElementById("em");
-                
+                var x=document.getElementById("homeID");
+                var y=document.getElementById("monthlyID");
+                var eventN= new Event('Meeting','Holy Names Academy','March','1','9:00 am','10:00 am');
+
+                march.addNewEvent(eventN);
                 setUpMonth(march);
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
             }
-
+//
 
         function openPage(pageName,elmnt,color) {
                 //hide all elements with tabcontent by default
@@ -40,7 +30,10 @@
 
                 document.getElementById(pageName).style.display="block";
                 elmnt.style.backgroundColor=color;
-            }
+
+//            var openSubL=document.getElementById('listID');
+//                openSubTab('listSubTab',openSubL,'#82E0AA');
+        }
 
 
         function openSubTab(pageName,elmnt,color){
