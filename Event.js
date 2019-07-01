@@ -71,7 +71,7 @@ class Event{
     // }
 
     fullEventFunc(eventT, eventL,  eventM,  eventD,  eventST,  eventET){
-        this.fullEvent= eventT + "\n" + eventL + "\n" + eventM + " " + eventD + "\n" + eventST + "-" + eventET;
+        this.fullEvent= eventT + "<br>" + eventL + "<br>" + eventM + " " + eventD + "<br>" + eventST + "-" + eventET;
     }
 
 }

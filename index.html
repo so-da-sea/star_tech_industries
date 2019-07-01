@@ -56,8 +56,13 @@
                     <button onclick = "moveForwardsThroughMonths()">move forwards</button>
                         <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
                                 <span class="eventText" id="eventNew"></span>
-                            </div>        
-                                    <div class="calendar">
+                            </div>
+
+                    <div id="eventBoxID" class="rectangle">
+                        <span class="closeX" onclick="close()">&times;</span>
+                        <p id="eventsBox"> You have no events on this day </p>
+                    </div>
+                    <div class="calendar">
                                         <div class="weekday">sun</div>
                                         <div class="weekday">mon</div>
                                         <div class="weekday">tue</div>
@@ -65,9 +70,9 @@
                                         <div class="weekday">thu</div>
                                         <div class="weekday">fri</div>
                                         <div class="weekday">sat</div>
-                                        <div class="day" id="1"></div>
-                                        <div class="day" id="2"></div>
-                                        <div class="day" id="3"></div>
+                                        <div class="day" id="1" onclick="eventsTextShow('1')"> </div>
+                                        <div class="day" id="2" onclick="eventsTextShow('2')"> </div>
+                                        <div class="day" id="3" onclick="eventsTextShow('3')"> </div>
                                         <div class="day" id="4"></div>
                                         <div class="day" id="5"></div>
                                         <div class="day" id="6"></div>
@@ -107,26 +112,29 @@
                                         <div class="day" id="40"></div>
                                         <div class="day" id="41"></div>
                                         <div class="day" id="42"></div>  
+<!--
             <div id="myModal" class="modal">
-            <!-- Modal content -->
+             Modal content 
                 <div class="modal-content">
                     <span class="close" onclick="close()">&times;</span>
                         <p id="events">Events: </p>
                 </div>
             </div>
+-->
                                         </div>
-        <button onclick="setUpMonth(31,'january')">January</button>
-        <button onclick="setUpMonth(29,'february')">February</button>
-        <button onclick="setUpMonth(31,'march')">March</button>
-        <button onclick="setUpMonth(30,'april')">April</button>
-        <button onclick="setUpMonth(31,'may')">May</button>
-        <button onclick="setUpMonth(30, 'june')">June</button>
-        <button onclick="setUpMonth(31, 'july')">July</button>
-        <button onclick="setUpMonth(31, 'august')">August</button>
-        <button onclick="setUpMonth(30, 'september')">September</button>
-        <button onclick="setUpMonth(31,'october')">October</button>
-        <button onclick="setUpMonth(30,'november')">November</button>
-        <button onclick="setUpMonth(31,'december')">December</button>
+                    
+        <button onclick="setUpMonth(january)">January</button>
+        <button onclick="setUpMonth(february)">February</button>
+        <button onclick="setUpMonth(march)">March</button>
+        <button onclick="setUpMonth(april)">April</button>
+        <button onclick="setUpMonth(may)">May</button>
+        <button onclick="setUpMonth(june)">June</button>
+        <button onclick="setUpMonth(july')">July</button>
+        <button onclick="setUpMonth(august)">August</button>
+        <button onclick="setUpMonth(september)">September</button>
+        <button onclick="setUpMonth(october)">October</button>
+        <button onclick="setUpMonth(november)">November</button>
+        <button onclick="setUpMonth(december)">December</button>
                     </div>
         </div>  
         

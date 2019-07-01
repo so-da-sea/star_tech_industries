@@ -210,33 +210,61 @@
  
 
 //MODAL FUNCTIONS
-    var modal = document.getElementById("myModal");            
-    var z= document.getElementById("events");
-    var certainDay = document.getElementById("1");
-    var span = document.getElementsByClassName("close")[0];
+//    var modal = document.getElementById("myModal");            
+//    var z= document.getElementById("events");
+//    var certainDay = document.getElementById("1");
+//    var span = document.getElementsByClassName("close")[0];
+//
+//        //ONLY WORKS FOR DAY 1 SO FAR
+//
+//            certainDay.addEventListener("onclick",displayModal);
+//
+//            function displayModal() {
+//                modal.style.display = "block";
+//                window.z.innerHTML += "<br>" + fullEvent;
+//                fullEvent="";
+//            }
+//
+//
+//            // When the user clicks the button, open the modal
+//
+//
+//            span.onclick=function clos() {
+//                modal.style.display = "none";
+//            }
+//
+//            window.onclick = function(event) {
+//                if (event.target == modal) {
+//                    modal.style.display = "none";
+//                }
+//            }
 
-        //ONLY WORKS FOR DAY 1 SO FAR
 
-            certainDay.addEventListener("onclick",displayModal);
 
-            function displayModal() {
-                modal.style.display = "block";
-                window.z.innerHTML += "<br>" + fullEvent;
-                fullEvent="";
+//EVENT POP IN A BOX
+
+    var box= document.getElementById("eventBoxID");
+
+    var s=document.getElementsByClassName("close")[0];
+    s.addEventListener("onclick",close);
+
+    function close() {
+        box.style.display = "none";
+    }
+
+    function eventsTextShow(day){
+        var monthN=monthArray[currentMonthIndex];
+        var b = "There are no events on this day."
+        if([day + monthN.startingIndex - 1].length!=0) {
+            b = "Events: ";
+            box.style.display = "block";
+            for (var i = 0; i < monthN.eventsForMonth[day + monthN.startingIndex - 1].length; i++) {
+                b += "<br>" + monthN.eventsForMonth[day + monthN.startingIndex - 1][i].fullEvent;
             }
+        }
+        document.getElementById("eventsBox").innerHTML=b;
+        //console.log(eventPopUp[eventDay-1]);
+        //eventPopUp[eventDay-1]="  ";
 
-
-            // When the user clicks the button, open the modal
-
-
-            span.onclick=function clos() {
-                modal.style.display = "none";
-            }
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
+}
            
