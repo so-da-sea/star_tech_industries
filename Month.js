@@ -1,36 +1,83 @@
 //numDays
 //monthName
 //index
+
 class Month {
+    // numDays = 0;
+    // monthName = "";
+    // index = 0;
+    // startingIndex = 0;
+    // eventsForMonth = [];
 
-    numDays;
-    monthName;
-    index;
-    eventsForMonth;
+//    numDays = 0;
+//    monthName = "";
+//    index = 0;
+//    eventsForMonth = [];
 
-    constructor(numD, monthN, inD){
-        this.numDays=numD;
-        this.monthName=monthN;
-        this.index=inD;
+    constructor(numD, monthN, inD) {
+        this.eventsForMonth = [];
+        this.numDays = numD;
+        this.monthName = monthN;
+        this.index = inD;
+        this.startingIndex = this.getStartingIndex();
+        this.setEventsForMonthToBlank()
+        //this.eventsForDay = [];
+        //this.setEventsForDayToBlank()
     }
 
-    // static getNumDays(){
-    //     return numDays;
-    // }
+    getStartingIndex(){
+        var monthNameLowerCase = this.monthName.toLowerCase();
+        if(monthNameLowerCase=='march' || monthNameLowerCase=='november'){
+            this.startingIndex=1;  }
+        if(monthNameLowerCase=='june'){
+            this.startingIndex=2;  }
+        if(monthNameLowerCase=='september' || monthNameLowerCase=='december'){
+            this.startingIndex=3;  }
+        if(monthNameLowerCase=='january' || monthNameLowerCase=='april' || monthNameLowerCase=='july'){
+            this.startingIndex=4;  }
+        if(monthNameLowerCase=='october'){
+            this.startingIndex=5;  }
+        if(monthNameLowerCase=='may'){
+            this.startingIndex=6;  }
+        if(monthNameLowerCase=='february' || monthNameLowerCase=='august'){
+            this.startingIndex=7;  }
+        return this.startingIndex;
+    }
+
+    setEventsForMonthToBlank(){
+        for(var i = 0; i<this.numDays;i++){
+            this.eventsForMonth.push([]);
+        }
+    }
+
+    // setEventsForDayToBlank(){
+    //     for(var i = 0; i<6;i++) {
+    //         this.eventsForDay.push([]); //change brackets to quotations
     //
+    //     } }
+
+
+    getNumDays(){
+        return this.numDays;
+    }
+
     getMonthName(){
-        return monthName;
+        return this.monthName;
     }
     //
     // static getEventTitle(){
     //     return eventTitle;
     // }
     //
-    // static getIndexMonth(){
-    //     return index;
-    // }
+    getIndexMonth(){
+        return this.index;
+    }
+    getEventsForMonth(){
+        return this.eventsForMonth;
+    }
     addNewEvent(event){
-        eventsForMonth[event.getEventDay()-1] = event;
+        this.eventsForMonth[event.eventDay-1].push(event);
     }
 
 }
+

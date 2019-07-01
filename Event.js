@@ -1,14 +1,12 @@
 class Event{
 
-    eventTitle;
-    eventLocation;
-    eventMonth;
-    eventDay;
-    eventStart;
-    eventEnd;
-    fullEvent;
-
-
+//    eventTitle;
+//    eventLocation;
+//    eventMonth;
+//    eventDay;
+//    eventStart;
+//    eventEnd;
+//    fullEvent;
 
     constructor(eventT, eventL,  eventM,  eventD,  eventST,  eventET) {
     this.eventTitle = eventT;
@@ -17,13 +15,13 @@ class Event{
     this.eventDay = eventD;
     this.eventStart = eventST;
     this.eventEnd = eventET;
-    fullEventFunc(eventT,eventL,eventM,eventD,eventST,eventET)
+    this.fullEventFunc(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
     }
 
-    // static setEventTitle(eventT){
-    //     eventTitle= eventT;
-    // }
-    //
+     setEventTitle(eventT) {
+         this.eventTitle = eventT;
+     }
+
     // static getEventTitle(){
     //     return eventTitle;
     // }
@@ -49,9 +47,9 @@ class Event{
     //     eventDay= eventD;
     // }
     //
-    getEventDay(){
-        return eventDay;
-    }
+    // getEventDay(){
+    //     return eventDay;
+    // }
     //
     // static setEventStart(eventST){
     //     eventStart= eventST;
@@ -68,20 +66,12 @@ class Event{
     // static getEventEnd(){
     //     return eventEnd;
     // }
-
+    // getFullEvent(){
+    //     return fullEvent;
+    // }
 
     fullEventFunc(eventT, eventL,  eventM,  eventD,  eventST,  eventET){
-        fullevent= eventT + "\n" + eventL + "\n" + eventM + " " + eventD + "\n" + eventST + "-" + eventET;
-
-
-
-
+        this.fullEvent= eventT + "\n" + eventL + "\n" + eventM + " " + eventD + "\n" + eventST + "-" + eventET;
     }
-
-
-
-
-
-
 
 }

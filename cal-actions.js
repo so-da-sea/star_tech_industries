@@ -1,5 +1,4 @@
 
-
 //TAB FUNCTIONS
 
     var homeOpen=document.getElementById("Home");
@@ -22,7 +21,7 @@
                 var x=document.getElementById("me");
                 var y=document.getElementById("em");
                 
-                setUpMonth(31, 'march',3);
+                setUpMonth(march);
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
             }
@@ -59,15 +58,17 @@
                 elmnt.style.backgroundColor=color;
             }  
 
-
 //MONTH FUNCTIONS
-    
+//     var numDays = 0;
+//     var monthName = "";
+//     var index = 0;
+//     var eventsForMonth = [];
     var currentMonthIndex=0;
-    var monthDays = new Array(31,29,31,30,31,30,31,31,30,31,30,31);
-    var monthNames = new Array('january','february','march','april'
-    ,'may','june','july','august','september','october','november','december');
+    //var monthDays = new Array(31,29,31,30,31,30,31,31,30,31,30,31);
+    //var monthNames = new Array('january','february','march','april'
+    //,'may','june','july','august','september','october','november','december');
 
-    var january= new Month(31, "january", 1);
+    var january= new Month(31, 'January', 1);
     var february = new Month(29,'February',2);
     var march = new Month(31,'March',3);
     var april = new Month(30,'April',4);
@@ -80,61 +81,48 @@
     var november = new Month(30,'November',11);
     var december = new Month(31,'December',12);
 
+
+
     var monthArray = new Array(january, february, march, april, may, june, july, august, september, october, november, december);
-     
 
-            function getStartingIndex(monthName){
-                        var startingIndex;
-                        if(monthName=='march' || monthName=='november'){
-                            startingIndex=1;  }
-                        if(monthName=='june'){
-                            startingIndex=2;  }
-                        if(monthName=='september' || monthName=='december'){
-                            startingIndex=3;  }
-                        if(monthName=='january' || monthName=='april' || monthName=='july'){
-                            startingIndex=4;  }
-                        if(monthName=='october'){
-                            startingIndex=5;  }
-                        if(monthName=='may'){
-                            startingIndex=6;  }
-                        if(monthName=='february' || monthName=='august'){
-                            startingIndex=7;  }
-                        return startingIndex;
-                    }
-
-            function setUpMonth(numDays, monthName, monthNum){
-                    currentMonthIndex = monthNum-1;
-                    var startingIndex = getStartingIndex(monthName);
+            function setUpMonth(month){//month being a month obj
+                    currentMonthIndex = month.index-1;
+                    var startingIndex = month.startingIndex;
                     for(var i = 1; i<=42; i++){
                         document.getElementById(i).innerHTML="";
                         document.getElementById(i).style.backgroundColor="#f2f2f2";
                     }
-                document.getElementById("heading").innerHTML = monthName.substring(0,1).toUpperCase()+monthName.substring(1)+ " 2020";
-                //startingIndex==7 || startingIndex==6 && numsDays==31
-                    for(var i = startingIndex; i<(numDays+startingIndex); i++){
-                        document.getElementById(i).innerHTML+=i-(startingIndex-1);
+                document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020";
+                //.substring(0,1).toUpperCase()+month.getMonthName().substring(1)
+                var a;
+                    for(var i = startingIndex; i<(month.numDays + startingIndex); i++) {
+                        a="";
+                        for (var j = 0; j < (month.eventsForMonth[i-startingIndex].length); j++) {
+                                a += "<br>" + month.eventsForMonth[i-startingIndex][j].eventTitle;
+                        }
+                        document.getElementById(i).innerHTML+=i-(startingIndex-1)+ a;
                         document.getElementById(i).style.backgroundColor="white";
                     }
                 }
 
             function moveForwardsThroughMonths(){
                 if(currentMonthIndex==11)
-                    setUpMonth(31,'january',1);
+                    setUpMonth(january);
                 else
-                    setUpMonth(monthDays[currentMonthIndex+1],monthNames[currentMonthIndex+1],currentMonthIndex+2);
+                    setUpMonth(monthArray[currentMonthIndex+1]);
                 }
 
             function moveBackwardsThroughMonths(){
                 if(currentMonthIndex==0)
-                    setUpMonth(31,'december',12);
+                    setUpMonth(december);
                 else
-                    setUpMonth(monthDays[currentMonthIndex-1],monthNames[currentMonthIndex-1],currentMonthIndex);
+                    setUpMonth(monthArray[currentMonthIndex-1]);
                 }
 
 
 //EVENT FUNCTIONS  
 
-    var fullevent="";
+    var fullEvent="";
     var eventTitle="";
     var eventLocation="";
     var eventDay="";
@@ -145,59 +133,60 @@
 
             function infoEvent(){
                 eventAlert="";
-                var month;
+                var monthN;
               
               
                 eventTitle= window.prompt("Title of Event: ", "Meeting");
                     if (eventTitle!= ""){
-                        fullevent+=eventTitle;
+                        fullEvent+=eventTitle;
                         eventAlert+= eventTitle;
                         
                     }
                 eventLocation= window.prompt("Location of Event: ", "Holy Names Academy");
                     if (eventLocation!=""){
-                        fullevent+= "<br>" + eventLocation;
+                        fullEvent+= "<br>" + eventLocation;
                         eventAlert+= "\n" + eventLocation
                     }
-                 eventMonth= window.prompt ("Month of the Event: ", "March");
+                 eventMonth= (window.prompt ("Month of the Event: ", "March")).trim();
                     if (eventMonth != ""){
-                        fullevent+="<br>" + eventMonth + " ";
+                        fullEvent+="<br>" + eventMonth + " ";
                         eventAlert+="\n" + eventMonth + " ";
+                        for(var i = 0; i<12; i++){
+                            if(eventMonth.toLowerCase()==monthArray[i].monthName.toLowerCase())
+                                monthN = monthArray[i];
+                        }
                     }
-                for (var i = 0; i<12;i++){
-                    eventMonth==monthArray[i].getMonthName();
-                    month=monthArray[i];
-                }
 
                 eventDay= window.prompt ("Day of the Event: ", "1");
                     if (eventDay != ""){
-                        fullevent+=eventDay;
+                        fullEvent+=eventDay;
                         eventAlert+=eventDay;
                     }
                     eventDay= eventDay.toString();
                  
                  eventStart= window.prompt("Start Time: ", "9:00am");
                      if (eventStart!=""){
-                         fullevent+="<br>" + eventStart + "-";
+                         fullEvent+="<br>" + eventStart + "-";
                          eventAlert+="\n" + eventStart + "-";
                     }
                   eventEnd= window.prompt("End Time: ", "10:00am");
                     if (eventStart!=""){
-                        fullevent+= eventEnd+"<br><br>";
+                        fullEvent+= eventEnd+"<br><br>";
                         eventAlert+= eventEnd;
                         
                     }
                 
                 window.alert(eventAlert);
-                var findId = parseInt(eventDay)+ (parseInt(getStartingIndex(eventMonth.toLocaleLowerCase()))-1);
-                document.getElementById(findId.toString()).innerHTML += "<br>" + eventTitle;
-                var event = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
-                month.addNewEvent(event);
+                var findId = parseInt(eventDay)+ parseInt(monthN.startingIndex-1);
+                //document.getElementById(findId.toString()).innerHTML += "<br>" + eventTitle;
+                var eventN = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
+                monthN.addNewEvent(eventN);
+                setUpMonth(monthN);
             }
 
 
 //LIST FUNCTIONS
-    var todoButton = document.getElementById("todoButton")
+    var todoButton = document.getElementById("todoButton");
             
             function addTodosHandler(event) {
                   // Get User Input
@@ -232,8 +221,8 @@
 
             function displayModal() {
                 modal.style.display = "block";
-                window.z.innerHTML += "<br>" + fullevent;
-                fullevent="";
+                window.z.innerHTML += "<br>" + fullEvent;
+                fullEvent="";
             }
 
 
