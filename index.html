@@ -11,7 +11,7 @@
     <body>
          <header>Star Tech Planners, inc.</header>
         
-        <button id="me" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
+        <button id="homeID" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
         <button class="tablink" onclick="openPage('List', this,'#58D68D')">List</button>
         
         
@@ -28,6 +28,8 @@
             <button class="tablinkSubTab" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
                 <div id="Weekly" class="tabcontentSubTab">
                 <h5>weekly stuff...</h5>
+                <button onclick = "moveBackwardsThroughWeeks()">move backwards</button>
+                <button onclick = "moveForwardsThroughWeeks()">move forwards</button>
                      <div class="weekAddingEvent" onclick="infoEvent()" ><button id="weekAddEvent">Add Event </button>
                                 <span class="eventText" id="weekEventNew"></span>
                             </div>        
@@ -39,17 +41,17 @@
                            <div class="weekday">thu</div>
                            <div class="weekday">fri</div>
                            <div class="weekday">sat</div>
-                           <div class="day" id="2w">2</div>
-                           <div class="day" id= "3w">3</div>
-                           <div class="day" id= "4w">4</div>
-                           <div class="day" id= "5w">5</div>
-                           <div class="day" id= "6w">6</div>
-                           <div class="day" id= "7w">7</div>
-                           <div class="day" id= "8w">8</div>
+                           <div class="day" id="2w"></div>
+                           <div class="day" id= "3w"></div>
+                           <div class="day" id= "4w"></div>
+                           <div class="day" id= "5w"></div>
+                           <div class="day" id= "6w"></div>
+                           <div class="day" id= "7w"></div>
+                           <div class="day" id= "8w"></div>
                     </div>
                 </div>
             
-            <button id="em" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
+            <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
                 <div id="Monthly" class="tabcontentSubTab">
                     <h4 id="heading"></h4>
                     <button onclick = "moveBackwardsThroughMonths()">move backwards</button>
@@ -70,9 +72,9 @@
                                         <div class="weekday">thu</div>
                                         <div class="weekday">fri</div>
                                         <div class="weekday">sat</div>
-                                        <div class="day" id="1" onclick="eventsTextShow('1')"> </div>
-                                        <div class="day" id="2" onclick="eventsTextShow('2')"> </div>
-                                        <div class="day" id="3" onclick="eventsTextShow('3')"> </div>
+                                        <div class="day" id="1" onclick="eventsTextShow(1)"> </div>
+                                        <div class="day" id="2" onclick="eventsTextShow(2)"> </div>
+                                        <div class="day" id="3" onclick="eventsTextShow(3)"> </div>
                                         <div class="day" id="4"></div>
                                         <div class="day" id="5"></div>
                                         <div class="day" id="6"></div>

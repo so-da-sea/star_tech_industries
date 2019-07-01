@@ -15,7 +15,6 @@ class Event{
     this.eventDay = eventD;
     this.eventStart = eventST;
     this.eventEnd = eventET;
-    this.fullEventFunc(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
     }
 
      setEventTitle(eventT) {
@@ -70,8 +69,8 @@ class Event{
     //     return fullEvent;
     // }
 
-    fullEventFunc(eventT, eventL,  eventM,  eventD,  eventST,  eventET){
-        this.fullEvent= eventT + "<br>" + eventL + "<br>" + eventM + " " + eventD + "<br>" + eventST + "-" + eventET;
+    get fullEvent(){
+        return "<br>" + this.eventTitle + "<br>" + this.eventLocation + "<br>" + this.eventMonth + " " + this.eventDay + "<br>" + this.eventStart + "-" + this.eventEnd;
     }
 
 }

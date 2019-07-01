@@ -1,7 +1,7 @@
 
 //TAB FUNCTIONS
 
- 
+
                 
 //
 
@@ -14,6 +14,9 @@
                 setUpMonth(march);
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
+                // for(var i = 0; i<=42; i++){
+                //     document.getElementsByClassName("day")[i].addEventListener("onclick",eventsTextShow(i+1));
+                // }
             }
 //
 
@@ -30,10 +33,7 @@
 
                 document.getElementById(pageName).style.display="block";
                 elmnt.style.backgroundColor=color;
-
-//            var openSubL=document.getElementById('listID');
-//                openSubTab('listSubTab',openSubL,'#82E0AA');
-        }
+            }
 
 
         function openSubTab(pageName,elmnt,color){
@@ -129,49 +129,58 @@
                 var monthN;
               
               
-                eventTitle= window.prompt("Title of Event: ", "Meeting");
-                    if (eventTitle!= ""){
+                eventTitle= window.prompt("Title of Event: ", "Meeting").trim();
+                    if (eventTitle!= "" && eventTitle!= null){
                         fullEvent+=eventTitle;
                         eventAlert+= eventTitle;
                         
                     }
-                eventLocation= window.prompt("Location of Event: ", "Holy Names Academy");
-                    if (eventLocation!=""){
+                eventLocation= window.prompt("Location of Event: ", "Holy Names Academy").trim();
+                    if (eventLocation!="" && eventLocation!=null){
                         fullEvent+= "<br>" + eventLocation;
                         eventAlert+= "\n" + eventLocation
                     }
-                 eventMonth= (window.prompt ("Month of the Event: ", "March")).trim();
-                    if (eventMonth != ""){
+                 eventMonth= (window.prompt ("Month of the Event: ", monthArray[currentMonthIndex].monthName)).trim();
+                    if (eventMonth != "" && eventMonth!=null){
                         fullEvent+="<br>" + eventMonth + " ";
                         eventAlert+="\n" + eventMonth + " ";
+                    }
+                    else{
+                        eventMonth = (window.prompt("Please enter the month of the event: ", monthArray[currentMonthIndex].monthName)).trim();
+                        fullEvent+="<br>" + eventMonth + " ";
+                        eventAlert+="\n" + eventMonth + " ";
+                    }
                         for(var i = 0; i<12; i++){
                             if(eventMonth.toLowerCase()==monthArray[i].monthName.toLowerCase())
                                 monthN = monthArray[i];
                         }
-                    }
 
-                eventDay= window.prompt ("Day of the Event: ", "1");
-                    if (eventDay != ""){
+                eventDay = window.prompt ("Day of the Event: ", "1").trim();
+                    if (eventDay != "" && eventDay!=null){
                         fullEvent+=eventDay;
                         eventAlert+=eventDay;
                     }
+                    else {
+                        eventDay = window.prompt("Please enter the day of the event: ", "1").trim();
+                        fullEvent += eventDay;
+                        eventAlert += eventDay;
+                    }
                     eventDay= eventDay.toString();
                  
-                 eventStart= window.prompt("Start Time: ", "9:00am");
-                     if (eventStart!=""){
+                 eventStart= window.prompt("Start Time: ", "9:00am").trim();
+                     if (eventStart!="" && eventStart!=null){
                          fullEvent+="<br>" + eventStart + "-";
                          eventAlert+="\n" + eventStart + "-";
                     }
-                  eventEnd= window.prompt("End Time: ", "10:00am");
-                    if (eventStart!=""){
+                  eventEnd= window.prompt("End Time: ", "10:00am").trim();
+
+                    if (eventEnd!="" && eventEnd!=null){
                         fullEvent+= eventEnd+"<br><br>";
                         eventAlert+= eventEnd;
                         
                     }
                 
                 window.alert(eventAlert);
-                var findId = parseInt(eventDay)+ parseInt(monthN.startingIndex-1);
-                //document.getElementById(findId.toString()).innerHTML += "<br>" + eventTitle;
                 var eventN = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
                 monthN.addNewEvent(eventN);
                 setUpMonth(monthN);
@@ -238,24 +247,26 @@
 
     var box= document.getElementById("eventBoxID");
 
-    var s=document.getElementsByClassName("close")[0];
-    s.addEventListener("onclick",close);
+    var s=document.getElementsByClassName("closeX")[0];
+    s.addEventListener("click",close());
 
     function close() {
         box.style.display = "none";
     }
 
-    function eventsTextShow(day){
+    function eventsTextShow(dayIndex){
         var monthN=monthArray[currentMonthIndex];
         var b = "There are no events on this day."
-        if([day + monthN.startingIndex - 1].length!=0) {
-            b = "Events: ";
-            box.style.display = "block";
-            for (var i = 0; i < monthN.eventsForMonth[day + monthN.startingIndex - 1].length; i++) {
-                b += "<br>" + monthN.eventsForMonth[day + monthN.startingIndex - 1][i].fullEvent;
-            }
+        //var indexOfEvent = parseInt(day) + monthN.startingIndex - 2;
+        if(monthN.eventsForMonth[0].length!=-1 && monthN.eventsForMonth[dayIndex-1].length!=-1) {
+            b = "Events:" + "<br>";
+            b += monthN.getFullEventsForDay(dayIndex);
+            // for (var i = 0; i < monthN.eventsForMonth[parseInt(day) + monthN.startingIndex - 2].length; i++) {
+            //     b += "<br>" + monthN.eventsForMonth[parseInt(day) + parseInt(monthN.startingIndex) - 2][i].fullEvent;
+            // }
         }
         document.getElementById("eventsBox").innerHTML=b;
+        box.style.display = "block";
         //console.log(eventPopUp[eventDay-1]);
         //eventPopUp[eventDay-1]="  ";
 

@@ -79,5 +79,13 @@ class Month {
         this.eventsForMonth[event.eventDay-1].push(event);
     }
 
+    getFullEventsForDay(day){
+        var fullEvents = "";
+        for(var i = 0; i<this.eventsForMonth[day-1].length;i++) {
+            fullEvents += this.eventsForMonth[day-1][i].fullEvent + "<br>";
+        }
+    return fullEvents;
+    }
+
 }
 
