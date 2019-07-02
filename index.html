@@ -22,17 +22,55 @@
             <button class="tablinkSubTab" onclick="openSubTab('Daily',this,'#A2D9CE')">Daily Calendar</button>
                 <div id="Daily" class="tabcontentSubTab">
                 <h4>daily stuff</h4>
-                    <p>this is where the daily planner will go...</p>
+
+                    <button onclick = "moveBackwardsThroughWeeks()">move backwards</button>
+                    <button onclick = "moveForwardsThroughWeeks()">move forwards</button>
+
+                    <div class="dayAddingEvent" onclick="infoEvent()" ><button id="dayAddEvent">Add Event </button>
+                        <span class="eventText" id="dayEventNew"></span>
+                    </div>
+
+                    <div class="daily">
+                        <div class="hourly">12:00am</div>
+                        <div class="hourly">1:00am</div>
+                        <div class="hourly">2:00am</div>
+                        <div class="hourly">3:00am</div>
+                        <div class="hourly">4:00am</div>
+                        <div class="hourly">5:00am</div>
+                        <div class="hourly">6:00am</div>
+                        <div class="hourly">7:00am</div>
+                        <div class="hourly">8:00am</div>
+                        <div class="hourly">9:00am</div>
+                        <div class="hourly">10:00am</div>
+                        <div class="hourly">11:00am</div>
+                        <div class="hourly">12:00pm</div>
+                        <div class="hourly">1:00pm</div>
+                        <div class="hourly">2:00pm</div>
+                        <div class="hourly">3:00pm</div>
+                        <div class="hourly">4:00pm</div>
+                        <div class="hourly">5:00pm</div>
+                        <div class="hourly">6:00pm</div>
+                        <div class="hourly">7:00pm</div>
+                        <div class="hourly">8:00pm</div>
+                        <div class="hourly">9:00pm</div>
+                        <div class="hourly">10:00pm</div>
+                        <div class="hourly">11:00pm</div>
+                        <div class="hourly">12:00pm</div>
+
+                    </div>
                 </div>
             
             <button class="tablinkSubTab" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
                 <div id="Weekly" class="tabcontentSubTab">
                 <h5>weekly stuff...</h5>
+
                 <button onclick = "moveBackwardsThroughWeeks()">move backwards</button>
                 <button onclick = "moveForwardsThroughWeeks()">move forwards</button>
+
                      <div class="weekAddingEvent" onclick="infoEvent()" ><button id="weekAddEvent">Add Event </button>
                                 <span class="eventText" id="weekEventNew"></span>
-                            </div>        
+                            </div>
+
                     <div class= "week2">
                            <div class="weekday">sun</div>
                            <div class="weekday">mon</div>
@@ -41,27 +79,29 @@
                            <div class="weekday">thu</div>
                            <div class="weekday">fri</div>
                            <div class="weekday">sat</div>
-                           <div class="day" id="2w"></div>
-                           <div class="day" id= "3w"></div>
-                           <div class="day" id= "4w"></div>
-                           <div class="day" id= "5w"></div>
-                           <div class="day" id= "6w"></div>
-                           <div class="day" id= "7w"></div>
-                           <div class="day" id= "8w"></div>
+                           <div class="day" id="1w">1</div>
+                           <div class="day" id="2w">2</div>
+                           <div class="day" id="3w">3</div>
+                           <div class="day" id="4w">4</div>
+                           <div class="day" id="5w">5</div>
+                           <div class="day" id="6w">6</div>
+                           <div class="day" id="7w">7</div>
                     </div>
                 </div>
             
             <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
                 <div id="Monthly" class="tabcontentSubTab">
                     <h4 id="heading"></h4>
+
                     <button onclick = "moveBackwardsThroughMonths()">move backwards</button>
                     <button onclick = "moveForwardsThroughMonths()">move forwards</button>
+
                         <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
                                 <span class="eventText" id="eventNew"></span>
                             </div>
 
                     <div id="eventBoxID" class="rectangle">
-                        <span class="closeX" onclick="close()">&times;</span>
+                        <span class="closeX">&times;</span>
                         <p id="eventsBox"> You have no events on this day </p>
                     </div>
                     <div class="calendar">
@@ -113,16 +153,7 @@
                                         <div class="day" id="39"></div>
                                         <div class="day" id="40"></div>
                                         <div class="day" id="41"></div>
-                                        <div class="day" id="42"></div>  
-<!--
-            <div id="myModal" class="modal">
-             Modal content 
-                <div class="modal-content">
-                    <span class="close" onclick="close()">&times;</span>
-                        <p id="events">Events: </p>
-                </div>
-            </div>
--->
+                                        <div class="day" id="42"></div>
                                         </div>
                     
         <button onclick="setUpMonth(january)">January</button>
@@ -131,7 +162,7 @@
         <button onclick="setUpMonth(april)">April</button>
         <button onclick="setUpMonth(may)">May</button>
         <button onclick="setUpMonth(june)">June</button>
-        <button onclick="setUpMonth(july')">July</button>
+        <button onclick="setUpMonth(july)">July</button>
         <button onclick="setUpMonth(august)">August</button>
         <button onclick="setUpMonth(september)">September</button>
         <button onclick="setUpMonth(october)">October</button>

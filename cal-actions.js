@@ -3,7 +3,7 @@
 
 
                 
-//
+
 
     window.onload= function homePg(){
                 var x=document.getElementById("homeID");
@@ -14,11 +14,8 @@
                 setUpMonth(march);
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
-                // for(var i = 0; i<=42; i++){
-                //     document.getElementsByClassName("day")[i].addEventListener("onclick",eventsTextShow(i+1));
-                // }
             }
-//
+
 
         function openPage(pageName,elmnt,color) {
                 //hide all elements with tabcontent by default
@@ -52,14 +49,8 @@
             }  
 
 //MONTH FUNCTIONS
-//     var numDays = 0;
-//     var monthName = "";
-//     var index = 0;
-//     var eventsForMonth = [];
+
     var currentMonthIndex=0;
-    //var monthDays = new Array(31,29,31,30,31,30,31,31,30,31,30,31);
-    //var monthNames = new Array('january','february','march','april'
-    //,'may','june','july','august','september','october','november','december');
 
     var january= new Month(31, 'January', 1);
     var february = new Month(29,'February',2);
@@ -85,8 +76,7 @@
                         document.getElementById(i).innerHTML="";
                         document.getElementById(i).style.backgroundColor="#f2f2f2";
                     }
-                document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020";
-                //.substring(0,1).toUpperCase()+month.getMonthName().substring(1)
+                document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020"
                 var a;
                     for(var i = startingIndex; i<(month.numDays + startingIndex); i++) {
                         a="";
@@ -209,66 +199,28 @@
                  
                   todoButton.addEventListener("click", addTodosHandler);
 
- 
-
-//MODAL FUNCTIONS
-//    var modal = document.getElementById("myModal");            
-//    var z= document.getElementById("events");
-//    var certainDay = document.getElementById("1");
-//    var span = document.getElementsByClassName("close")[0];
-//
-//        //ONLY WORKS FOR DAY 1 SO FAR
-//
-//            certainDay.addEventListener("onclick",displayModal);
-//
-//            function displayModal() {
-//                modal.style.display = "block";
-//                window.z.innerHTML += "<br>" + fullEvent;
-//                fullEvent="";
-//            }
-//
-//
-//            // When the user clicks the button, open the modal
-//
-//
-//            span.onclick=function clos() {
-//                modal.style.display = "none";
-//            }
-//
-//            window.onclick = function(event) {
-//                if (event.target == modal) {
-//                    modal.style.display = "none";
-//                }
-//            }
-
-
 
 //EVENT POP IN A BOX
 
     var box= document.getElementById("eventBoxID");
 
     var s=document.getElementsByClassName("closeX")[0];
-    s.addEventListener("click",close());
+    s.addEventListener("click",close);
 
-    function close() {
-        box.style.display = "none";
-    }
+            function close() {
+                box.style.display = "none";
+            }
 
-    function eventsTextShow(dayIndex){
-        var monthN=monthArray[currentMonthIndex];
-        var b = "There are no events on this day."
-        //var indexOfEvent = parseInt(day) + monthN.startingIndex - 2;
-        if(monthN.eventsForMonth[0].length!=-1 && monthN.eventsForMonth[dayIndex-1].length!=-1) {
-            b = "Events:" + "<br>";
-            b += monthN.getFullEventsForDay(dayIndex);
-            // for (var i = 0; i < monthN.eventsForMonth[parseInt(day) + monthN.startingIndex - 2].length; i++) {
-            //     b += "<br>" + monthN.eventsForMonth[parseInt(day) + parseInt(monthN.startingIndex) - 2][i].fullEvent;
-            // }
-        }
+            function eventsTextShow(dayIndex){
+                var monthN=monthArray[currentMonthIndex];
+                var b = "There are no events on this day."
+
+                if(monthN.eventsForMonth[0].length!=-1 && monthN.eventsForMonth[dayIndex-1].length!=-1) {
+                    b = "Events:" + "<br>";
+                    b += monthN.getFullEventsForDay(dayIndex);
+            }
+
         document.getElementById("eventsBox").innerHTML=b;
         box.style.display = "block";
-        //console.log(eventPopUp[eventDay-1]);
-        //eventPopUp[eventDay-1]="  ";
-
 }
            
