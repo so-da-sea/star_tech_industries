@@ -30,9 +30,11 @@
                 <h5 id = "weekHeader">weekly stuff...</h5>
                 <button onclick = "moveBackwardsThroughWeeks()">move backwards</button>
                 <button onclick = "moveForwardsThroughWeeks()">move forwards</button>
+
                      <div class="weekAddingEvent" onclick="infoEvent()" ><button id="weekAddEvent">Add Event </button>
                                 <span class="eventText" id="weekEventNew"></span>
-                            </div>        
+                            </div>
+
                     <div class= "week2">
                            <div class="weekday">sun</div>
                            <div class="weekday">mon</div>
@@ -54,15 +56,17 @@
             <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
                 <div id="Monthly" class="tabcontentSubTab">
                     <h4 id="heading"></h4>
+
                     <button onclick = "moveBackwardsThroughMonths()">move backwards</button>
                     <button onclick = "moveForwardsThroughMonths()">move forwards</button>
+
                         <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
                                 <span class="eventText" id="eventNew"></span>
                             </div>
 
                     <div id="eventBoxID" class="rectangle">
                         <span class="closeX">&times;</span>
-                        <p id="eventsBox"> whelp</p>
+                        <p id="eventsBox"> You have no events on this day </p>
                     </div>
                     <div class="calendar">
                                         <div class="weekday">sun</div>
@@ -114,15 +118,6 @@
                                         <div class="day" id="40"></div>
                                         <div class="day" id="41"></div>
                                         <div class="day" id="42"></div>
-<!--
-            <div id="myModal" class="modal">
-             Modal content 
-                <div class="modal-content">
-                    <span class="close" onclick="close()">&times;</span>
-                        <p id="events">Events: </p>
-                </div>
-            </div>
--->
                                         </div>
                     
         <button onclick="setUpMonth(january)">January</button>

@@ -61,14 +61,7 @@
             }  
 
 //MONTH FUNCTIONS
-//     var numDays = 0;
-//     var monthName = "";
-//     var index = 0;
-//     var eventsForMonth = [];
     var currentMonthIndex=0;
-    //var monthDays = new Array(31,29,31,30,31,30,31,31,30,31,30,31);
-    //var monthNames = new Array('january','february','march','april'
-    //,'may','june','july','august','september','october','november','december');
 
     var january= new Month(31, 'January', 1,);
     var february = new Month(29,'February',2,5);
@@ -95,8 +88,7 @@
                         document.getElementById(i).innerHTML="";
                         document.getElementById(i).style.backgroundColor="#f2f2f2";
                     }
-                document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020";
-                //.substring(0,1).toUpperCase()+month.getMonthName().substring(1)
+                document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020"
                 var a;
                     for(var i = startingIndex; i<(month.numDays + startingIndex); i++) {
                         a="";
@@ -258,7 +250,6 @@ var currentWeek = {m: january, w: 1};
                 var eventN = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
                 monthN.addNewEvent(eventN);
                 setUpMonth(monthN);
-                //document.getElementById(eventDay).addEventListener("click", function(){eventsTextShow(eventDay)});
             }
 
 
@@ -284,50 +275,26 @@ var currentWeek = {m: january, w: 1};
                  
                   todoButton.addEventListener("click", addTodosHandler);
 
- 
-
-//MODAL FUNCTIONS
-//    var modal = document.getElementById("myModal");            
-//    var z= document.getElementById("events");
-//    var certainDay = document.getElementById("1");
-//    var span = document.getElementsByClassName("close")[0];
-//
-//        //ONLY WORKS FOR DAY 1 SO FAR
-//
-//            certainDay.addEventListener("onclick",displayModal);
-//
-//            function displayModal() {
-//                modal.style.display = "block";
-//                window.z.innerHTML += "<br>" + fullEvent;
-//                fullEvent="";
-//            }
-//
-//
-//            // When the user clicks the button, open the modal
-//
-//
-//            span.onclick=function clos() {
-//                modal.style.display = "none";
-//            }
-//
-//            window.onclick = function(event) {
-//                if (event.target == modal) {
-//                    modal.style.display = "none";
-//                }
-//            }
-
-
 
 //EVENT POP IN A BOX
 
     var box= document.getElementById("eventBoxID");
 
     var s=document.getElementsByClassName("closeX")[0];
-    s.addEventListener(type="click",listener=close);
+    s.addEventListener("click",close);
 
     function close() {
         box.style.display = "none";
     }
+
+            function eventsTextShow(dayIndex){
+                var monthN=monthArray[currentMonthIndex];
+                var b = "There are no events on this day."
+
+                if(monthN.eventsForMonth[0].length!=-1 && monthN.eventsForMonth[dayIndex-1].length!=-1) {
+                    b = "Events:" + "<br>";
+                    b += monthN.getFullEventsForDay(dayIndex);
+            }
 
     function eventsTextShow(dayIndex){
         var monthN=monthArray[currentMonthIndex];
@@ -345,8 +312,5 @@ var currentWeek = {m: january, w: 1};
         }
         document.getElementById("eventsBox").innerHTML=b;
         box.style.display = "block";
-        //console.log(eventPopUp[eventDay-1]);
-        //eventPopUp[eventDay-1]="  ";
-
 }
            
