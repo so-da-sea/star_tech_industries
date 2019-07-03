@@ -14,11 +14,13 @@ class Month {
 //    index = 0;
 //    eventsForMonth = [];
 
-    constructor(numD, monthN, inD) {
+    constructor(numD, monthN, inD, numW) {
         this.eventsForMonth = [];
         this.numDays = numD;
         this.monthName = monthN;
         this.index = inD;
+        this.numWeeks = 4;
+        this.numWeeks = numW;
         this.startingIndex = this.getStartingIndex();
         this.setEventsForMonthToBlank()
         //this.eventsForDay = [];
@@ -45,7 +47,7 @@ class Month {
     }
 
     setEventsForMonthToBlank(){
-        for(var i = 0; i<this.numDays;i++){
+        for(var i = 0; i<42;i++){
             this.eventsForMonth.push([]);
         }
     }
@@ -77,15 +79,40 @@ class Month {
     }
     addNewEvent(event){
         this.eventsForMonth[event.eventDay-1].push(event);
+        document.getElementById(event.eventDay).addEventListener("click", function(){eventsTextShow(event.eventDay)});
+    }
+
+    getEventsArrayForDay(day){
+        return this.eventsForMonth[day-1];
     }
 
     getFullEventsForDay(day){
         var fullEvents = "";
-        for(var i = 0; i<this.eventsForMonth[day-1].length;i++) {
-            fullEvents += this.eventsForMonth[day-1][i].fullEvent + "<br>";
+        for(var i = 0; i<this.getEventsArrayForDay(day).length;i++) {
+            fullEvents += this.getEventsArrayForDay(day)[i].fullEvent + "<br>";
         }
     return fullEvents;
     }
+
+    getPreviousMonth(){
+        var monthIndex = this.index;
+        var previousMonthIndex;
+        if(monthIndex == 0)
+            previousMonthIndex = 11;
+        else
+            previousMonthIndex = monthIndex-1;
+        return monthArray[previousMonthIndex];
+    }
+    getNextMonth(){
+        var monthIndex = this.index;
+        var nextMonthIndex;
+        if(monthIndex == 11)
+            nextMonthIndex = 0;
+        else
+            nextMonthIndex = monthIndex+1;
+        return monthArray[nextMonthIndex];
+    }
+
 
 }
 

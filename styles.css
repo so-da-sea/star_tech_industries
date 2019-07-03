@@ -170,6 +170,7 @@ body, html {
             float: right;
             font-size: 28px;
             font-weight: bold;
+            padding: 10px;
         }
         .close:hover,
         .close:focus {
@@ -184,10 +185,9 @@ body, html {
             width: 500px;
             background-color: honeydew;
             border: solid black 2px;
-            margin-left:60%;
             text-align:center;
             color:black;
-
+            float: inside;
         }
 
         #eventsBox{

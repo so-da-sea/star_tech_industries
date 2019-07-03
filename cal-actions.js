@@ -12,13 +12,22 @@
 
                 march.addNewEvent(eventN);
                 setUpMonth(march);
+                setUpWeek(march,1);
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
-                // for(var i = 0; i<=42; i++){
-                //     document.getElementsByClassName("day")[i].addEventListener("onclick",eventsTextShow(i+1));
-                // }
+                box.style.display="none";
             }
 //
+
+        // function makeEventDisplays(month){
+        //     var s;
+        //     var index;
+        //     for(var i = (month.startingIndex-1); i<(month.numDays+month.startingIndex-1); i++){
+        //         index = i+1;
+        //         s = document.getElementsByClassName("day")[i+7];
+        //         s.addEventListener(type="click",function(){eventsTextShow(index)});
+        //     }
+        // }
 
         function openPage(pageName,elmnt,color) {
                 //hide all elements with tabcontent by default
@@ -61,14 +70,14 @@
     //var monthNames = new Array('january','february','march','april'
     //,'may','june','july','august','september','october','november','december');
 
-    var january= new Month(31, 'January', 1);
-    var february = new Month(29,'February',2);
+    var january= new Month(31, 'January', 1,);
+    var february = new Month(29,'February',2,5);
     var march = new Month(31,'March',3);
     var april = new Month(30,'April',4);
-    var  may = new Month(31,'May',5);
+    var  may = new Month(31,'May',5,5);
     var june = new Month(30,'June',6);
     var july = new Month(31,'July',7);
-    var august = new Month(31,'August',8);
+    var august = new Month(31,'August',8,5);
     var september = new Month(30,'September',9);
     var october = new Month(31,'October',10);
     var november = new Month(30,'November',11);
@@ -79,6 +88,7 @@
     var monthArray = new Array(january, february, march, april, may, june, july, august, september, october, november, december);
 
             function setUpMonth(month){//month being a month obj
+                    //makeEventDisplays(month);
                     currentMonthIndex = month.index-1;
                     var startingIndex = month.startingIndex;
                     for(var i = 1; i<=42; i++){
@@ -112,6 +122,70 @@
                     setUpMonth(monthArray[currentMonthIndex-1]);
                 }
 
+//WEEK FUNCTIONS
+var currentWeek = {m: january, w: 1};
+
+           function setUpWeek(month,week){
+               currentWeek = {m: month, w: week};
+                var startingIndex = month.startingIndex;
+                var previousMonth = month.getPreviousMonth();
+
+                for(var i = 0; i<7; i++){
+                    document.getElementById(i+43).innerHTML = "";
+                    document.getElementById(i+42).style.backgroundColor = "white";
+                }
+
+                if(week == 1){
+                    for (var i=startingIndex-1; i>0; i--){
+                        document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i);
+                        document.getElementById(i+42).style.backgroundColor = "#f2f2f2";
+                    }
+                    for (var i=startingIndex-1; i<7; i++){
+                        document.getElementById(i+43).innerHTML += i-(startingIndex-2);
+                    }
+                }
+                else{
+                    for (var i = 0; i<7; i++) {
+                        document.getElementById(i+43).innerHTML += 7*(week-1)+i-startingIndex+2;
+                    }
+                }
+                document.getElementById("weekHeader").innerHTML = month.monthName;
+           }
+
+            function moveBackwardsThroughWeeks(){
+               var currentM = currentWeek.m;
+               var currentW = currentWeek.w;
+               var newM;
+               var newW;
+               if(currentW==1){
+                   newM = currentM.getPreviousMonth();
+                   if(currentM.getPreviousMonth().numWeeks==5)
+                       newW = 5;
+                   else
+                       newW = 4;
+               }
+               else{
+                   newM = currentM;
+                   newW = currentW-1;
+               }
+               setUpWeek(newM,newW);
+            }
+
+            function moveForwardsThroughWeeks(){
+                var currentM = currentWeek.m;
+                var currentW = currentWeek.w;
+                var newM;
+                var newW;
+                if((currentW==4 && currentM.numWeeks!=5) || currentW==5){
+                    newM = currentM.getNextMonth();
+                    newW = 1;
+                }
+                else{
+                    newM = currentM;
+                    newW = currentW+1;
+                }
+                setUpWeek(newM, newW);
+            }
 
 //EVENT FUNCTIONS  
 
@@ -184,6 +258,7 @@
                 var eventN = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
                 monthN.addNewEvent(eventN);
                 setUpMonth(monthN);
+                //document.getElementById(eventDay).addEventListener("click", function(){eventsTextShow(eventDay)});
             }
 
 
@@ -248,7 +323,7 @@
     var box= document.getElementById("eventBoxID");
 
     var s=document.getElementsByClassName("closeX")[0];
-    s.addEventListener("click",close());
+    s.addEventListener(type="click",listener=close);
 
     function close() {
         box.style.display = "none";
@@ -258,7 +333,10 @@
         var monthN=monthArray[currentMonthIndex];
         var b = "There are no events on this day."
         //var indexOfEvent = parseInt(day) + monthN.startingIndex - 2;
-        if(monthN.eventsForMonth[0].length!=-1 && monthN.eventsForMonth[dayIndex-1].length!=-1) {
+        if(dayIndex == 43){
+            dayIndex = 42;
+        }
+        if(monthN.eventsForMonth[dayIndex-1].length!=0) {
             b = "Events:" + "<br>";
             b += monthN.getFullEventsForDay(dayIndex);
             // for (var i = 0; i < monthN.eventsForMonth[parseInt(day) + monthN.startingIndex - 2].length; i++) {
