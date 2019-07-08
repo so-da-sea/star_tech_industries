@@ -56,6 +56,7 @@ body, html {
                 #Lists{background-color: #7cdfa5;}
                 #Schedule{background-color: #7cdfa5;}
                 #Health{background-color: #7cdfa5;}
+                #resources{background-color: #7cdfa5;}
 
 
           /*   #todoContainer
@@ -155,11 +156,11 @@ body, html {
 
         .rectangle {
             display: none;
-            height: 400px;
-            width: 500px;
+            height: 150px;
+            width: 300px;
             background-color: honeydew;
             border: solid black 2px;
-            margin-left:60%;
+            margin-left: auto;
             text-align:center;
             color:black;
             overflow: auto;
@@ -182,17 +183,18 @@ body, html {
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: auto auto auto auto auto;
+        color: black;
     }
 
     table {
-        color: white;
+        color: black;
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 50%;
     }
 
     td, th {
-        color: white;
+        color: black;
         border: 1px solid gainsboro;
         text-align: left;
         padding: 8px;
