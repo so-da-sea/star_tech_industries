@@ -12,18 +12,14 @@
          <header>Star Tech Planners, inc.</header>
         
         <button id="homeID" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
-        <button class="tablink" onclick="openPage('List', this,'#58D68D')">List</button>
+        <button id="listID" class="tablink" onclick="openPage('List', this,'#58D68D')">List</button>
         
         
         
 
         
         <div id="Home" class="tabcontent">
-            <button class="tablinkSubTab" onclick="openSubTab('Daily',this,'#A2D9CE')">Daily Calendar</button>
-                <div id="Daily" class="tabcontentSubTab">
-                <h4>daily stuff</h4>
-                    <p>this is where the daily planner will go...</p>
-                </div>
+            
             
             <button class="tablinkSubTab" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
                 <div id="Weekly" class="tabcontentSubTab">
@@ -151,7 +147,136 @@
                                 </div>
 
                             </div>
-                 </div>  
+                 </div> 
+            <button class="tablinkSubTab" onclick="openSubTab('Schedule',this,'#82E0AA')">Schedules</button>
+                <div id="Schedule" class="tabcontentSubTab">
+
+                <h4>Schedules</h4>
+                    <div class="creatingSchedule" onclick= "createSchedule()"> <button>Create Schedule </button><span class="classes" id="classes"></span></div>
+                    <div class="sDays">
+                        <div class="schoolDays">
+                            <ol id="mon">Monday
+                                <li class="p1"></li>
+                                <li class="p2"></li>
+                                <li class="p3"></li>
+                                <li class="p4"></li>
+                                <li class="p5"></li>
+                                <li class="p6"></li>
+                            </ol>
+                        </div>
+
+                        <div class="schoolDays">
+                            <ol id="tues">Tuesday
+                                <li class="p1"></li>
+                                <li class="p3"></li>
+                                <li class="p4"></li>
+                                <li class="p5"></li>
+                                <li class="p6"></li>
+                                <li class="p2"></li>
+                            </ol>
+                        </div>
+
+                        <div class="schoolDays">
+                            <ol id="wed">Wednesday
+                                <li class="p1"></li>
+                                <li class="p4"></li>
+                                <li class="p5"></li>
+                                <li class="p6"></li>
+                                <li class="p2"></li>
+                                <li class="p3"></li>
+                            </ol>
+                        </div>
+
+                        <div class="schoolDays">
+                            <ol id="thurs">Thursday
+                                <li class="p1"></li>
+                                <li class="p5"></li>
+                                <li class="p6"></li>
+                                <li class="p2"></li>
+                                <li class="p3"></li>
+                                <li class="p4"></li>
+                            </ol>
+                        </div>
+                        <div class="schoolDays">
+                            <ol id="fri">Friday
+                                <li class="p1"></li>
+                                <li class="p6"></li>
+                                <li class="p2"></li>
+                                <li class="p3"></li>
+                                <li class="p4"></li>
+                                <li class="p5"></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Teacher</th>
+                            <th>Room</th>
+                        </tr>
+                        <tr>
+                            <td class="p1"></td>
+                            <td id="p1Teach"></td>
+                            <td id= "p1Room"></td>
+                        </tr>
+                        <tr>
+                            <td class= "p2"></td>
+                            <td id= "p2Teach"></td>
+                            <td id= "p2Room"></td>
+                        </tr>
+                        <tr>
+                            <td class= "p3"></td>
+                            <td id= "p3Teach"></td>
+                            <td id= "p3Room"></td>
+                        </tr>
+                        <tr>
+                            <td class= "p4"></td>
+                            <td id="p4Teach"></td>
+                            <td id= "p4Room"></td>
+                        </tr>
+                        <tr>
+                            <td class= "p5"></td>
+                            <td id= "p5Teach"></td>
+                            <td id= "p5Room"></td>
+                        </tr>
+                        <tr>
+                            <td class= "p6"></td>
+                            <td id= "p6Teach"></td>
+                            <td id= "p6Room"></td>
+                        </tr>
+                    </table>
+                    
+                    
+                </div>
+            
+            <button class="tablinkSubTab" onclick="openSubTab('Health',this,'#82E0AA')">Health</button>
+                <div id="Health" class="tabcontentSubTab">
+                <h4>Health</h4>
+                    <h5>Stairs</h5>
+                    
+                    <div class="countingSteps" onclick= "countSteps()"> <button> How many stairs will I climb? </button><span class="steps" id="steps"></span></div>
+                    
+                    <table>
+                        <tr>
+                            <td>Daily</td>
+                            <td id="daySteps"></td>
+                        </tr>
+                        <tr>
+                            <td>Weekly</td>
+                            <td id="weekSteps"></td>
+                        </tr>
+                        <tr>
+                            <td>Monthly</td>
+                            <td id="monthSteps"></td>
+                        </tr>
+                        <tr>
+                            <td>Yearly</td>
+                            <td id="yearSteps"></td>
+                        </tr>
+                    </table>
+                </div>
+            
             </div>
 
          
