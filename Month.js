@@ -96,22 +96,18 @@ class Month {
 
     getPreviousMonth(){
         var monthIndex = this.index;
-        var previousMonthIndex;
-        if(monthIndex == 0)
-            previousMonthIndex = 11;
-        else
-            previousMonthIndex = monthIndex-1;
-        return monthArray[previousMonthIndex];
+        var previousMonthIndex = monthIndex-1;
+        if(monthIndex == 1)
+            previousMonthIndex = 12;
+        return monthArray[previousMonthIndex-1];
     }
 
     getNextMonth(){
         var monthIndex = this.index;
-        var nextMonthIndex;
-        if(monthIndex == 11)
-            nextMonthIndex = 0;
-        else
-            nextMonthIndex = monthIndex+1;
-        return monthArray[nextMonthIndex];
+        var nextMonthIndex = monthIndex+1;
+        if(monthIndex == 12)
+            nextMonthIndex = 1;
+        return monthArray[nextMonthIndex-1];
     }
 
 

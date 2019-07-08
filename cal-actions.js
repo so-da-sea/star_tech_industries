@@ -74,7 +74,7 @@
     var september = new Month(30,'September',9);
     var october = new Month(31,'October',10);
     var november = new Month(30,'November',11);
-    var december = new Month(31,'December',12);
+    var december = new Month(31,'December',12,5);
 
 
 
@@ -124,10 +124,28 @@ var currentWeek = {m: january, w: 1};
 
                 for(var i = 0; i<7; i++){
                     document.getElementById(i+43).innerHTML = "";
-                    document.getElementById(i+42).style.backgroundColor = "white";
+                    document.getElementById(i+43).style.backgroundColor = "white";
                 }
 
-                if(week == 1){
+               if(currentWeek.m==january && currentWeek.w==1){
+                   for (var i=startingIndex-1; i>0; i--){
+                       document.getElementById(i+42).style.backgroundColor = "#f2f2f2";
+                   }
+                   for (var i=startingIndex-1; i<7; i++){
+                       document.getElementById(i+43).innerHTML += i-(startingIndex-2);
+                   }
+               }
+
+               else if(currentWeek.m==december && currentWeek.w==5){
+                   for (var i=startingIndex-1; i>0; i--){
+                       document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i);
+                   }
+                   for (var i=startingIndex-1; i<7; i++){
+                       document.getElementById(i+43).style.backgroundColor = "#f2f2f2";
+                   }
+               }
+
+                else if(week == 1){
                     for (var i=startingIndex-1; i>0; i--){
                         document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i);
                         document.getElementById(i+42).style.backgroundColor = "#f2f2f2";
@@ -141,6 +159,7 @@ var currentWeek = {m: january, w: 1};
                         document.getElementById(i+43).innerHTML += 7*(week-1)+i-startingIndex+2;
                     }
                 }
+
                 document.getElementById("weekHeader").innerHTML = month.monthName;
            }
 
