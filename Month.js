@@ -103,6 +103,7 @@ class Month {
             previousMonthIndex = monthIndex-1;
         return monthArray[previousMonthIndex];
     }
+
     getNextMonth(){
         var monthIndex = this.index;
         var nextMonthIndex;

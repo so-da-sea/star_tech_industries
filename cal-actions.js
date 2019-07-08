@@ -287,22 +287,20 @@ var currentWeek = {m: january, w: 1};
         box.style.display = "none";
     }
 
-            function eventsTextShow(dayIndex){
-                var monthN=monthArray[currentMonthIndex];
+            function eventsTextShow(dayIndex) {
+                var monthN = monthArray[currentMonthIndex];
                 var b = "There are no events on this day."
 
-                if(monthN.eventsForMonth[0].length!=-1 && monthN.eventsForMonth[dayIndex-1].length!=-1) {
+                if (monthN.eventsForMonth[0].length != -1 && monthN.eventsForMonth[dayIndex - 1].length != -1) {
                     b = "Events:" + "<br>";
                     b += monthN.getFullEventsForDay(dayIndex);
+                }
             }
 
     function eventsTextShow(dayIndex){
         var monthN=monthArray[currentMonthIndex];
         var b = "There are no events on this day."
         //var indexOfEvent = parseInt(day) + monthN.startingIndex - 2;
-        if(dayIndex == 43){
-            dayIndex = 42;
-        }
         if(monthN.eventsForMonth[dayIndex-1].length!=0) {
             b = "Events:" + "<br>";
             b += monthN.getFullEventsForDay(dayIndex);
@@ -313,4 +311,3 @@ var currentWeek = {m: january, w: 1};
         document.getElementById("eventsBox").innerHTML=b;
         box.style.display = "block";
 }
-           
