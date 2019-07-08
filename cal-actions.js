@@ -114,14 +114,14 @@ var currentWeek = {m: january, w: 1};
                        document.getElementById(i+42).style.backgroundColor = "#f2f2f2";
                    }
                    for (var i=startingIndex-1; i<7; i++){
-                       e = month.getEventTitlesForDay(i-startingIndex+1);
+                       e = month.getEventTitlesForDay(i-startingIndex+2);
                        document.getElementById(i+43).innerHTML += i-(startingIndex-2) + e;
                    }
                }
 
                else if(currentWeek.m==december && currentWeek.w==5){
                    for (var i=startingIndex-1; i>0; i--){
-                       e = month.getEventTitlesForDay((startingIndex-1)-i);
+                       e = month.getEventTitlesForDay((startingIndex)-i);
                        document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i) + e;
                    }
                    for (var i=startingIndex-1; i<7; i++){
