@@ -163,9 +163,8 @@ body, html {
             text-align:center;
             color:black;
             overflow: auto;
-
         }
 
-        #eventsBox{
+        #eventsBoxMonthly, #eventsBoxWeekly{
             color: black;
         }

@@ -79,7 +79,8 @@ class Month {
     }
     addNewEvent(event){
         this.eventsForMonth[event.eventDay-1].push(event);
-        document.getElementById(event.eventDay).addEventListener("click", function(){eventsTextShow(event.eventDay)});
+        document.getElementById(parseInt(event.eventDay)+this.startingIndex-1).addEventListener("click", function(){eventsTextShow(event.eventDay)});
+        document.getElementById(parseInt(event.eventDay)%7+this.startingIndex-1+42).addEventListener("click", function(){eventsTextShow(event.eventDay)});
     }
 
     getEventsArrayForDay(day){
@@ -92,6 +93,14 @@ class Month {
             fullEvents += this.getEventsArrayForDay(day)[i].fullEvent + "<br>";
         }
     return fullEvents;
+    }
+
+    getEventTitlesForDay(day){
+        var eventTitles = "";
+        for(var i = 0; i<this.getEventsArrayForDay(day).length;i++){
+            eventTitles += "<br>" + this.getEventsArrayForDay(day)[i].eventTitle;
+        }
+        return eventTitles;
     }
 
     getPreviousMonth(){

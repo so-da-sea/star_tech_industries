@@ -1,10 +1,6 @@
 
 //TAB FUNCTIONS
 
-
-                
-//
-
     window.onload= function homePg(){
                 var x=document.getElementById("homeID");
                 var y=document.getElementById("monthlyID");
@@ -15,19 +11,8 @@
                 setUpWeek(march,1);
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
-                box.style.display="none";
+                boxM.style.display="none";
             }
-//
-
-        // function makeEventDisplays(month){
-        //     var s;
-        //     var index;
-        //     for(var i = (month.startingIndex-1); i<(month.numDays+month.startingIndex-1); i++){
-        //         index = i+1;
-        //         s = document.getElementsByClassName("day")[i+7];
-        //         s.addEventListener(type="click",function(){eventsTextShow(index)});
-        //     }
-        // }
 
         function openPage(pageName,elmnt,color) {
                 //hide all elements with tabcontent by default
@@ -81,7 +66,6 @@
     var monthArray = new Array(january, february, march, april, may, june, july, august, september, october, november, december);
 
             function setUpMonth(month){//month being a month obj
-                    //makeEventDisplays(month);
                     currentMonthIndex = month.index-1;
                     var startingIndex = month.startingIndex;
                     for(var i = 1; i<=42; i++){
@@ -89,13 +73,10 @@
                         document.getElementById(i).style.backgroundColor="#f2f2f2";
                     }
                 document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020"
-                var a;
+                var e="";
                     for(var i = startingIndex; i<(month.numDays + startingIndex); i++) {
-                        a="";
-                        for (var j = 0; j < (month.eventsForMonth[i-startingIndex].length); j++) {
-                                a += "<br>" + month.eventsForMonth[i-startingIndex][j].eventTitle;
-                        }
-                        document.getElementById(i).innerHTML+=i-(startingIndex-1)+ a;
+                        e = month.getEventTitlesForDay(i-(startingIndex-1));
+                        document.getElementById(i).innerHTML+=i-(startingIndex-1)+ e;
                         document.getElementById(i).style.backgroundColor="white";
                     }
                 }
@@ -121,6 +102,7 @@ var currentWeek = {m: january, w: 1};
                currentWeek = {m: month, w: week};
                 var startingIndex = month.startingIndex;
                 var previousMonth = month.getPreviousMonth();
+                var e = "";
 
                 for(var i = 0; i<7; i++){
                     document.getElementById(i+43).innerHTML = "";
@@ -132,13 +114,15 @@ var currentWeek = {m: january, w: 1};
                        document.getElementById(i+42).style.backgroundColor = "#f2f2f2";
                    }
                    for (var i=startingIndex-1; i<7; i++){
-                       document.getElementById(i+43).innerHTML += i-(startingIndex-2);
+                       e = month.getEventTitlesForDay(i-startingIndex+1);
+                       document.getElementById(i+43).innerHTML += i-(startingIndex-2) + e;
                    }
                }
 
                else if(currentWeek.m==december && currentWeek.w==5){
                    for (var i=startingIndex-1; i>0; i--){
-                       document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i);
+                       e = month.getEventTitlesForDay((startingIndex-1)-i);
+                       document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i) + e;
                    }
                    for (var i=startingIndex-1; i<7; i++){
                        document.getElementById(i+43).style.backgroundColor = "#f2f2f2";
@@ -147,16 +131,20 @@ var currentWeek = {m: january, w: 1};
 
                 else if(week == 1){
                     for (var i=startingIndex-1; i>0; i--){
-                        document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i);
+                        e = previousMonth.getEventTitlesForDay(previousMonth.numDays-((startingIndex-1)-i));
+                        document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i)+e;
                         document.getElementById(i+42).style.backgroundColor = "#f2f2f2";
                     }
+                    e = "";
                     for (var i=startingIndex-1; i<7; i++){
-                        document.getElementById(i+43).innerHTML += i-(startingIndex-2);
+                        e = month.getEventTitlesForDay(i-startingIndex+2);
+                        document.getElementById(i+43).innerHTML += (i-(startingIndex-2)) + e;
                     }
                 }
                 else{
-                    for (var i = 0; i<7; i++) {
-                        document.getElementById(i+43).innerHTML += 7*(week-1)+i-startingIndex+2;
+                    for (var i = 1; i<=7; i++) {
+                        e = month.getEventTitlesForDay((currentWeek.w-1)*7+i);
+                        document.getElementById(i+42).innerHTML += (7*(week-1)+i-startingIndex+1) + e;
                     }
                 }
 
@@ -269,6 +257,7 @@ var currentWeek = {m: january, w: 1};
                 var eventN = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
                 monthN.addNewEvent(eventN);
                 setUpMonth(monthN);
+                setUpWeek(monthN,(parseInt(eventDay/7)+1));
             }
 
 
@@ -297,36 +286,28 @@ var currentWeek = {m: january, w: 1};
 
 //EVENT POP IN A BOX
 
-    var box= document.getElementById("eventBoxID");
+    var boxM= document.getElementById("eventBoxM");
+    var boxW= document.getElementById("eventBoxW");
 
-    var s=document.getElementsByClassName("closeX")[0];
+    var s=document.getElementsByClassName("closeX")[1];
     s.addEventListener("click",close);
+    var t=document.getElementsByClassName("closeX")[0];
+    t.addEventListener("click",close);
 
     function close() {
-        box.style.display = "none";
+        boxM.style.display = "none";
+        boxW.style.display = "none";
     }
-
-            function eventsTextShow(dayIndex) {
-                var monthN = monthArray[currentMonthIndex];
-                var b = "There are no events on this day."
-
-                if (monthN.eventsForMonth[0].length != -1 && monthN.eventsForMonth[dayIndex - 1].length != -1) {
-                    b = "Events:" + "<br>";
-                    b += monthN.getFullEventsForDay(dayIndex);
-                }
-            }
 
     function eventsTextShow(dayIndex){
         var monthN=monthArray[currentMonthIndex];
         var b = "There are no events on this day."
-        //var indexOfEvent = parseInt(day) + monthN.startingIndex - 2;
         if(monthN.eventsForMonth[dayIndex-1].length!=0) {
             b = "Events:" + "<br>";
             b += monthN.getFullEventsForDay(dayIndex);
-            // for (var i = 0; i < monthN.eventsForMonth[parseInt(day) + monthN.startingIndex - 2].length; i++) {
-            //     b += "<br>" + monthN.eventsForMonth[parseInt(day) + parseInt(monthN.startingIndex) - 2][i].fullEvent;
-            // }
         }
-        document.getElementById("eventsBox").innerHTML=b;
-        box.style.display = "block";
+        document.getElementById("eventsBoxMonthly").innerHTML=b;
+        document.getElementById("eventsBoxWeekly").innerHTML=b;
+        boxM.style.display = "block";
+        boxW.style.display = "block";
 }
