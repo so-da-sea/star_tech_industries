@@ -2,7 +2,7 @@ body, html {
                 height: 100%;
                 margin: 0;
                 font-family: sans-serif;
-            }  
+            }
             .tablink{
             background-color:#555;
             color:white;
@@ -48,28 +48,30 @@ body, html {
         .tablinkSubTab:hover{
             background-color: #777;
         }
-     
+
             #Home {background-color: #73C6B6;}
                 #Monthly{background-color: #A2D9CE;}
                 #Weekly{background-color: #A2D9CE}
-                #Daily{background-color: #A2D9CE;}
             #List {background-color: #58D68D;}
-                #Lists{background-color: #82E0AA;}
+                #Lists{background-color: #7cdfa5;}
+                #Schedule{background-color: #7cdfa5;}
+                #Health{background-color: #7cdfa5;}
+                #resources{background-color: #7cdfa5;}
 
-            
-             #todoContainer
-             #todoButton
-   
+
+          /*   #todoContainer
+             #todoButton*/
+
             h4{
                 text-align: center;
                 font-size: 140%;
-                
+
             }
             .button{
                 background-color: powderblue;
                 border-color: black;
                 font-size: 20px;
-                
+
 /*change margin left back later maybe*/
                 margin-left: 25px;
                 text-align: right;
@@ -79,14 +81,14 @@ body, html {
                 display:grid;
                 padding: 1px;
                 grid-template-columns: auto auto auto auto auto auto auto;
-                grid-template-rows: 40px 90px 90px 90px 90px 90px 90px; 
+                grid-template-rows: 40px 90px 90px 90px 90px 90px 90px;
                background-color: black;
                grid-gap: 1px;
                border: none;
             }
             .day{
                 color: black;
-                background-color: white; 
+                background-color: white;
                 padding: 10px;
                 font-size: 15px;
                 text-align: left;
@@ -113,10 +115,10 @@ body, html {
                 padding: 10px 12px;
                 text-align: center;
                 background-color: aliceblue
-                
+
             }
 
-            
+
             /*weekly calendar stuff*/
             .week2{
            grid-template-columns: auto auto auto auto auto auto auto;
@@ -136,7 +138,7 @@ body, html {
                 color:black;
                text-decoration-color: aqua;
                 text-align: center;
-                
+
             }
 
         .closeX {
@@ -144,7 +146,6 @@ body, html {
             float: right;
             font-size: 28px;
             font-weight: bold;
-            padding: 10px;
         }
         .close:hover,
         .close:focus {
@@ -155,11 +156,11 @@ body, html {
 
         .rectangle {
             display: none;
-            height: 400px;
-            width: 500px;
+            height: 150px;
+            width: 300px;
             background-color: honeydew;
             border: solid black 2px;
-            margin-left:60%;
+            margin-left: auto;
             text-align:center;
             color:black;
             overflow: auto;
@@ -168,3 +169,36 @@ body, html {
         #eventsBoxMonthly, #eventsBoxWeekly{
             color: black;
         }
+
+        .hourly{
+            background-color: white;
+            color: black;
+            padding: 5px;
+            border: black 1px solid;
+            overflow: auto;
+        }
+
+    .sDays{
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: auto auto auto auto auto;
+        color: black;
+    }
+
+    table {
+        color: black;
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+    }
+
+    td, th {
+        color: black;
+        border: 1px solid gainsboro;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: gainsboro;
+    }

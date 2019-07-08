@@ -311,3 +311,102 @@ var currentWeek = {m: january, w: 1};
         boxM.style.display = "block";
         boxW.style.display = "block";
 }
+
+
+//SCHEDULE
+
+    let period1="";
+    let period2="";
+    let period3="";
+    let period4="";
+    let period5="";
+    let period6="";
+    let classOrder=[];
+    let p1Room="";
+    let p2Room="";
+    let p3Room="";
+    let p4Room="";
+    let p5Room="";
+    let p6Room="";
+    let totalSteps=0;
+
+    function createSchedule(){
+        period1= window.prompt("Enter your first period", "AP Calculus").trim();
+        if (period1!= null){
+            classOrder.push(period1);
+            document.getElementById("p1Teach").innerHTML= window.prompt("Enter your first period teacher", "Koon");
+            p1Room= window.prompt("Enter your first period room", "312");
+            document.getElementById("p1Room").innerHTML=p1Room;
+        }
+
+        period2= window.prompt("Enter your second period", "Physics").trim();
+        if (period2!= null){
+            classOrder.push(period2);
+            document.getElementById("p2Teach").innerHTML= window.prompt("Enter your second period teacher", "Ryan");
+            p2Room= window.prompt("Enter your second period room", "311");
+            document.getElementById("p2Room").innerHTML=p2Room;
+        }
+
+        period3= window.prompt("Enter your third period", "AP English 12").trim();
+        if (period3!= null){
+            classOrder.push(period3);
+            document.getElementById("p3Teach").innerHTML=window.prompt("Enter your third period teacher", "Merlino");
+            p3Room=window.prompt("Enter your third period room", "407");
+            p3Room=document.getElementById("p3Room").innerHTML=p3Room;
+        }
+
+
+        period4= window.prompt("Enter your fourth period", "Contempary Problems").trim();
+        if (period4!= null){
+            classOrder.push(period4);
+            document.getElementById("p4Teach").innerHTML= window.prompt("Enter your fourth period teacher", "McGah");
+            p4Room=window.prompt("Enter your fourth period room", "301");
+            document.getElementById("p4Room").innerHTML= p4Room;
+        }
+
+        period5= window.prompt("Enter your fifth period", "US History/Goverment").trim();
+        if (period5!= null){
+            classOrder.push(period5);
+            document.getElementById("p5Teach").innerHTML= window.prompt("Enter your fifth period teacher", "Harris");
+            p5Room= window.prompt("Enter your fifth period room", "114");
+            document.getElementById("p5Room").innerHTML= p5Room;
+        }
+
+        period6= window.prompt("Enter your sixth period", "AP Statistics").trim();
+        if (period1!= null){
+            classOrder.push(period6);
+            document.getElementById("p6Teach").innerHTML= window.prompt("Enter your sixth period teacher", "Shope");
+            p6Room= window.prompt("Enter your sixth period room", "310");
+            document.getElementById("p6Room").innerHTML= p6Room;
+        }
+
+        for (var j=0; j< classOrder.length; j++){
+            for (var i = 0; i<document.getElementsByClassName("p1").length;i++){
+                document.getElementsByClassName("p" + (j+1))[i].innerHTML=classOrder[j];
+            }}
+
+    }
+
+     function countSteps(){
+                        p1Room=p1Room.substring(0,1);
+                        p2Room=p2Room.substring(0,1);
+                        p3Room=p3Room.substring(0,1);
+                        p4Room=p4Room.substring(0,1);
+                        p5Room=p5Room.substring(0,1);
+                        p6Room=p6Room.substring(0,1);
+
+                        var rooms= [p1Room, p2Room, p3Room, p4Room, p5Room, p6Room];
+
+                        totalSteps+=(p1Room*26);
+
+                        for (var i=0; i<rooms.length-1; i++){
+                            totalSteps+= 26 * (Math.abs(rooms[i]-rooms[i+1]));
+                        }
+                        document.getElementById("daySteps").innerHTML= totalSteps;
+                        document.getElementById("weekSteps").innerHTML= totalSteps*5;
+                        document.getElementById("monthSteps").innerHTML= totalSteps*22;
+                        document.getElementById("yearSteps").innerHTML= totalSteps*180;
+
+
+
+                    }
