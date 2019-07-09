@@ -72,5 +72,9 @@ class Event{
     get fullEvent(){
         return "<br>" + this.eventTitle + "<br>" + this.eventLocation + "<br>" + this.eventMonth + " " + this.eventDay + "<br>" + this.eventStart + "-" + this.eventEnd;
     }
+    
+    get eventAlert(){
+        return "\n" + this.eventTitle + "\n" + this.eventLocation + "\n" + this.eventMonth + " " + this.eventDay + "\n" + this.eventStart + "-" + this.eventEnd + "\n";
+    }
 
 }

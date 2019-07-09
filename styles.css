@@ -14,6 +14,7 @@ body, html {
             font-size: 17px;
             width: 25%;
             font-family: sans-serif;
+                overflow: auto;
         }
         .tablink:hover{
             background-color: #777;
@@ -31,6 +32,7 @@ body, html {
             padding: 100px 20px;
             height: 80%;
             font-family: sans-serif;
+
         }
         .tablinkSubTab{
             background-color: #555;
@@ -43,6 +45,7 @@ body, html {
             font-size: 15px;
             width: 25%;
             font-family: sans-serif;
+            overflow: auto;
 
         }
         .tablinkSubTab:hover{
@@ -76,6 +79,7 @@ body, html {
                 margin-left: 25px;
                 text-align: right;
                 position:absolute;
+                padding: 2px;
             }
             .calendar{
                 display:grid;

@@ -94,6 +94,14 @@ class Month {
         }
     return fullEvents;
     }
+    
+    getFullEventsForDayNewLine(day){
+        var fullEvents = "";
+        for(var i = 0; i<this.getEventsArrayForDay(day).length;i++) {
+            fullEvents += this.getEventsArrayForDay(day)[i].eventAlert + "\n";
+        }
+    return fullEvents;
+    }
 
     getEventTitlesForDay(day){
         var eventTitles = "";
