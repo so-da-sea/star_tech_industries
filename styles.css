@@ -23,7 +23,7 @@ body, html {
             color:white;
             display: none;
             padding: 100px 20px;
-            height: 120%;
+            height: 130%;
             font-family:sans-serif;
         }
         .tabcontentSubTab{
@@ -164,10 +164,13 @@ body, html {
             width: 300px;
             background-color: honeydew;
             border: solid black 2px;
-            margin-left: auto;
+            margin-left: 37%;
             text-align:center;
             color:black;
             overflow: auto;
+            position: fixed;
+            box-shadow: 10px 10px 10px #b6b6b8;
+           
         }
 
         #eventsBoxMonthly, #eventsBoxWeekly{

@@ -331,6 +331,7 @@ var currentWeek = {m: january, w: 1};
     let totalSteps=0;
 
     function createSchedule(){
+        classOrder=[];
         period1= window.prompt("Enter your first period", "AP Calculus").trim();
         if (period1!= null){
             classOrder.push(period1);
@@ -373,7 +374,7 @@ var currentWeek = {m: january, w: 1};
         }
 
         period6= window.prompt("Enter your sixth period", "AP Statistics").trim();
-        if (period1!= null){
+        if (period6!= null){
             classOrder.push(period6);
             document.getElementById("p6Teach").innerHTML= window.prompt("Enter your sixth period teacher", "Shope");
             p6Room= window.prompt("Enter your sixth period room", "310");
@@ -406,6 +407,7 @@ var currentWeek = {m: january, w: 1};
                         document.getElementById("weekSteps").innerHTML= totalSteps*5;
                         document.getElementById("monthSteps").innerHTML= totalSteps*22;
                         document.getElementById("yearSteps").innerHTML= totalSteps*180;
+         totalSteps=0;
 
 
 
