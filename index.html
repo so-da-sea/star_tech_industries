@@ -12,8 +12,8 @@
          <header>Star Tech Planners, inc.</header>
         
         <button id="homeID" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
-        <button id="listID" class="tablink" onclick="openPage('List', this,'#58D68D')">List</button>
-        
+        <button id="listID" class="tablink" onclick="openPage('List', this,'#87ced6')">List</button>
+
 <!--
             <form action="/action_page.php">
         <div class="loginContainer">
@@ -30,11 +30,11 @@
 
             </div>
 
-        
+
         </form>
         -->
 
-        
+
         <div id="Home" class="tabcontent">
             <button class="tablinkSubTab" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
             <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
@@ -43,8 +43,8 @@
 
                 <div id="Weekly" class="tabcontentSubTab">
                 <h5 id = "weekHeader">weekly stuff...</h5>
-                <button onclick = "moveBackwardsThroughWeeks()">move backwards</button>
-                <button onclick = "moveForwardsThroughWeeks()">move forwards</button>
+                    <button onclick = "moveBackwardsThroughWeeks()">&larr;</button>
+                    <button onclick = "moveForwardsThroughWeeks()">&rarr;</button>
 
                      <div class="weekAddingEvent" onclick="infoEvent()" ><button id="weekAddEvent">Add Event </button>
                                 <span class="eventText" id="weekEventNew"></span>
@@ -72,10 +72,11 @@
                 </div>
 
                 <div id="Monthly" class="tabcontentSubTab">
-                    <h4 id="heading"></h4>
-
-                    <button onclick = "moveBackwardsThroughMonths()">move backwards</button>
-                    <button onclick = "moveForwardsThroughMonths()">move forwards</button>
+                    <div class= "moving" id= "moving">
+                        <button id= "moveBackwardsMonths" onclick = "moveBackwardsThroughMonths()">&larr;</button>
+                        <h4 id="heading"></h4>
+                        <button onclick = "moveForwardsThroughMonths()">&rarr;</button>
+                    </div>
 
                         <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
                                 <span class="eventText" id="eventNew"></span>
@@ -139,7 +140,7 @@
                                         <div class="day" id="41"></div>
                                         <div class="day" id="42"></div>
                                         </div>
-                    
+
         <button onclick="setUpMonth(january)">January</button>
         <button onclick="setUpMonth(february)">February</button>
         <button onclick="setUpMonth(march)">March</button>
@@ -153,15 +154,15 @@
         <button onclick="setUpMonth(november)">November</button>
         <button onclick="setUpMonth(december)">December</button>
                     </div>
-        </div>  
-        
+        </div>
+
         <div id="List" class="tabcontent">
                <h3>List</h3>
 
-            <button id="listID" class="tablinkSubTab" onclick="openSubTab('ListSubTab',this,'#82E0AA')"> Various Lists</button>
-            <button class="tablinkSubTab" onclick="openSubTab('Schedule',this,'#82E0AA')">Schedules</button>
-            <button class="tablinkSubTab" onclick="openSubTab('Health',this,'#82E0AA')">Health</button>
-
+            <button id="listID" class="tablinkSubTab" onclick="openSubTab('ListSubTab',this,'#b0e0e6')"> Various Lists</button>
+            <button class="tablinkSubTab" onclick="openSubTab('Schedule',this,'#b0e0e6')">Schedules</button>
+            <button class="tablinkSubTab" onclick="openSubTab('Health',this,'#b0e0e6')">Health</button>
+            <button class="tablinkSubTab" onclick="openSubTab('Resources',this,'#b0e0e6')">Resources</button>
 
 
                 <div id="ListSubTab" class="tabcontentSubTab">
@@ -172,31 +173,41 @@
                                     <br>
                                 <button id="todoButton">Add Todos</button>
                                     <ul id="todos">
-                                      
+
                                     </ul>
                                 </div>
 
                             </div>
-                 </div> 
+                 </div>
 
-
-            <button class="tablinkSubTab" onclick="openSubTab('Resources',this,'#82E0AA')">Resources</button>
                 <div id="Resources" class="tabcontentSubTab">
                 <h4>Important Links</h4>
 
-                        <p> <a href= "https://www.holynames-sea.org">Holy Names Homepage</a></p>
-                        <p> <a href= "https://www.holynames-sea.org/calendar#%2F%3Fi=1"> Holy Names Calendar</a></p>
-                        <p> <a href= "https://www.familyid.com/pages/home">Family ID</a></p>
-                        <p> <a href= "https://www.naviance.com/solutions/parents-students">Naviance</a></p>
-                        <p> <a href= "https://www.x2vol.com/login.html">x2vol</a></p>
-                        <p> <a href= "https://login.microsoftonline.com/common/oauth2/authorize?client_id=4345a7b9-9a63-4910-a426-35363201d503&response_mode=form_post&response_type=code+id_token&scope=openid+profile&state=OpenIdConnect.AuthenticationProperties%3d2J9foCvToGWRce1PV8b2aY9tlG8Ms-cCzfnj99194QDlZS-AYnYrHJ-l9eaw3S2r0moimLfMfP8dt6g0enzT9hKgUIyvbzyYIbz6trhZXWGxDB6i70Bk9ntXmoMeDEu9&nonce=636981948548861606.OWEwMDRiZTUtOGMzZS00NmNiLWFmYjctODFkYzYyOGU5MjM3Yzg0ZjJlOTQtMTg1MS00MDQ5LThmMGMtMmExMmQ0NTYxMDEw&redirect_uri=https%3a%2f%2fwww.office.com%2f&ui_locales=en-US&mkt=en-US&client-request-id=9c6a32b9-350e-4ce2-9e08-e4b3a3f0fdb3">Office 365</a></p>
+                        <div class="links">
 
-                        <p> <a href= "https://sms.holynames-sea.org/public/home.html">PowerSchool</a></p>
-                        <p> <a href= "https://www.turnitin.com/">Turnitin</a></p>
-                        <p> <a href= "http://www.easybib.com/">EasyBib</a></p>
-                        <p> <a href= "https://membean.com/login">Membean</a></p>
-                        <p> <a href= "https://www.noredink.com/">NoRedInk</a></p>
-                        <p> <a href= "https://www.holynames-sea.org/academics/library-technology/">Library Database</a></p>
+                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.holynames-sea.org"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/HolyNamesAcademySeal.png/220px-HolyNamesAcademySeal.png" height="100" width= "100"></a></div>
+
+                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.familyid.com/pages/home"><img src="https://familyid-locomotive-production.s3.amazonaws.com/sites/5628e1ef1d9f580ddb000000/theme/images/familyid-logo.svg?1561123119" height="80" width= "180"></a></div>
+
+                            <div class="photoLinks"> <a class = "photoLinks" href="http://www.easybib.com/"><img src="http://s5304.pcdn.co/guides/wp-content/uploads/2017/04/EasyBib-Logo-2017-1024x320.png" height="80" width= "200"></a></div>
+
+                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.turnitin.com/"><img src="http://turnitin.psu.edu/wp-content/uploads/sites/3973/2014/05/turnitinTransBack400px.gif" height="80" width= "130"></a></div>
+
+                            <div class="photoLinks"> <a href="https://membean.com/login"><img src="https://www.lhsimprint.com/wp-content/uploads/2017/02/membean-logo-plain.png" height="80" width= "180"></a></div>
+
+                             <div class="photoLinks"> <a href="https://www.naviance.com/"><img src="https://www.centralcatholichs.com/media/W1siZiIsIjIwMTgvMDYvMDcvNmVieWsxeTE1MV9OYXZpYW5jZS5wbmciXV0/Naviance.png" height="80" width= "180"></a></div>
+
+                            <div class="photoLinks"> <a href="https://www.noredink.com/"><img src="https://clever-partner-images.s3.amazonaws.com/NoRedInk_icon_1532966903.png" height="100" width= "100"></a></div>
+
+                            <div class="photoLinks"> <a href="https://www.office.com/?auth=2"><img src="https://uploads-ssl.webflow.com/56a1006de9a99a4669bfd05c/56a101432f2ef2655bb9334d_office365.png" height="100" width= "200"></a></div>
+
+                            <div class="photoLinks"> <a href="https://www.x2vol.com/index.html"><img src="https://www.ewa.org/sites/main/files/imagecache/lightbox/main-images/ost_x2vol_300_dpi.png" height="140" width= "140"></a></div>
+
+                             <div class="photoLinks"> <a href="https://sms.holynames-sea.org/public/home.html"><img src="http://s3.amazonaws.com/graceschools-6-1-18/wp-content/uploads/sites/2/2019/02/06193923/PowerSchool-Logo.jpg" height="100" width= "100"></a></div>
+
+
+
+                        </div>
 
                  <h4>Academic Help</h4>
                         <table>
@@ -231,7 +242,6 @@
 
             </div>
 
-            <button class="tablinkSubTab" onclick="openSubTab('Schedule',this,'#82E0AA')">Schedules</button>
                 <div id="Schedule" class="tabcontentSubTab">
 
                 <h4>Schedules</h4>
@@ -329,9 +339,10 @@
                             <td id= "p6Room"></td>
                         </tr>
                     </table>
-                    
-                    
+
+
                 </div>
+
                 <div id="Health" class="tabcontentSubTab">
                 <h4>Health</h4>
                     <h5>Stairs</h5>

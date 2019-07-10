@@ -55,11 +55,11 @@ body, html {
             #Home {background-color: #73C6B6;}
                 #Monthly{background-color: #A2D9CE;}
                 #Weekly{background-color: #A2D9CE}
-            #List {background-color: #58D68D;}
-                #Lists{background-color: #7cdfa5;}
-                #Schedule{background-color: #7cdfa5;}
-                #Health{background-color: #7cdfa5;}
-                #resources{background-color: #7cdfa5;}
+            #List {background-color: #87ced6;}
+                #Lists{background-color: powderblue;}
+                #Schedule{background-color: powderblue;}
+                #Health{background-color: powderblue;}
+                #resources{background-color: powderblue;}
 
 
           /*   #todoContainer
@@ -68,6 +68,9 @@ body, html {
             h4{
                 text-align: center;
                 font-size: 140%;
+                display: inline-block;
+                vertical-align: middle;
+/*                margin-left: 50%;*/
 
             }
             .button{
@@ -81,6 +84,11 @@ body, html {
                 position:absolute;
                 padding: 2px;
             }
+
+                #moveBackwardsMonths{
+                    margin-left: 45%;
+
+                }
             .calendar{
                 display:grid;
                 padding: 1px;
@@ -208,4 +216,15 @@ body, html {
 
     tr:nth-child(even) {
         background-color: gainsboro;
+    }
+
+    .links{
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-template-rows: auto auto;
+        text-align: center;
+        grid-gap: 50px;
+    }
+
+    .photolinks{
     }

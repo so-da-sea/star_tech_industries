@@ -329,6 +329,7 @@ var currentWeek = {m: january, w: 1};
     let p5Room="";
     let p6Room="";
     let totalSteps=0;
+    let totalFlights=0;
 
     function createSchedule(){
         classOrder=[];
