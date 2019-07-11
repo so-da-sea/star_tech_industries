@@ -63,9 +63,9 @@ class Event{
     //     eventStart= eventST;
     // }
     //
-    // static getEventStart(){
-    //     return eventStart;
-    // }
+    getEventStart(){
+      return eventStart;
+    }
     //
     // static setEventEnd(eventET){
     //     eventStart= eventET;

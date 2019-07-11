@@ -65,7 +65,7 @@ class Month {
     addNewEvent(event){
         var eventD = parseInt(event.eventDay);
         var monthN = event.getEventMonthObject();
-        this.eventsForMonth[eventD-1].push(event);
+        this.eventsForMonth[eventD-1].splice(getArrangedId(event),0,event);
         document.getElementById(eventD+this.startingIndex-1).addEventListener("click", function(){eventsTextShow(event.eventDay)});
     }
 
