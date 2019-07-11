@@ -150,7 +150,7 @@ var currentWeek = {m: january, w: 1};
                     }
                 }
 
-                document.getElementById("weekHeader").innerHTML = month.monthName;
+                document.getElementById("weekHeader").innerHTML = month.monthName + " 2020";
            }
 
             function moveBackwardsThroughWeeks(){

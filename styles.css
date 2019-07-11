@@ -89,6 +89,9 @@ body, html {
                     margin-left: 45%;
 
                 }
+                #moveBackwardsWeeks{
+                    margin-left: 45%;
+                }
             .calendar{
                 display:grid;
                 padding: 1px;
