@@ -15,6 +15,7 @@ body, html {
             width: 25%;
             font-family: sans-serif;
                 overflow: auto;
+                display: inline-block;
         }
         .tablink:hover{
             background-color: #777;
@@ -25,6 +26,7 @@ body, html {
             padding: 100px 20px;
             height: 130%;
             font-family:sans-serif;
+            display: inline-block;
         }
         .tabcontentSubTab{
             color: white;
@@ -32,6 +34,8 @@ body, html {
             padding: 100px 20px;
             height: 80%;
             font-family: sans-serif;
+            display: inline-block;
+            
 
         }
         .tablinkSubTab{
@@ -43,8 +47,9 @@ body, html {
             cursor: pointer;
             padding: 14px 16px;
             font-size: 15px;
-            width: 25%;
+/*            width: 0%;*/
             font-family: sans-serif;
+/*            display: inline-block;*/
             overflow: auto;
 
         }
@@ -54,12 +59,11 @@ body, html {
 
             #Home {background-color: #73C6B6;}
                 #Monthly{background-color: #A2D9CE;}
-                #Weekly{background-color: #A2D9CE}
-            #List {background-color: #87ced6;}
-                #Lists{background-color: powderblue;}
+                #Weekly{background-color: #A2D9CE;}
+/*            #List {background-color: #87ced6;}*/
+                #ListSubTab{background-color: powderblue;}
                 #Schedule{background-color: powderblue;}
-                #Health{background-color: powderblue;}
-                #resources{background-color: powderblue;}
+                #Resources{background-color: powderblue;} 
 
 
           /*   #todoContainer
@@ -70,7 +74,6 @@ body, html {
                 font-size: 140%;
                 display: inline-block;
                 vertical-align: middle;
-/*                margin-left: 50%;*/
 
             }
             .button{
@@ -210,7 +213,7 @@ body, html {
 
     td, th {
         color: black;
-        border: 1px solid gainsboro;
+        border: 1px solid black;
         text-align: left;
         padding: 8px;
     }
@@ -227,5 +230,10 @@ body, html {
         grid-gap: 50px;
     }
 
-    .photolinks{
+    .sampleSchedules{
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: auto auto auto auto auto;
+        color: black;
+        border: 1px black solid;
     }

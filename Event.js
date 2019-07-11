@@ -84,7 +84,7 @@ class Event{
     }
     
     get eventAlert(){
-        return "\n" + this.eventTitle + "\n" + this.eventLocation + "\n" + this.eventMonth + " " + this.eventDay + "\n" + this.eventStart + "-" + this.eventEnd + "\n";
+        return this.eventTitle + "\n" + this.eventLocation + "\n" + this.eventMonth + " " + this.eventDay + "\n" + this.eventStart + "-" + this.eventEnd + "\n";
     }
 
 }

@@ -150,7 +150,7 @@ var currentWeek = {m: january, w: 1};
                     }
                 }
 
-                document.getElementById("weekHeader").innerHTML = month.monthName;
+                document.getElementById("weekHeader").innerHTML = month.monthName + " 2020";
            }
 
             function moveBackwardsThroughWeeks(){
@@ -419,18 +419,19 @@ var currentWeek = {m: january, w: 1};
 
 function editEvent(){
     let editDay= window.prompt("Which day would you like to edit an event?", "1");
-    let eventsForDayEdit = monthArray[currentMonthIndex].getFullEventsForDayNewLine(editDay);
-    let editEvent = window.prompt(eventsForDayEdit + "\n" + "Which event would you like to edit?","1");
+    let eventsForDayEdit = monthArray[currentMonthIndex].getFullEventsForDayEdit(editDay);
+    let editEvent = window.prompt(eventsForDayEdit + "Which event would you like to edit?","1");
     monthArray[currentMonthIndex].eventsForMonth[editDay-1].splice(0,1);
     infoEvent();
 }
 
 function deleteEvent(){
     let deleteDay= window.prompt("Which day would you like to delete an event?", "1");
-    let eventsForDayDelete = monthArray[currentMonthIndex].getFullEventsForDayNewLine(deleteDay);
+    let eventsForDayDelete = monthArray[currentMonthIndex].getFullEventsForDayEdit(deleteDay);
     let deleteEvent = window.prompt(eventsForDayDelete + "\n" + "Which event would you like to delete?","1");
     monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1),parseInt(deleteEvent));
     setUpMonth(monthArray[currentMonthIndex]);
+    setUpWeek(currentWeek.m, currentWeek.w);
 }
 
 

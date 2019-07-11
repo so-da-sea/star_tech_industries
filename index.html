@@ -1,6 +1,7 @@
 
 <html>
     <head>
+       
         <link rel="stylesheet" href="styles.css" />
         <script src="Event.js"></script>
         <script src="Month.js"></script>
@@ -12,7 +13,12 @@
          <header>Star Tech Planners, inc.</header>
         
         <button id="homeID" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
-        <button id="listID" class="tablink" onclick="openPage('List', this,'#87ced6')">List</button>
+        
+        <button  class="tablink" onclick="openPage('List', this,'#b0e0e6')">ListSubTab</button>
+        <button  class="tablink" onclick="openPage('Resources', this,'#b0e0e6')">Resources</button>
+        <button class="tablink" onclick="openPage('Schedule', this,'#b0e0e6')">Schedule</button>
+        
+<!--        <button id="listID" class="tablink" onclick="openPage('List', this,'#87ced6')">List</button>-->
 
 <!--
             <form action="/action_page.php">
@@ -42,13 +48,17 @@
 
 
                 <div id="Weekly" class="tabcontentSubTab">
-                <h5 id = "weekHeader">weekly stuff...</h5>
-                    <button onclick = "moveBackwardsThroughWeeks()">&larr;</button>
+                    <div class= "moving" ><button id= "moveBackwardsMonths" onclick="moveBackwardsThroughWeeks()">&larr;</button>
+                    <h4 id = "weekHeader"></h4>
                     <button onclick = "moveForwardsThroughWeeks()">&rarr;</button>
+                        </div>
 
                      <div class="weekAddingEvent" onclick="infoEvent()" ><button id="weekAddEvent">Add Event </button>
                                 <span class="eventText" id="weekEventNew"></span>
                             </div>
+                    
+                    <button onclick= "editEvent()">Edit Events</button>
+                    <button onclick= "deleteEvent()">Delete Events </button>
 
                     <div class= "week2">
                            <div class="weekday">sun</div>
@@ -152,17 +162,8 @@
         <button onclick="setUpMonth(december)">December</button>
                     </div>
         </div>
-
+        
         <div id="List" class="tabcontent">
-               <h3>List</h3>
-
-            <button id="listID" class="tablinkSubTab" onclick="openSubTab('ListSubTab',this,'#b0e0e6')"> Various Lists</button>
-            <button class="tablinkSubTab" onclick="openSubTab('Schedule',this,'#b0e0e6')">Schedules</button>
-            <button class="tablinkSubTab" onclick="openSubTab('Health',this,'#b0e0e6')">Health</button>
-            <button class="tablinkSubTab" onclick="openSubTab('Resources',this,'#b0e0e6')">Resources</button>
-
-
-                <div id="ListSubTab" class="tabcontentSubTab">
                     <h4>this is where the personal lists/to dos will go...</h4>
                          <div id="todoContainer">
                                 <div>
@@ -176,31 +177,33 @@
 
                             </div>
                  </div>
+        
+        
 
-                <div id="Resources" class="tabcontentSubTab">
+                <div id="Resources" class="tabcontent">
                 <h4>Important Links</h4>
 
                         <div class="links">
 
-                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.holynames-sea.org"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/HolyNamesAcademySeal.png/220px-HolyNamesAcademySeal.png" height="100" width= "100"></a></div>
+                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.holynames-sea.org"  target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/HolyNamesAcademySeal.png/220px-HolyNamesAcademySeal.png" height="100" width= "100"></a></div>
 
-                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.familyid.com/pages/home"><img src="https://familyid-locomotive-production.s3.amazonaws.com/sites/5628e1ef1d9f580ddb000000/theme/images/familyid-logo.svg?1561123119" height="80" width= "180"></a></div>
+                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.familyid.com/pages/home" target="_blank"><img src="https://familyid-locomotive-production.s3.amazonaws.com/sites/5628e1ef1d9f580ddb000000/theme/images/familyid-logo.svg?1561123119" height="80" width= "180"></a></div>
 
-                            <div class="photoLinks"> <a class = "photoLinks" href="http://www.easybib.com/"><img src="http://s5304.pcdn.co/guides/wp-content/uploads/2017/04/EasyBib-Logo-2017-1024x320.png" height="80" width= "200"></a></div>
+                            <div class="photoLinks"> <a class = "photoLinks" href="http://www.easybib.com/" target="_blank"><img src="http://s5304.pcdn.co/guides/wp-content/uploads/2017/04/EasyBib-Logo-2017-1024x320.png" height="80" width= "200"></a></div>
 
-                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.turnitin.com/"><img src="http://turnitin.psu.edu/wp-content/uploads/sites/3973/2014/05/turnitinTransBack400px.gif" height="80" width= "130"></a></div>
+                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.turnitin.com/" target="_blank"><img src="http://turnitin.psu.edu/wp-content/uploads/sites/3973/2014/05/turnitinTransBack400px.gif" height="80" width= "130"></a></div>
 
-                            <div class="photoLinks"> <a href="https://membean.com/login"><img src="https://www.lhsimprint.com/wp-content/uploads/2017/02/membean-logo-plain.png" height="80" width= "180"></a></div>
+                            <div class="photoLinks"> <a href="https://membean.com/login" target="_blank"><img src="https://www.lhsimprint.com/wp-content/uploads/2017/02/membean-logo-plain.png" height="80" width= "180"></a></div>
 
-                             <div class="photoLinks"> <a href="https://www.naviance.com/"><img src="https://www.centralcatholichs.com/media/W1siZiIsIjIwMTgvMDYvMDcvNmVieWsxeTE1MV9OYXZpYW5jZS5wbmciXV0/Naviance.png" height="80" width= "180"></a></div>
+                             <div class="photoLinks"> <a href="https://www.naviance.com/" target="_blank"><img src="https://www.centralcatholichs.com/media/W1siZiIsIjIwMTgvMDYvMDcvNmVieWsxeTE1MV9OYXZpYW5jZS5wbmciXV0/Naviance.png" height="80" width= "180"></a></div>
 
-                            <div class="photoLinks"> <a href="https://www.noredink.com/"><img src="https://clever-partner-images.s3.amazonaws.com/NoRedInk_icon_1532966903.png" height="100" width= "100"></a></div>
+                            <div class="photoLinks"> <a href="https://www.noredink.com/" target="_blank"><img src="https://clever-partner-images.s3.amazonaws.com/NoRedInk_icon_1532966903.png" height="100" width= "100"></a></div>
 
-                            <div class="photoLinks"> <a href="https://www.office.com/?auth=2"><img src="https://uploads-ssl.webflow.com/56a1006de9a99a4669bfd05c/56a101432f2ef2655bb9334d_office365.png" height="100" width= "200"></a></div>
+                            <div class="photoLinks"> <a href="https://www.office.com/?auth=2" target="_blank"><img src="https://uploads-ssl.webflow.com/56a1006de9a99a4669bfd05c/56a101432f2ef2655bb9334d_office365.png" height="100" width= "200"></a></div>
 
-                            <div class="photoLinks"> <a href="https://www.x2vol.com/index.html"><img src="https://www.ewa.org/sites/main/files/imagecache/lightbox/main-images/ost_x2vol_300_dpi.png" height="140" width= "140"></a></div>
+                            <div class="photoLinks"> <a href="https://www.x2vol.com/index.html"  target="_blank"><img src="https://www.ewa.org/sites/main/files/imagecache/lightbox/main-images/ost_x2vol_300_dpi.png" height="140" width= "140"></a></div>
 
-                             <div class="photoLinks"> <a href="https://sms.holynames-sea.org/public/home.html"><img src="http://s3.amazonaws.com/graceschools-6-1-18/wp-content/uploads/sites/2/2019/02/06193923/PowerSchool-Logo.jpg" height="100" width= "100"></a></div>
+                             <div class="photoLinks"> <a href="https://sms.holynames-sea.org/public/home.html" target="_blank"><img src="http://s3.amazonaws.com/graceschools-6-1-18/wp-content/uploads/sites/2/2019/02/06193923/PowerSchool-Logo.jpg" height="100" width= "100"></a></div>
 
 
 
@@ -238,8 +241,10 @@
                     </table>
 
             </div>
+        
+        
 
-                <div id="Schedule" class="tabcontentSubTab">
+                <div id="Schedule" class="tabcontent">
 
                 <h4>Schedules</h4>
                     <div class="creatingSchedule" onclick= "createSchedule()"> <button>Create Schedule </button><span class="classes" id="classes"></span></div>
@@ -336,13 +341,69 @@
                             <td id= "p6Room"></td>
                         </tr>
                     </table>
-
-
-                </div>
-
-                <div id="Health" class="tabcontentSubTab">
-                <h4>Health</h4>
-                    <h5>Stairs</h5>
+                    <br> 
+                    
+                    <div class= "sampleSchedules">
+                        <div class= "diffSchedules">
+                         <ul id="maroon">Maroon Schedules 
+                                <li>8:00-8:50: Period 1</li>
+                                <li>8:55-9:45: Period 2</li>
+                                <li>9:45-10:00: Break</li>
+                                <li>10:05-10:55: Period 3</li>
+                                <li>11:00-11:55: Period 4</li>
+                                <li>11:55-12:40: Lunch</li>
+                                <li>12:45-1:35: Period 5</li>
+                                <li>1:40-2:30: Period 6</li>
+                            </ul>
+                    
+                    </div>
+                    
+                    <div class= "diffSchedules">
+                         <ul id="greyCougar">Grey/Cougar Schedules
+                                <li>8:00-8:45: Period 1</li>
+                                <li>8:50-9:35: Period 2</li>
+                                <li>9:35-9:45: Break</li>
+                                <li>9:50-10:35: Period 3</li>
+                                <li>10:40-11:25: Period 4</li>
+                                <li>11:30-12:10: Study Hall/Activity</li>
+                                <li>12:10-12:50: Lunch</li>
+                                <li>12:55-1:45: Period 5</li>
+                                <li>1:50-2:30: Period 6</li>
+                            </ul>
+                    
+                    </div>
+                        
+                        <div class= "diffSchedules">
+                         <ul id="lateStart">Late Start Schedule
+                                <li>8:40-9:30 Period 1</li>
+                                <li>9:35-10:20: Period 2</li>
+                                <li>10:20-10:30: Break</li>
+                                <li>10:35-10:35: Period 3</li>
+                                <li>11:25-11:25: Period 4</li>
+                                <li>12:10-12:50: Lunch</li>
+                                <li>12:55-1:40: Period 5</li>
+                                <li>1:45-2:30: Period 6</li>
+                            </ul>
+                    
+                    </div>
+                        
+                        <div class= "diffSchedules">
+                         <ul id="lateStart">Liturgy Schedule
+                                <li>8:00-8:40 Period 1</li>
+                                <li>8:45-9:20: Period 2</li>
+                                <li>9:20-9:30: Break</li>
+                                <li>9:35-10:10: Period 4</li>
+                                <li>10:15-10:50: Period 3</li>
+                                <li>11:00-12:15: Liturgy</li>
+                                <li>12:15-1:00: Lunch</li>
+                                <li>1:05-1:40: Period 5</li>
+                                <li>1:50-2:30: Period 6</li>
+                            </ul>
+                    
+                    </div>
+                    </div>
+                    
+                    <h4>Stairs</h4>
                     
                     <div class="countingSteps" onclick= "countSteps()"> <button> How many stairs will I climb? </button><span class="steps" id="steps"></span></div>
                     
@@ -366,12 +427,22 @@
                     </table>
 
                 </div>
-            
-            </div>
 
-         
-      
-                  
+
+
+<!--
+        <div id="List" class="tabcontent">
+               <h3>List</h3>
+
+            <button id="listID" class="tabcontent" onclick="openPage('ListSubTab',this,'#b0e0e6')"> Various Lists</button>
+            <button class="tabcontent" onclick="openPage('Schedule',this,'#b0e0e6')">Schedules</button>
+            <button class="tabcontent" onclick="openPage('Resources',this,'#b0e0e6')">Resources</button>
+-->
+
+
+        
+           
+              
 
                 <script src="cal-actions.js"> </script>
        
