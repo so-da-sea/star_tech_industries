@@ -134,7 +134,7 @@ body, html {
             /*weekly calendar stuff*/
             .week2{
            grid-template-columns: auto auto auto auto auto auto auto;
-           grid-template-rows: 40px 160px;
+           grid-template-rows: 40px 350px;
            display:grid;
            background-color: black;
            grid-gap: 1px;
@@ -155,29 +155,30 @@ body, html {
 
         .closeX {
             color: gainsboro;
-            float: right;
+            margin-left: 270px;
             font-size: 28px;
             font-weight: bold;
+            display:inline;
         }
         .close:hover,
         .close:focus {
             color: #000;
-            text-decoration: none;
             cursor: pointer;
         }
 
         .rectangle {
-            display: none;
+            display: inline-block;
             height: 150px;
             width: 300px;
             background-color: honeydew;
             border: solid black 2px;
             margin-left: 37%;
+            margin-top: 5%;
             text-align:center;
             color:black;
             overflow: auto;
             position: fixed;
-            box-shadow: 10px 10px 10px #b6b6b8;
+            box-shadow: 10px 10px 10px #878787;
            
         }
 

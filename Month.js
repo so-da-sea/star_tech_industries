@@ -22,9 +22,7 @@ class Month {
         this.numWeeks = 4;
         this.numWeeks = numW;
         this.startingIndex = this.getStartingIndex();
-        this.setEventsForMonthToBlank()
-        //this.eventsForDay = [];
-        //this.setEventsForDayToBlank()
+        this.setEventsForMonthToBlank();
     }
 
     getStartingIndex(){
@@ -52,13 +50,6 @@ class Month {
         }
     }
 
-    // setEventsForDayToBlank(){
-    //     for(var i = 0; i<6;i++) {
-    //         this.eventsForDay.push([]); //change brackets to quotations
-    //
-    //     } }
-
-
     getNumDays(){
         return this.numDays;
     }
@@ -71,16 +62,11 @@ class Month {
     //     return eventTitle;
     // }
     //
-    getIndexMonth(){
-        return this.index;
-    }
-    getEventsForMonth(){
-        return this.eventsForMonth;
-    }
     addNewEvent(event){
-        this.eventsForMonth[event.eventDay-1].push(event);
-        document.getElementById(parseInt(event.eventDay)+this.startingIndex-1).addEventListener("click", function(){eventsTextShow(event.eventDay)});
-        document.getElementById(parseInt(event.eventDay)%7+this.startingIndex-1+42).addEventListener("click", function(){eventsTextShow(event.eventDay)});
+        var eventD = parseInt(event.eventDay);
+        var monthN = event.getEventMonthObject();
+        this.eventsForMonth[eventD-1].push(event);
+        document.getElementById(eventD+this.startingIndex-1).addEventListener("click", function(){eventsTextShow(event.eventDay)});
     }
 
     getEventsArrayForDay(day){
@@ -126,7 +112,6 @@ class Month {
             nextMonthIndex = 1;
         return monthArray[nextMonthIndex-1];
     }
-
 
 }
 

@@ -21,6 +21,15 @@ class Event{
          this.eventTitle = eventT;
      }
 
+     getEventMonthObject(){
+         var monthObj;
+         for(var i = 0; i<12; i++){
+             if(monthArray[i].monthName==this.eventMonth){
+                 monthObj = monthArray[i];
+             }
+         }
+         return monthObj;
+     }
     // static getEventTitle(){
     //     return eventTitle;
     // }
@@ -70,7 +79,8 @@ class Event{
     // }
 
     get fullEvent(){
-        return "<br>" + this.eventTitle + "<br>" + this.eventLocation + "<br>" + this.eventMonth + " " + this.eventDay + "<br>" + this.eventStart + "-" + this.eventEnd;
+        return "<br>" + this.eventTitle + "<br>" + this.eventLocation + "<br>" + this.eventStart + "-" + this.eventEnd;
+        //"<br>" + this.eventMonth + " " + this.eventDay +
     }
     
     get eventAlert(){
