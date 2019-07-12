@@ -1,7 +1,7 @@
 
 <html>
     <head>
-       
+
         <link rel="stylesheet" href="styles.css" />
         <script src="Event.js"></script>
         <script src="Month.js"></script>
@@ -13,32 +13,30 @@
          <header>Star Tech Planners, inc.</header>
         
         <button id="homeID" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
-        
-        <button  class="tablink" onclick="openPage('List', this,'#b0e0e6')">ListSubTab</button>
-        <button  class="tablink" onclick="openPage('Resources', this,'#b0e0e6')">Resources</button>
-        <button class="tablink" onclick="openPage('Schedule', this,'#b0e0e6')">Schedule</button>
-        
-<!--        <button id="listID" class="tablink" onclick="openPage('List', this,'#87ced6')">List</button>-->
-
-<!--
-            <form action="/action_page.php">
-        <div class="loginContainer">
-            <br>
-            <br>
-            <br>
-            <label for="uN">Username</label>
-                <input type="text" name="uN" required>
-            <br>
-            <label for="psWd">Password</label>
-                <input type="password" name="psWd" required>
-            <br>
-            <button type="submit" onclick="homePg()">Login</button>
-
-            </div>
+         <button  class="tablink" onclick="openPage('List', this,'#b0e0e6')">ListSubTab</button>
+         <button  class="tablink" onclick="openPage('Resources', this,'#b0e0e6')">Resources</button>
+         <button class="tablink" onclick="openPage('Schedule', this,'#b0e0e6')">Schedule</button>
 
 
-        </form>
-        -->
+         <!--
+                     <form action="/action_page.php">
+                 <div class="loginContainer">
+                     <br>
+                     <br>
+                     <br>
+                     <label for="uN">Username</label>
+                         <input type="text" name="uN" required>
+                     <br>
+                     <label for="psWd">Password</label>
+                         <input type="password" name="psWd" required>
+                     <br>
+                     <button type="submit" onclick="homePg()">Login</button>
+
+                     </div>
+
+
+                 </form>
+                 -->
 
 
         <div id="Home" class="tabcontent">
@@ -48,7 +46,7 @@
 
 
                 <div id="Weekly" class="tabcontentSubTab">
-                    <div class= "moving" ><button id= "moveBackwardsMonths" onclick="moveBackwardsThroughWeeks()">&larr;</button>
+                    <div class= "moving" ><button id= "moveBackwardsWeeks" onclick="moveBackwardsThroughWeeks()">&larr;</button>
                     <h4 id = "weekHeader"></h4>
                     <button onclick = "moveForwardsThroughWeeks()">&rarr;</button>
                         </div>
@@ -56,7 +54,7 @@
                      <div class="weekAddingEvent" onclick="infoEvent()" ><button id="weekAddEvent">Add Event </button>
                                 <span class="eventText" id="weekEventNew"></span>
                             </div>
-                    
+
                     <button onclick= "editEvent()">Edit Events</button>
                     <button onclick= "deleteEvent()">Delete Events </button>
 
@@ -162,14 +160,19 @@
         <button onclick="setUpMonth(december)">December</button>
                     </div>
         </div>
-        
+
         <div id="List" class="tabcontent">
                     <h4>this is where the personal lists/to dos will go...</h4>
+               <h3>List</h3>
+
+
+                <div id="ListSubTab" class="tabcontentSubTab">
+                    <h4>To Do:</h4>
                          <div id="todoContainer">
                                 <div>
-                                <label>Input: <input type="text" id="todoInput"/></label>
+                                <label>Enter a task: <input type="text" id="todoInput"/></label>
                                     <br>
-                                <button id="todoButton">Add Todos</button>
+                                <button id="todoButton">Add Task to List</button>
                                     <ul id="todos">
 
                                     </ul>
@@ -177,8 +180,8 @@
 
                             </div>
                  </div>
-        
-        
+
+
 
                 <div id="Resources" class="tabcontent">
                 <h4>Important Links</h4>
@@ -241,8 +244,6 @@
                     </table>
 
             </div>
-        
-        
 
                 <div id="Schedule" class="tabcontent">
 
@@ -341,11 +342,11 @@
                             <td id= "p6Room"></td>
                         </tr>
                     </table>
-                    <br> 
-                    
+                    <br>
+
                     <div class= "sampleSchedules">
                         <div class= "diffSchedules">
-                         <ul id="maroon">Maroon Schedules 
+                         <ul id="maroon">Maroon Schedules
                                 <li>8:00-8:50: Period 1</li>
                                 <li>8:55-9:45: Period 2</li>
                                 <li>9:45-10:00: Break</li>
@@ -355,9 +356,9 @@
                                 <li>12:45-1:35: Period 5</li>
                                 <li>1:40-2:30: Period 6</li>
                             </ul>
-                    
+
                     </div>
-                    
+
                     <div class= "diffSchedules">
                          <ul id="greyCougar">Grey/Cougar Schedules
                                 <li>8:00-8:45: Period 1</li>
@@ -370,9 +371,9 @@
                                 <li>12:55-1:45: Period 5</li>
                                 <li>1:50-2:30: Period 6</li>
                             </ul>
-                    
+
                     </div>
-                        
+
                         <div class= "diffSchedules">
                          <ul id="lateStart">Late Start Schedule
                                 <li>8:40-9:30 Period 1</li>
@@ -386,9 +387,9 @@
                             </ul>
                     
                     </div>
-                        
+
                         <div class= "diffSchedules">
-                         <ul id="lateStart">Liturgy Schedule
+                         <ul id="liturgyStart">Liturgy Schedule
                                 <li>8:00-8:40 Period 1</li>
                                 <li>8:45-9:20: Period 2</li>
                                 <li>9:20-9:30: Break</li>
@@ -399,12 +400,12 @@
                                 <li>1:05-1:40: Period 5</li>
                                 <li>1:50-2:30: Period 6</li>
                             </ul>
-                    
+
                     </div>
                     </div>
-                    
+
                     <h4>Stairs</h4>
-                    
+
                     <div class="countingSteps" onclick= "countSteps()"> <button> How many stairs will I climb? </button><span class="steps" id="steps"></span></div>
                     
                     <table>
@@ -428,21 +429,11 @@
 
                 </div>
 
+        </div>
 
-
-<!--
-        <div id="List" class="tabcontent">
-               <h3>List</h3>
-
-            <button id="listID" class="tabcontent" onclick="openPage('ListSubTab',this,'#b0e0e6')"> Various Lists</button>
-            <button class="tabcontent" onclick="openPage('Schedule',this,'#b0e0e6')">Schedules</button>
-            <button class="tabcontent" onclick="openPage('Resources',this,'#b0e0e6')">Resources</button>
--->
-
-
-        
-           
-              
+         
+      
+                  
 
                 <script src="cal-actions.js"> </script>
        
