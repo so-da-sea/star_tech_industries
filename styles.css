@@ -89,20 +89,23 @@ body, html {
             }
 
                 #moveBackwardsMonths{
-                    margin-left: 45%;
+                    margin-left: 40%;
 
                 }
                 #moveBackwardsWeeks{
-                    margin-left: 45%;
+                    margin-left: 40%;
+                }
+                #moveForwardsWeeks{
                 }
             .calendar{
                 display:grid;
                 padding: 1px;
                 grid-template-columns: auto auto auto auto auto auto auto;
-                grid-template-rows: 40px 90px 90px 90px 90px 90px 90px;
+                grid-template-rows: 40px 90px 90px 90px 90px 90px;
                background-color: black;
                grid-gap: 1px;
                border: none;
+                list-style: none;
             }
             .day{
                 color: black;
@@ -150,6 +153,7 @@ body, html {
             }
             .h5{
                 font-size: 180%;
+                text-align: center;
             }
 
            .events{

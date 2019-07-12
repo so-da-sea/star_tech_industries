@@ -12,6 +12,7 @@
                 openPage('Home', x,'#73C6B6');
                 openSubTab('Monthly',y,'#A2D9CE');
                 box.style.display="none";
+                setWeekendColor();
             }
 
         function openPage(pageName,elmnt,color) {
@@ -69,9 +70,20 @@
                     box.style.display = "none";
                     currentMonthIndex = month.index-1;
                     var startingIndex = month.startingIndex;
-                    for(var i = 1; i<=42; i++){
+                    var endValue = 42;
+
+
+                    // if(monthArray[currentMonthIndex].getPreviousMonth().numWeeks==5)
+                    //     this.removeARow();
+                    this.hideRow();
+                    if(month.numWeeks==5){
+                        this.showRow();
+                        endValue = 42;
+                    }
+
+                    for(var i = 1; i<=endValue; i++){
                         document.getElementById(i).innerHTML="";
-                        document.getElementById(i).style.backgroundColor="#f2f2f2";
+                        document.getElementById(i).style.backgroundColor="#e0e0e0";
                     }
                 document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020"
                 var e="";
@@ -80,6 +92,7 @@
                         document.getElementById(i).innerHTML+=i-(startingIndex-1)+ e;
                         document.getElementById(i).style.backgroundColor="white";
                     }
+                setWeekendColor();
                 }
 
             function moveForwardsThroughMonths(){
@@ -95,6 +108,21 @@
                 else
                     setUpMonth(monthArray[currentMonthIndex-1]);
                 }
+
+            function hideRow(){
+                for (var i = 36; i<=42; i++){
+                    document.getElementById(i).style.display = "none";
+                    //document.getElementsByClassName("calendar")[i].style.display = "none";
+                }
+                document.getElementsByClassName("calendar")[0].style.gridTemplateRows= "40px 90px 90px 90px 90px 90px";
+            }
+
+            function showRow(){
+                for (var i = 36; i<=42; i++){
+                    document.getElementById(i).style.display = "block";
+                }
+                document.getElementsByClassName("calendar")[0].style.gridTemplateRows= "40px 90px 90px 90px 90px 90px 90px";
+            }
 
 //WEEK FUNCTIONS
 var currentWeek = {m: january, w: 1};
@@ -114,7 +142,7 @@ var currentWeek = {m: january, w: 1};
 
                if(currentWeek.m==january && currentWeek.w==1){
                    for (var i=startingIndex-1; i>0; i--){
-                       document.getElementById(i+42).style.backgroundColor = "#f2f2f2";
+                       document.getElementById(i+42).style.backgroundColor = "#e0e0e0";
                    }
                    for (var i=startingIndex-1; i<7; i++){
                        e = month.getFullEventsForDay(i-startingIndex+2);
@@ -127,7 +155,7 @@ var currentWeek = {m: january, w: 1};
                        document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i) + e;
                    }
                    for (var i=startingIndex-1; i<7; i++){
-                       document.getElementById(i+43).style.backgroundColor = "#f2f2f2";
+                       document.getElementById(i+43).style.backgroundColor = "#e0e0e0";
                    }
                }
 
@@ -135,7 +163,7 @@ var currentWeek = {m: january, w: 1};
                     for (var i=startingIndex-1; i>0; i--){
                         e = previousMonth.getFullEventsForDay(previousMonth.numDays-((startingIndex-1)-i));
                         document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i)+e;
-                        document.getElementById(i+42).style.backgroundColor = "#f2f2f2";
+                        document.getElementById(i+42).style.backgroundColor = "#e0e0e0";
                     }
                     e = "";
                     for (var i=startingIndex-1; i<7; i++){
@@ -151,6 +179,7 @@ var currentWeek = {m: january, w: 1};
                 }
 
                 document.getElementById("weekHeader").innerHTML = month.monthName + " 2020";
+                setWeekendColor();
            }
 
             function moveBackwardsThroughWeeks(){
@@ -432,6 +461,84 @@ function deleteEvent(){
     monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1),parseInt(deleteEvent));
     setUpMonth(monthArray[currentMonthIndex]);
     setUpWeek(currentWeek.m, currentWeek.w);
+}
+
+//NOT SURE
+
+function setWeekendColor(){
+    var startingIndex = monthArray[currentMonthIndex].startingIndex;
+    var numDays = monthArray[currentMonthIndex].numDays;
+    for (var i=monthArray[currentMonthIndex].startingIndex; i<=startingIndex+numDays-1; i++){
+        if(i%7==0)
+            document.getElementById(i).style.backgroundColor = "#f5f5f5";
+        if((i-1)%7==0)
+            document.getElementById(i).style.backgroundColor = "#f5f5f5";
+    }
+}
+
+//ARRANGE EVENTS BY TIME FUNCTIONS
+
+function getArrangedId(event){
+    var eventsInDay = event.getEventMonthObject().getEventsArrayForDay(event.eventDay);
+
+    var startTime = event.startTime;
+    var hourThis = extractHour(event);
+    var minuteThis = extractMinute(event);
+    var ampmThis = extractAMPM(event);
+
+    var startTimeOther;
+    var hourOther;
+    var minuteOther;
+    var ampmOther;
+
+    for(var i = 0; i<eventsInDay.length; i++){
+        startTimeOther = eventsInDay[i].eventStart;
+        hourOther = extractHour(eventsInDay[i]);
+        minuteOther = extractMinute(eventsInDay[i]);
+        ampmOther = extractAMPM(eventsInDay[i]);
+
+        var toReturn;
+
+        if(ampmThis==ampmOther) {
+            if (hourThis <= hourOther && minuteThis <= minuteOther)
+                return i;
+            else
+                toReturn = i+1;
+        }
+        else if(ampmThis=="am")
+            return i;
+        else
+            toReturn = i+1;
+    }
+    return toReturn;
+}
+
+function extractHour(event){
+    var startTime = event.eventStart;
+    var indexOfColon = startTime.indexOf(":");
+    var hour = 0;
+
+    if(indexOfColon!=-1){
+        hour = startTime.substring(0,indexOfColon);
+    }
+    return hour;
+}
+
+function extractMinute(event){
+    var startTime = event.eventStart;
+    var indexOfColon = startTime.indexOf(":");
+    var minute = 0;
+
+    if(indexOfColon!=-1){
+        minute = startTime.substring(indexOfColon,startTime.length-2);
+    }
+    return minute;
+}
+
+function extractAMPM(event){
+    var startTime = event.eventStart;
+    var AMPM = startTime.substring(startTime.length-2);
+    return AMPM;
 }
 
 
