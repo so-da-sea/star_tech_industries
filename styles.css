@@ -57,13 +57,13 @@ body, html {
             background-color: #777;
         }
 
-            #Home {background-color: #73C6B6;}
+            #Home {background-color: #73C6B6; overflow: auto;}
                 #Monthly{background-color: #A2D9CE;}
                 #Weekly{background-color: #A2D9CE;}
 /*            #List {background-color: #87ced6;}*/
-                #ListSubTab{background-color: powderblue;}
-                #Schedule{background-color: powderblue;}
-                #Resources{background-color: powderblue;} 
+                #ListSubTab{background-color: powderblue; overflow: auto;}
+                #Schedule{background-color: powderblue; overflow: auto;}
+                #Resources{background-color: powderblue; overflow: auto;}
 
 
           /*   #todoContainer

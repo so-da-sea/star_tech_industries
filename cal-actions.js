@@ -476,6 +476,7 @@ function setWeekendColor(){
     }
 }
 
+
 //ARRANGE EVENTS BY TIME FUNCTIONS
 
 function getArrangedId(event){
