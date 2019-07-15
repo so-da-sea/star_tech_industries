@@ -3,16 +3,6 @@
 //index
 
 class Month {
-    // numDays = 0;
-    // monthName = "";
-    // index = 0;
-    // startingIndex = 0;
-    // eventsForMonth = [];
-
-//    numDays = 0;
-//    monthName = "";
-//    index = 0;
-//    eventsForMonth = [];
 
     constructor(numD, monthN, inD, numW) {
         this.eventsForMonth = [];
@@ -57,11 +47,7 @@ class Month {
     getMonthName(){
         return this.monthName;
     }
-    //
-    // static getEventTitle(){
-    //     return eventTitle;
-    // }
-    //
+
     addNewEvent(event){
         var eventD = parseInt(event.eventDay);
         var monthN = event.getEventMonthObject();

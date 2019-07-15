@@ -51,9 +51,11 @@
                     <button onclick = "moveForwardsThroughWeeks()">&rarr;</button>
                         </div>
 
-                     <div class="weekAddingEvent" onclick="infoEvent()" ><button id="weekAddEvent">Add Event </button>
+                     <div class="weekAddingEvent" onclick="infoEvent()" ><button class="addEvent"><i class="fa fa-plus-square"></i> Add Event </button>
                                 <span class="eventText" id="weekEventNew"></span>
                             </div>
+                    <button onclick= "editEvent()">Edit Events</button>
+                    <button onclick= "deleteEvent()">Delete Events </button>
 
                     <button onclick= "editEvent()">Edit Events</button>
                     <button onclick= "deleteEvent()">Delete Events </button>
@@ -83,7 +85,7 @@
                         <button onclick = "moveForwardsThroughMonths()">&rarr;</button>
                     </div>
 
-                        <div class="addingEvent" onclick="infoEvent()" ><button id="addevent">Add Event </button>
+                        <div class="addingEvent" onclick="infoEvent()" ><button class="addEvent">Add Event </button>
                                 <span class="eventText" id="eventNew"></span>
                             </div>
                     <button onclick= "editEvent()">Edit Events</button>
@@ -92,8 +94,23 @@
 
                     <div id="eventBox" class="rectangle">
                     <span class="closeX">&times;</span>
-                    <p id="eventsBoxMonthly"> You have no events on this day </p>
+                    <div id="eventsBoxMonthly"></div>
                 </div>
+                <div id="monthButtons">
+                        <button onclick="setUpMonth(january)">JAN</button>
+                        <button onclick="setUpMonth(february)">FEB</button>
+                        <button onclick="setUpMonth(march)">MAR</button>
+                        <button onclick="setUpMonth(april)">APR</button>
+                        <button onclick="setUpMonth(may)">MAY</button>
+                        <button onclick="setUpMonth(june)">JUN</button>
+                        <button onclick="setUpMonth(july)">JUL</button>
+                        <button onclick="setUpMonth(august)">AUG</button>
+                        <button onclick="setUpMonth(september)">SEP</button>
+                        <button onclick="setUpMonth(october)">OCT</button>
+                        <button onclick="setUpMonth(november)">NOV</button>
+                        <button onclick="setUpMonth(december)">DEC</button>
+                </div>
+
                     <ul class="calendar">
                                         <li class="weekday">sun</li>
                                         <li class="weekday">mon</li>
@@ -146,18 +163,6 @@
                                         <li class="day" id="42"></li>
                                         </ul>
 
-        <button onclick="setUpMonth(january)">January</button>
-        <button onclick="setUpMonth(february)">February</button>
-        <button onclick="setUpMonth(march)">March</button>
-        <button onclick="setUpMonth(april)">April</button>
-        <button onclick="setUpMonth(may)">May</button>
-        <button onclick="setUpMonth(june)">June</button>
-        <button onclick="setUpMonth(july)">July</button>
-        <button onclick="setUpMonth(august)">August</button>
-        <button onclick="setUpMonth(september)">September</button>
-        <button onclick="setUpMonth(october)">October</button>
-        <button onclick="setUpMonth(november)">November</button>
-        <button onclick="setUpMonth(december)">December</button>
                     </div>
         </div>
 

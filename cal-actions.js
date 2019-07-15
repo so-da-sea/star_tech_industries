@@ -50,7 +50,7 @@
     var currentMonthIndex=0;
 
     var january= new Month(31, 'January', 1,);
-    var february = new Month(29,'February',2,5);
+    var february = new Month(29,'February',2);
     var march = new Month(31,'March',3);
     var april = new Month(30,'April',4);
     var  may = new Month(31,'May',5,5);
@@ -60,7 +60,7 @@
     var september = new Month(30,'September',9);
     var october = new Month(31,'October',10);
     var november = new Month(30,'November',11);
-    var december = new Month(31,'December',12,5);
+    var december = new Month(31,'December',12);
 
 
 
@@ -70,11 +70,8 @@
                     box.style.display = "none";
                     currentMonthIndex = month.index-1;
                     var startingIndex = month.startingIndex;
-                    var endValue = 42;
+                    var endValue = 35;
 
-
-                    // if(monthArray[currentMonthIndex].getPreviousMonth().numWeeks==5)
-                    //     this.removeARow();
                     this.hideRow();
                     if(month.numWeeks==5){
                         this.showRow();
@@ -89,7 +86,7 @@
                 var e="";
                     for(var i = startingIndex; i<(month.numDays + startingIndex); i++) {
                         e = month.getEventTitlesForDay(i-(startingIndex-1));
-                        document.getElementById(i).innerHTML+=i-(startingIndex-1)+ e;
+                        document.getElementById(i).innerHTML+=i-(startingIndex-1) + e;
                         document.getElementById(i).style.backgroundColor="white";
                     }
                 setWeekendColor();
@@ -112,7 +109,6 @@
             function hideRow(){
                 for (var i = 36; i<=42; i++){
                     document.getElementById(i).style.display = "none";
-                    //document.getElementsByClassName("calendar")[i].style.display = "none";
                 }
                 document.getElementsByClassName("calendar")[0].style.gridTemplateRows= "40px 90px 90px 90px 90px 90px";
             }
@@ -339,7 +335,7 @@ var currentWeek = {m: january, w: 1};
             b = monthN.monthName + " " + dayIndex + ":" + "<br>";
             b += monthN.getFullEventsForDay(dayIndex);
         }
-        document.getElementById("eventsBoxMonthly").innerHTML=b;
+        document.getElementById("eventsBoxMonthly").innerHTML+=b;
         box.style.display = "block";
 }
 
@@ -522,6 +518,8 @@ function extractHour(event){
     if(indexOfColon!=-1){
         hour = startTime.substring(0,indexOfColon);
     }
+    else
+        hour = startTime.substring(0,startTime.length-2);
     return hour;
 }
 
@@ -531,7 +529,7 @@ function extractMinute(event){
     var minute = 0;
 
     if(indexOfColon!=-1){
-        minute = startTime.substring(indexOfColon,startTime.length-2);
+        minute = startTime.substring(indexOfColon+1,startTime.length-2);
     }
     return minute;
 }
