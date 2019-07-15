@@ -335,7 +335,7 @@ var currentWeek = {m: january, w: 1};
             b = monthN.monthName + " " + dayIndex + ":" + "<br>";
             b += monthN.getFullEventsForDay(dayIndex);
         }
-        document.getElementById("eventsBoxMonthly").innerHTML+=b;
+        document.getElementById("eventsBoxMonthly").innerHTML=b;
         box.style.display = "block";
 }
 
