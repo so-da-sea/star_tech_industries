@@ -446,7 +446,7 @@ function editEvent(){
     let editDay= window.prompt("Which day would you like to edit an event?", "1");
     let eventsForDayEdit = monthArray[currentMonthIndex].getFullEventsForDayEdit(editDay);
     let editEvent = window.prompt(eventsForDayEdit + "Which event would you like to edit?","1");
-    monthArray[currentMonthIndex].eventsForMonth[editDay-1].splice(0,1);
+    monthArray[currentMonthIndex].eventsForMonth[editDay-1].splice(parseInt(editEvent-1),1);
     infoEvent();
 }
 
@@ -454,7 +454,7 @@ function deleteEvent(){
     let deleteDay= window.prompt("Which day would you like to delete an event?", "1");
     let eventsForDayDelete = monthArray[currentMonthIndex].getFullEventsForDayEdit(deleteDay);
     let deleteEvent = window.prompt(eventsForDayDelete + "\n" + "Which event would you like to delete?","1");
-    monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1),parseInt(deleteEvent));
+    monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1), 1);
     setUpMonth(monthArray[currentMonthIndex]);
     setUpWeek(currentWeek.m, currentWeek.w);
 }
@@ -482,6 +482,9 @@ function getArrangedId(event){
     var hourThis = parseInt(extractHour(event));
     var minuteThis = parseInt(extractMinute(event));
     var ampmThis = extractAMPM(event);
+    
+    if(hourThis == 12)
+            hourThis = 0;
 
     var startTimeOther;
     var hourOther;
@@ -493,6 +496,9 @@ function getArrangedId(event){
         hourOther = parseInt(extractHour(eventsInDay[i]));
         minuteOther = parseInt(extractMinute(eventsInDay[i]));
         ampmOther = extractAMPM(eventsInDay[i]);
+        
+        if(hourOther == 12)
+            hourOther = 0;
 
         var toReturn;
 
