@@ -479,8 +479,8 @@ function getArrangedId(event){
     var eventsInDay = event.getEventMonthObject().getEventsArrayForDay(event.eventDay);
 
     var startTime = event.startTime;
-    var hourThis = extractHour(event);
-    var minuteThis = extractMinute(event);
+    var hourThis = parseInt(extractHour(event));
+    var minuteThis = parseInt(extractMinute(event));
     var ampmThis = extractAMPM(event);
 
     var startTimeOther;
@@ -490,8 +490,8 @@ function getArrangedId(event){
 
     for(var i = 0; i<eventsInDay.length; i++){
         startTimeOther = eventsInDay[i].eventStart;
-        hourOther = extractHour(eventsInDay[i]);
-        minuteOther = extractMinute(eventsInDay[i]);
+        hourOther = parseInt(extractHour(eventsInDay[i]));
+        minuteOther = parseInt(extractMinute(eventsInDay[i]));
         ampmOther = extractAMPM(eventsInDay[i]);
 
         var toReturn;
@@ -539,5 +539,7 @@ function extractAMPM(event){
     var AMPM = startTime.substring(startTime.length-2);
     return AMPM;
 }
+
+
 
 
