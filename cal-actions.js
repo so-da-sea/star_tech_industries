@@ -1,4 +1,3 @@
-
 //TAB FUNCTIONS
 
     window.onload= function homePg(){
@@ -292,28 +291,97 @@ var currentWeek = {m: january, w: 1};
                     setUpWeek(monthN,weekNum);
             }
 
+            function eventForm(){
+
+            }
+
 
 //LIST FUNCTIONS
-    var todoButton = document.getElementById("todoButton");
-            
-            function addTodosHandler(event) {
-                  // Get User Input
-                  var inputElement = document.getElementById("todoInput");
-                  var inputValue = inputElement.value;
-                  // Create List Item
-                  var newListItem = document.createElement("li");
-                  // Use Input to Populate List Item
-                  newListItem.innerText = inputValue;
-                  // Add Element to the todos list.
-                  var todosList = document.getElementById("todos");
-                  todosList.append(newListItem);
 
-                  // Clear input
-                  inputElement.value = "";
+         // Create a "close" button and append it to each list item
+//        var myNodelist = document.getElementById("myUL").getElementsByTagName("LI");
+//        for (var i = 0; i < myNodelist.length; i++) {
+//            var span = document.createElement("SPAN");
+//            var txt = document.createTextNode("\u00D7");
+//            span.className = "close";
+//            span.appendChild(txt);
+//            myNodelist[i].appendChild(span);
+
+        // Click on a close button to hide the current list item
+        var close = document.getElementById("myUL").getElementsByClassName("close");
+        // for (var i = 0; i < close.length; i++) {
+        //     close[i].onclick = function() {
+        //         var div = this.parentElement;
+        //         div.style.display = "none";
+        //     }
+        // }
+
+         // Add a "checked" symbol when clicking on a list item
+        var list = document.getElementById("myUL");
+        list.addEventListener('click', function(ev) {
+            if (ev.target.tagName === 'LI') {
+                var inner = ev.target.innerText.substring(0,ev.target.innerText.length-1);
+                ev.target.classList.toggle('checked');
+                var i = document.createElement("i");
+                var attribute = document.createAttribute("class");
+                attribute.value = "fa fa-check";
+                i.setAttributeNode(attribute);
+                ev.target.prepend(i);
+                if(ev.target.classList.length>0) {
+                    ev.target.style.cssText = "padding: 12px 8px 12px 20px; background: #888; color: white;";
                 }
+                else {
+                    ev.target.innerHTML = inner;
+                    ev.target.style.cssText = "background: #eee; color: black; padding: 12px 8px 12px 44px";
+                    var span = document.createElement("SPAN");
+                    var txt = document.createTextNode("\u00D7");
+                    span.className = "close";
+                    span.appendChild(txt);
+                    ev.target.appendChild(span);
+            
+                    var close = document.getElementById("myUL").getElementsByClassName("close");
+                    for (var i = 0; i < close.length; i++) {
+                        close[i].onclick = function() {
+                          var div = this.parentElement;
+                          div.style.display = "none";
+                        }
+                    }
+                }
+            }
+        });
 
-                 
-                  todoButton.addEventListener("click", addTodosHandler);
+        // Create a new list item when clicking on the "Add" button
+        function newElement() {
+            var li = document.createElement("li");
+            li.style.cssText = "padding: 12px 8px 12px 44px; " +
+                                "background: #eee; " +
+                                "fontSize: 18px; " +
+                                "listStyleType: none; " +
+                                "color: black;";
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '')
+                alert("You must write something!");
+            else {
+                document.getElementById("myUL").appendChild(li);
+            }
+            document.getElementById("myInput").value = "";
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+            
+            var close = document.getElementById("myUL").getElementsByClassName("close");
+            for (var i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                  var div = this.parentElement;
+                  div.style.display = "none";
+                }
+            }
+        }
 
 
 //EVENT POP IN A BOX
@@ -321,9 +389,9 @@ var currentWeek = {m: january, w: 1};
     var box= document.getElementById("eventBox");
 
     var t=document.getElementsByClassName("closeX")[0];
-    t.addEventListener("click",close);
+    t.addEventListener("click",closeBox);
 
-    function close() {
+    function closeBox() {
         box.style.display = "none";
     }
 
@@ -545,6 +613,7 @@ function extractAMPM(event){
     var AMPM = startTime.substring(startTime.length-2);
     return AMPM;
 }
+
 
 
 

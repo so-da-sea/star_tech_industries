@@ -1,10 +1,11 @@
 
 <html>
     <head>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="styles.css" />
         <script src="Event.js"></script>
         <script src="Month.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 
         <Title> Star Tech Industries</Title>
     </head>
@@ -46,16 +47,34 @@
 
 
                 <div id="Weekly" class="tabcontentSubTab">
-                    <div class= "moving" ><button id= "moveBackwardsWeeks" onclick="moveBackwardsThroughWeeks()">&larr;</button>
-                    <h4 id = "weekHeader"></h4>
-                    <button onclick = "moveForwardsThroughWeeks()">&rarr;</button>
+                    <div class= "moving" ><button id="moveBackwardsWeeks" class= "arrowButtons" onclick="moveBackwardsThroughWeeks()"><i class="fa fa-chevron-left"></i></button>
+                        <emsp></emsp>
+                        <h4 id = "weekHeader"></h4>
+                        <emsp></emsp>
+                    <button class= "arrowButtons" onclick = "moveForwardsThroughWeeks()"><i class="fa fa-chevron-right"></i></button>
                         </div>
 
-                     <div class="weekAddingEvent" onclick="infoEvent()" ><button class="addEvent"><i class="fa fa-plus-square"></i> Add Event </button>
-                                <span class="eventText" id="weekEventNew"></span>
-                            </div>
-                    <button onclick= "editEvent()">Edit Events</button>
-                    <button onclick= "deleteEvent()">Delete Events </button>
+                    <button class="editEvents" onclick="infoEvent()"> <i class="fa fa-calendar-plus-o"></i>  </button>
+                    <button class="editEvents" onclick= "editEvent()">  <i class="fa fa-pencil"></i>  </button>
+                    <button class="editEvents" onclick= "deleteEvent()">  <i class="fa fa-trash"></i>  </button>
+                    <br>
+                    <br>
+
+                    <br>
+                    <div id="weekButtons">
+                        <button onclick="setUpWeek(january,1)">JAN</button>
+                        <button onclick="setUpWeek(february,1)">FEB</button>
+                        <button onclick="setUpWeek(march,1)">MAR</button>
+                        <button onclick="setUpWeek(april,1)">APR</button>
+                        <button onclick="setUpWeek(may,1)">MAY</button>
+                        <button onclick="setUpWeek(june,1)">JUN</button>
+                        <button onclick="setUpWeek(july,1)">JUL</button>
+                        <button onclick="setUpWeek(august,1)">AUG</button>
+                        <button onclick="setUpWeek(september,1)">SEP</button>
+                        <button onclick="setUpWeek(october,1)">OCT</button>
+                        <button onclick="setUpWeek(november,1)">NOV</button>
+                        <button onclick="setUpWeek(december,1)">DEC</button>
+                    </div>
 
                     <div class= "week2">
                            <div class="weekday">sun</div>
@@ -77,22 +96,21 @@
 
                 <div id="Monthly" class="tabcontentSubTab">
                     <div class= "moving" id= "moving">
-                        <button id= "moveBackwardsMonths" onclick = "moveBackwardsThroughMonths()">&larr;</button>
+                        <button class= "arrowButtons" onclick = "moveBackwardsThroughMonths()"><i class="fa fa-chevron-left"></i></button>
                         <h4 id="heading"></h4>
-                        <button onclick = "moveForwardsThroughMonths()">&rarr;</button>
+                        <button class="arrowButtons" onclick = "moveForwardsThroughMonths()"><i class="fa fa-chevron-right"></i></button>
                     </div>
 
-                        <div class="addingEvent" onclick="infoEvent()" ><button class="addEvent">Add Event </button>
-                                <span class="eventText" id="eventNew"></span>
-                            </div>
-                    <button onclick= "editEvent()">Edit Events</button>
-                    <button onclick= "deleteEvent()">Delete Events </button>
-
-
                     <div id="eventBox" class="rectangle">
-                    <span class="closeX">&times;</span>
-                    <div id="eventsBoxMonthly"></div>
-                </div>
+                        <span class="closeX">&times;</span>
+                        <div id="eventsBoxMonthly"></div>
+                    </div>
+
+                    <button class="editEvents" onclick="infoEvent()"> <i class="fa fa-calendar-plus-o"></i>  </button>
+                    <button class="editEvents" onclick= "editEvent()">  <i class="fa fa-pencil"></i>  </button>
+                    <button class="editEvents" onclick= "deleteEvent()">  <i class="fa fa-trash"></i>  </button>
+
+                    <br>
                 <div id="monthButtons">
                         <button onclick="setUpMonth(january)">JAN</button>
                         <button onclick="setUpMonth(february)">FEB</button>
@@ -163,23 +181,17 @@
                     </div>
         </div>
 
+
         <div id="List" class="tabcontent">
-               <h4>List</h4>
-
-
-
-                    <h4>To Do:</h4>
                          <div id="todoContainer">
-                                <div>
-                                <label>Enter a task: <input type="text" id="todoInput"/></label>
-                                    <br>
-                                <button id="todoButton">Add Task to List</button>
-                                    <ul id="todos">
-
-                                    </ul>
+                                <div id="myDIV" class="header">
+                                    <h5>My To Do List</h5>
+                                    <input type="text" id="myInput" placeholder="Title...">
+                                    <button class="addBtn" onclick="newElement()">Add</button>
                                 </div>
-
                             </div>
+                    <ul id="myUL">
+                    </ul>
                  </div>
 
 
@@ -432,9 +444,11 @@
 
         </div>
 
-         
-      
-                  
+
+
+
+
+
 
                 <script src="cal-actions.js"> </script>
        
