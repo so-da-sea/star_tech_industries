@@ -225,61 +225,79 @@ var currentWeek = {m: january, w: 1};
     var eventAlert=""; 
 
             function infoEvent(){
+
+                // var defaultTitle = "Meeting";
+                // var defaultLocation = "HNA";
+                // var defaultMonth = "March";
+                // var defaultDay = "1";
+                // var defaultStartTime = "9:00AM";
+                // var defaultEndTime = "10:00AM";
+                //
+                //
+                // document.getElementsByName("eventTitle").setAttribute("value", "Meeting");
+                //
+                //
+                // document.getElementsByName("eventTitle")[0].setAttribute("value", defaultTitle);
+                // document.getElementsByName("eventLocation")[0].setAttribute("value", defaultLocation);
+                // document.getElementsByName("eventMonth")[0].setAttribute("value", defaultMonth);
+                // document.getElementsByName("eventDay")[0].setAttribute("value", defaultDay);
+                // document.getElementsByName("eventStart")[0].setAttribute("value", defaultStartTime);
+                // document.getElementsByName("eventEnd")[0].setAttribute("value", defaultEndTime);
                 eventAlert="";
                 var monthN;
-              
-              
+
+
                 eventTitle= window.prompt("Title of Event: ", "Meeting").trim();
-                    if (eventTitle!= "" && eventTitle!= null){
-                        fullEvent+=eventTitle;
-                        eventAlert+= eventTitle;
-                        
-                    }
+                if (eventTitle!= "" && eventTitle!= null){
+                    fullEvent+=eventTitle;
+                    eventAlert+= eventTitle;
+
+                }
                 eventLocation= window.prompt("Location of Event: ", "Holy Names Academy").trim();
-                    if (eventLocation!="" && eventLocation!=null){
-                        fullEvent+= "<br>" + eventLocation;
-                        eventAlert+= "\n" + eventLocation
-                    }
-                 eventMonth= (window.prompt ("Month of the Event: ", monthArray[currentMonthIndex].monthName)).trim();
-                    if (eventMonth != "" && eventMonth!=null){
-                        fullEvent+="<br>" + eventMonth + " ";
-                        eventAlert+="\n" + eventMonth + " ";
-                    }
-                    else{
-                        eventMonth = (window.prompt("Please enter the month of the event: ", monthArray[currentMonthIndex].monthName)).trim();
-                        fullEvent+="<br>" + eventMonth + " ";
-                        eventAlert+="\n" + eventMonth + " ";
-                    }
-                        for(var i = 0; i<12; i++){
-                            if(eventMonth.toLowerCase()==monthArray[i].monthName.toLowerCase())
-                                monthN = monthArray[i];
-                        }
+                if (eventLocation!="" && eventLocation!=null){
+                    fullEvent+= "<br>" + eventLocation;
+                    eventAlert+= "\n" + eventLocation
+                }
+                eventMonth= (window.prompt ("Month of the Event: ", monthArray[currentMonthIndex].monthName)).trim();
+                if (eventMonth != "" && eventMonth!=null){
+                    fullEvent+="<br>" + eventMonth + " ";
+                    eventAlert+="\n" + eventMonth + " ";
+                }
+                else{
+                    eventMonth = (window.prompt("Please enter the month of the event: ", monthArray[currentMonthIndex].monthName)).trim();
+                    fullEvent+="<br>" + eventMonth + " ";
+                    eventAlert+="\n" + eventMonth + " ";
+                }
+                for(var i = 0; i<12; i++){
+                    if(eventMonth.toLowerCase()==monthArray[i].monthName.toLowerCase())
+                        monthN = monthArray[i];
+                }
 
                 eventDay = window.prompt ("Day of the Event: ", "1").trim();
-                    if (eventDay != "" && eventDay!=null){
-                        fullEvent+=eventDay;
-                        eventAlert+=eventDay;
-                    }
-                    else {
-                        eventDay = window.prompt("Please enter the day of the event: ", "1").trim();
-                        fullEvent += eventDay;
-                        eventAlert += eventDay;
-                    }
-                    eventDay= eventDay.toString();
-                 
-                 eventStart= window.prompt("Start Time: ", "9:00am").trim();
-                     if (eventStart!="" && eventStart!=null){
-                         fullEvent+="<br>" + eventStart + "-";
-                         eventAlert+="\n" + eventStart + "-";
-                    }
-                  eventEnd= window.prompt("End Time: ", "10:00am").trim();
+                if (eventDay != "" && eventDay!=null){
+                    fullEvent+=eventDay;
+                    eventAlert+=eventDay;
+                }
+                else {
+                    eventDay = window.prompt("Please enter the day of the event: ", "1").trim();
+                    fullEvent += eventDay;
+                    eventAlert += eventDay;
+                }
+                eventDay= eventDay.toString();
 
-                    if (eventEnd!="" && eventEnd!=null){
-                        fullEvent+= eventEnd+"<br><br>";
-                        eventAlert+= eventEnd;
-                        
-                    }
-                
+                eventStart= window.prompt("Start Time: ", "9:00am").trim();
+                if (eventStart!="" && eventStart!=null){
+                    fullEvent+="<br>" + eventStart + "-";
+                    eventAlert+="\n" + eventStart + "-";
+                }
+                eventEnd= window.prompt("End Time: ", "10:00am").trim();
+
+                if (eventEnd!="" && eventEnd!=null){
+                    fullEvent+= eventEnd+"<br><br>";
+                    eventAlert+= eventEnd;
+
+                }
+
                 window.alert(eventAlert);
                 var eventN = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
                 monthN.addNewEvent(eventN);
@@ -540,7 +558,6 @@ function setWeekendColor(){
     }
 }
 
-
 //ARRANGE EVENTS BY TIME FUNCTIONS
 
 function getArrangedId(event){
@@ -613,6 +630,33 @@ function extractAMPM(event){
     var AMPM = startTime.substring(startTime.length-2);
     return AMPM;
 }
+
+
+ // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("addEvent");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
 
 
 

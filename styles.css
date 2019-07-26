@@ -129,6 +129,9 @@ body, html {
             #monthButtons{
                 margin-left: 30%;
             }
+            #weekButtons{
+                margin-left: 30%;
+            }
 
                 #moveBackwardsMonths{
                     margin-left: 40%;
@@ -136,8 +139,7 @@ body, html {
                 #moveBackwardsWeeks{
                     margin-left: 40%;
                 }
-                #moveForwardsWeeks{
-                }
+
             .calendar{
                 display:grid;
                 padding: 1px;
@@ -159,6 +161,11 @@ body, html {
                 grid-template-columns: auto;
                 overflow: auto;
             }
+
+            /*day:hover{*/
+            /*    background-color: #D4FCFC;*/
+            /*}*/
+
            .may{
                background-color:#ededed;
                color:#797D7F;
@@ -275,7 +282,10 @@ body, html {
         border: 1px black solid;
     }
 
-    #myUL {
+
+
+
+#myUL {
         margin: 0;
         padding: 0;
         list-style:none;
@@ -331,21 +341,7 @@ body, html {
 /*          16px 12px 16px;*/
       float: right;  
     }
-    .close:hover {
-        background-color: red;
-        color: white;
-    }
-    .input {
-        margin: 0;
-        border: none;
-        border-radius: 0;
-        width: 75%;
-        padding: 10px;
-        float: left;
-        font-size: 16px;
-        color: black;
-    }
-        /* Style the "Add" button */
+
     .addBtn {
         padding: 10px;
         width: 25%;
@@ -357,15 +353,33 @@ body, html {
         cursor: pointer;
         transition: 0.3s;
         border-radius: 0;
+}
+
+    .close:hover {
+        background-color: red;
+        color: white;
     }
+    input {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        width: 72%;
+        padding: 10px;
+        float: left;
+        font-size: 16px;
+    }
+        /* Style the "Add" button */
+
+
     .addBtn:hover {
         background-color: #bbb;
     }
     .header {
-        background:none;
-        padding: 30px 40px;
-        color: white;
-        text-align: center;
+
+    background-color: powderblue;
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
     }
         /* Clear floats after the header */
     .header:after {
@@ -373,3 +387,4 @@ body, html {
         display: table;
         clear: both;
     }
+
