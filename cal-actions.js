@@ -8,8 +8,8 @@
                 march.addNewEvent(eventN);
                 setUpMonth(march);
                 setUpWeek(march,1);
-                openPage('Home', x,'#73C6B6');
-                openSubTab('Monthly',y,'#A2D9CE');
+                openPage('Home', x,'#bccceb');
+                openSubTab('Monthly',y,'#d3ddf0');
                 box.style.display="none";
                 setWeekendColor();
             }

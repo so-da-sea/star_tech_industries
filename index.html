@@ -6,17 +6,21 @@
     <script src="Event.js"></script>
     <script src="Month.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-
     <Title> Star Tech Industries</Title>
 </head>
 
 <body>
-<header>Star Tech Planners, inc.</header>
 
-<button id="homeID" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
-<button  class="tablink" onclick="openPage('List', this,'#b0e0e6')">List</button>
-<button  class="tablink" onclick="openPage('Resources', this,'#b0e0e6')">Resources</button>
-<button class="tablink" onclick="openPage('Schedule', this,'#b0e0e6')">Schedule</button>
+<div class="navbar">
+
+    <span><i class="fa fa-rocket" style = "font-size: 45px; color: white; padding: 5px; display: inline-block"></i><span style="color:white;font-size:30px;">Star Tech</span></span>
+
+    <a href="#contact" class="tablink" onclick="openPage('Schedule', this,'#d3ddf0')">Schedule</a>
+    <a href="#contact" class="tablink" onclick="openPage('Resources', this,'#d3ddf0')"> Resources</a>
+    <a href="#news" class="tablink" onclick="openPage('List', this, '#d3ddf0')">Lists</a>
+    <a href="#homeID" id="homeID" class="tablink" onclick="openPage('Home', this, '#d3ddf0')" > Home</a>
+
+</div>
 
 
 <!--
@@ -38,8 +42,8 @@
 
 
 <div id="Home" class="tabcontent">
-    <button class="tablinkSubTab" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
-    <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
+    <button class="tablinkSubTab" onclick="openSubTab('Weekly',this, '#d3ddf0')">Weekly Calendar</button>
+    <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this, '#d3ddf0')">Monthly Calendar</button>
 
 
 
@@ -180,6 +184,7 @@
 
 
 <div id="List" class="tabcontent">
+    <div class="todos">
     <div id="todoContainer">
         <div id="myDIV" class="header">
             <h4 style="margin:5px">My To Do List</h4>
@@ -191,22 +196,25 @@
     </div>
     <ul id="myUL">
     </ul>
+    </div>
 </div>
 
 
 
 <div id="Resources" class="tabcontent">
+    <div class="resour">
+
     <h4>Important Links</h4>
 
     <div class="links">
 
-        <div class="photoLinks"> <a class = "photoLinks" href="https://www.holynames-sea.org"  target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/HolyNamesAcademySeal.png/220px-HolyNamesAcademySeal.png" height="100" width= "100"></a></div>
+        <div class="photoLinks"> <a href="https://www.holynames-sea.org"  target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/HolyNamesAcademySeal.png/220px-HolyNamesAcademySeal.png" height="100" width= "100"></a></div>
 
-        <div class="photoLinks"> <a class = "photoLinks" href="https://www.familyid.com/pages/home" target="_blank"><img src="https://familyid-locomotive-production.s3.amazonaws.com/sites/5628e1ef1d9f580ddb000000/theme/images/familyid-logo.svg?1561123119" height="80" width= "180"></a></div>
+        <div class="photoLinks"> <a href="https://www.familyid.com/pages/home" target="_blank"><img src="https://familyid-locomotive-production.s3.amazonaws.com/sites/5628e1ef1d9f580ddb000000/theme/images/familyid-logo.svg?1561123119" height="80" width= "180"></a></div>
 
-        <div class="photoLinks"> <a class = "photoLinks" href="http://www.easybib.com/" target="_blank"><img src="http://s5304.pcdn.co/guides/wp-content/uploads/2017/04/EasyBib-Logo-2017-1024x320.png" height="80" width= "200"></a></div>
+        <div class="photoLinks"> <a href="http://www.easybib.com/" target="_blank"><img src="http://s5304.pcdn.co/guides/wp-content/uploads/2017/04/EasyBib-Logo-2017-1024x320.png" height="80" width= "200"></a></div>
 
-        <div class="photoLinks"> <a class = "photoLinks" href="https://www.turnitin.com/" target="_blank"><img src="http://turnitin.psu.edu/wp-content/uploads/sites/3973/2014/05/turnitinTransBack400px.gif" height="80" width= "130"></a></div>
+        <div class="photoLinks"> <a href="https://www.turnitin.com/" target="_blank"><img src="http://turnitin.psu.edu/wp-content/uploads/sites/3973/2014/05/turnitinTransBack400px.gif" height="80" width= "130"></a></div>
 
         <div class="photoLinks"> <a href="https://membean.com/login" target="_blank"><img src="https://www.lhsimprint.com/wp-content/uploads/2017/02/membean-logo-plain.png" height="80" width= "180"></a></div>
 
@@ -254,10 +262,12 @@
                 <a href= "mailto:atanaka@holynames-sea.org">Ms.Tanaka (M-Z)</a></td>
         </tr>
     </table>
+</div>
 
 </div>
 
 <div id="Schedule" class="tabcontent">
+    <div class="sched">
 
     <h4>Schedules</h4>
     <div class="creatingSchedule" onclick= "createSchedule()"> <button>Create Schedule </button><span class="classes" id="classes"></span></div>
@@ -438,6 +448,7 @@
             <td id="yearSteps"></td>
         </tr>
     </table>
+    </div>
 
 </div>
 
