@@ -8,43 +8,49 @@ body, html {
 
         .fa {
             font-size:20px;
-            color: #555;
+            color:#555;
         }
         .editEvents{
             float: left;
             padding: 8px;
             border-radius: 5px;
-            background-color: aliceblue;
+            background-color: #d3ddf0;
             display: flex;
         }
         .arrowButtons{
             border:none;
             padding: 6px;
             background: none;
+            color:black;
         }
         .fa-chevron-left,.fa-chevron-right{
             font-size:15px;
-            color: white;
+            color: black;
         }
-            .tablink{
-            background-color:#555;
-            color:white;
-            float:left;
-            border:none;
-            outline: none;
-            cursor:pointer;
-            padding: 14px 16px;
-            font-size: 17px;
-            width: 25%;
-            font-family: sans-serif;
-                overflow: auto;
-                display: inline-block;
-        }
-        .tablink:hover{
-            background-color: #777;
-        }
+        /*    .tablink{*/
+        /*    background-color: #bccceb;*/
+        /*        position: fixed;*/
+        /*    color:black;*/
+        /*    float:left;*/
+        /*    border:none;*/
+        /*    outline: none;*/
+        /*    cursor:pointer;*/
+        /*    padding: 14px 16px;*/
+        /*    font-size: 17px;*/
+        /*    width: 25%;*/
+        /*    font-family: sans-serif;*/
+        /*        overflow: auto;*/
+        /*        display: inline-block;*/
+
+
+        /*}*/
+        /*.tablink:hover{*/
+        /*    background-color: #d3ddf0;*/
+        /*}*/
+
+
         .tabcontent{
-            color:white;
+            color:black;
             display: none;
             padding: 100px 20px;
             height: 130%;
@@ -52,7 +58,7 @@ body, html {
             display: inline-block;
         }
         .tabcontentSubTab{
-            color: white;
+            color: black;
             display: none;
             padding: 100px 20px;
             height: 80%;
@@ -60,7 +66,7 @@ body, html {
             display: inline-block;
         }
         .tablinkSubTab{
-            background-color: #555;
+            background-color: #d3ddf0;
             color: white;
             float: right;
             border: none;
@@ -75,16 +81,16 @@ body, html {
 
         }
         .tablinkSubTab:hover{
-            background-color: #777;
+            background-color: #d3ddf0;
         }
 
-            #Home {background-color: #73C6B6; overflow: auto;}
-                #Monthly{background-color: #A2D9CE;}
-                #Weekly{background-color: #A2D9CE;}
+            #Home {background-color: #f5f5f5; overflow: auto;}
+                #Monthly{background-color: white;}
+                #Weekly{background-color: white;}
 /*            #List {background-color: #87ced6;}*/
-                #List{background-color: powderblue; overflow: auto;}
-                #Schedule{background-color: powderblue; overflow: auto;}
-                #Resources{background-color: powderblue; overflow: auto;}
+                #List{background-color: #f5f5f5; overflow: auto;}
+                #Schedule{background-color: #f5f5f5; overflow: auto;}
+                #Resources{background-color: #f5f5f5; overflow: auto;}
 
 
           /*   #todoContainer
@@ -95,6 +101,9 @@ body, html {
                 font-size: 140%;
                 display: inline-block;
                 vertical-align: middle;
+                color: black;
+                border: #d3ddf0 solid 3px;
+                padding: 3px;
 
             }
 
@@ -120,7 +129,7 @@ body, html {
                 /*background-color:#f5f5f5;*/
                 /*color:#7B7D7D;*/
                 background: none;
-                color: white;
+                color: black;
                 font-weight: bold;
                 font-size: 15px;
                 display: inline-block;
@@ -130,6 +139,9 @@ body, html {
             #monthButtons{
                 margin-left: 30%;
             }
+            #weekButtons{
+                margin-left: 30%;
+            }
 
                 #moveBackwardsMonths{
                     margin-left: 40%;
@@ -137,8 +149,7 @@ body, html {
                 #moveBackwardsWeeks{
                     margin-left: 40%;
                 }
-                #moveForwardsWeeks{
-                }
+
             .calendar{
                 display:grid;
                 padding: 1px;
@@ -160,6 +171,11 @@ body, html {
                 grid-template-columns: auto;
                 overflow: auto;
             }
+
+            /*day:hover{*/
+            /*    background-color: #D4FCFC;*/
+            /*}*/
+
            .may{
                background-color:#ededed;
                color:#797D7F;
@@ -266,6 +282,9 @@ body, html {
         grid-template-rows: auto auto;
         text-align: center;
         grid-gap: 50px;
+        background-color: white;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     .sampleSchedules{
@@ -276,7 +295,10 @@ body, html {
         border: 1px black solid;
     }
 
-    #myUL {
+
+
+
+#myUL {
         margin: 0;
         padding: 0;
         list-style:none;
@@ -332,25 +354,11 @@ body, html {
 /*          16px 12px 16px;*/
       float: right;  
     }
-    .close:hover {
-        background-color: red;
-        color: white;
-    }
-    .input {
-        margin: 0;
-        border: none;
-        border-radius: 0;
-        width: 75%;
-        padding: 10px;
-        float: left;
-        font-size: 16px;
-        color: black;
-    }
-        /* Style the "Add" button */
+
     .addBtn {
         padding: 10px;
         width: 25%;
-        background: #d9d9d9;
+        background: #d3ddf0;
         color: #555;
         float: left;
         text-align: center;
@@ -358,15 +366,33 @@ body, html {
         cursor: pointer;
         transition: 0.3s;
         border-radius: 0;
+}
+
+    .close:hover {
+        background-color: red;
+        color: white;
     }
+    input {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        width: 72%;
+        padding: 10px;
+        float: left;
+        font-size: 16px;
+        background-color: #f5f5f5;
+    }
+        /* Style the "Add" button */
+
+
     .addBtn:hover {
-        background-color: #bbb;
+        background-color: #d3ddf0;
     }
     .header {
-        background:none;
-        padding: 30px 40px;
-        color: white;
-        text-align: center;
+    background-color: white;
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
     }
         /* Clear floats after the header */
     .header:after {
@@ -374,3 +400,49 @@ body, html {
         display: table;
         clear: both;
     }
+
+#todoContainer{
+    background-color: white;
+}
+
+.photoLinks{
+    background-color: white;
+
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #bccceb;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar a {
+    float: right;
+    display: block;
+    background-color: #bccceb;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.navbar a:hover {
+    background: #d3ddf0;
+    color: white;
+}
+
+.resour, .sched, .todos{
+    background-color: white;
+    padding: 10px;
+    padding-bottom: 10px;
+}
+
+.fa fa-rocket{
+    float: left;
+}
+
+
+

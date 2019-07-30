@@ -9,417 +9,451 @@
 
         <Title> Star Tech Industries</Title>
     </head>
-           
-    <body>
-         <header>Star Tech Planners, inc.</header>
 
-         <h1 id="welcome"></h1>
-        <button id="homeID" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
-         <button  class="tablink" onclick="openPage('List', this,'#b0e0e6')">List</button>
-         <button  class="tablink" onclick="openPage('Resources', this,'#b0e0e6')">Resources</button>
-         <button class="tablink" onclick="openPage('Schedule', this,'#b0e0e6')">Schedule</button>
+<body>
 
-        <div id="Home" class="tabcontent">
-            <button class="tablinkSubTab" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
-            <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
+<div class="navbar">
 
-                <div id="Weekly" class="tabcontentSubTab">
-                    <div class= "moving" ><button id="moveBackwardsWeeks" class= "arrowButtons" onclick="moveBackwardsThroughWeeks()"><i class="fa fa-chevron-left"></i></button>
-                        <emsp></emsp>
-                        <h4 id = "weekHeader"></h4>
-                        <emsp></emsp>
-                    <button class= "arrowButtons" onclick = "moveForwardsThroughWeeks()"><i class="fa fa-chevron-right"></i></button>
-                        </div>
+    <span><i class="fa fa-rocket" style = "font-size: 45px; color: white; padding: 5px; display: inline-block"></i><span style="color:white;font-size:30px;">Star Tech</span></span>
 
-                    <button class="editEvents" onclick="infoEvent()"> <i class="fa fa-calendar-plus-o"></i>  </button>
-                    <button class="editEvents" onclick= "editEvent()">  <i class="fa fa-pencil"></i>  </button>
-                    <button class="editEvents" onclick= "deleteEvent()">  <i class="fa fa-trash"></i>  </button>
-                    <br>
-                    <br>
+    <a href="#contact" class="tablink" onclick="openPage('Schedule', this,'#d3ddf0')">Schedule</a>
+    <a href="#contact" class="tablink" onclick="openPage('Resources', this,'#d3ddf0')"> Resources</a>
+    <a href="#news" class="tablink" onclick="openPage('List', this, '#d3ddf0')">Lists</a>
+    <a href="#homeID" id="homeID" class="tablink" onclick="openPage('Home', this, '#d3ddf0')" > Home</a>
 
-                    <br>
-                    <div id="weekButtons">
-                        <button onclick="setUpWeek(january,1)">JAN</button>
-                        <button onclick="setUpWeek(february,1)">FEB</button>
-                        <button onclick="setUpWeek(march,1)">MAR</button>
-                        <button onclick="setUpWeek(april,1)">APR</button>
-                        <button onclick="setUpWeek(may,1)">MAY</button>
-                        <button onclick="setUpWeek(june,1)">JUN</button>
-                        <button onclick="setUpWeek(july,1)">JUL</button>
-                        <button onclick="setUpWeek(august,1)">AUG</button>
-                        <button onclick="setUpWeek(september,1)">SEP</button>
-                        <button onclick="setUpWeek(october,1)">OCT</button>
-                        <button onclick="setUpWeek(november,1)">NOV</button>
-                        <button onclick="setUpWeek(december,1)">DEC</button>
-                    </div>
-
-                    <div class= "week2">
-                           <div class="weekday">sun</div>
-                           <div class="weekday">mon</div>
-                           <div class="weekday">tue</div>
-                           <div class="weekday">wed</div>
-                           <div class="weekday">thu</div>
-                           <div class="weekday">fri</div>
-                           <div class="weekday">sat</div>
-                           <div class="day" id="43"></div>
-                           <div class="day" id= "44"></div>
-                           <div class="day" id= "45"></div>
-                           <div class="day" id= "46"></div>
-                           <div class="day" id= "47"></div>
-                           <div class="day" id= "48"></div>
-                           <div class="day" id= "49"></div>
-                    </div>
-                </div>
-
-                <div id="Monthly" class="tabcontentSubTab">
-                    <div class= "moving" id= "moving">
-                        <button class= "arrowButtons" onclick = "moveBackwardsThroughMonths()"><i class="fa fa-chevron-left"></i></button>
-                        <h4 id="heading"></h4>
-                        <button class="arrowButtons" onclick = "moveForwardsThroughMonths()"><i class="fa fa-chevron-right"></i></button>
-                    </div>
-
-                    <div id="eventBox" class="rectangle">
-                        <span class="closeX">&times;</span>
-                        <div id="eventsBoxMonthly"></div>
-                    </div>
-
-                    <button class="editEvents" onclick="infoEvent()"> <i class="fa fa-calendar-plus-o"></i>  </button>
-                    <button class="editEvents" onclick= "editEvent()">  <i class="fa fa-pencil"></i>  </button>
-                    <button class="editEvents" onclick= "deleteEvent()">  <i class="fa fa-trash"></i>  </button>
-
-                    <br>
-                <div id="monthButtons">
-                        <button onclick="setUpMonth(january)">JAN</button>
-                        <button onclick="setUpMonth(february)">FEB</button>
-                        <button onclick="setUpMonth(march)">MAR</button>
-                        <button onclick="setUpMonth(april)">APR</button>
-                        <button onclick="setUpMonth(may)">MAY</button>
-                        <button onclick="setUpMonth(june)">JUN</button>
-                        <button onclick="setUpMonth(july)">JUL</button>
-                        <button onclick="setUpMonth(august)">AUG</button>
-                        <button onclick="setUpMonth(september)">SEP</button>
-                        <button onclick="setUpMonth(october)">OCT</button>
-                        <button onclick="setUpMonth(november)">NOV</button>
-                        <button onclick="setUpMonth(december)">DEC</button>
-                </div>
-
-                    <ul class="calendar">
-                                        <li class="weekday">sun</li>
-                                        <li class="weekday">mon</li>
-                                        <li class="weekday">tue</li>
-                                        <li class="weekday">wed</li>
-                                        <li class="weekday">thu</li>
-                                        <li class="weekday">fri</li>
-                                        <li class="weekday">sat</li>
-                                        <li class="day" id="1"></li>
-                                        <li class="day" id="2"></li>
-                                        <li class="day" id="3"></li>
-                                        <li class="day" id="4"></li>
-                                        <li class="day" id="5"></li>
-                                        <li class="day" id="6"></li>
-                                        <li class="day" id="7"></li>
-                                        <li class="day" id="8"></li>
-                                        <li class="day" id="9"></li>
-                                        <li class="day" id="10"></li>
-                                        <li class="day" id="11"></li>
-                                        <li class="day" id="12"></li>
-                                        <li class="day" id="13"></li>
-                                        <li class="day" id="14"></li>
-                                        <li class="day" id="15"></li>
-                                        <li class="day" id="16"></li>
-                                        <li class="day" id="17"></li>
-                                        <li class="day" id="18"></li>
-                                        <li class="day" id="19"></li>
-                                        <li class="day" id="20"></li>
-                                        <li class="day" id="21"></li>
-                                        <li class="day" id="22"></li>
-                                        <li class="day" id="23"></li>
-                                        <li class="day" id="24"></li>
-                                        <li class="day" id="25"></li>
-                                        <li class="day" id="26"></li>
-                                        <li class="day" id="27"></li>
-                                        <li class="day" id="28"></li>
-                                        <li class="day" id="29"></li>
-                                        <li class="day" id="30"></li>
-                                        <li class="day" id="31"></li>
-                                        <li class="day" id="32"></li>
-                                        <li class="day" id="33"></li>
-                                        <li class="day" id="34"></li>
-                                        <li class="day" id="35"></li>
-                                        <li class="day" id="36"></li>
-                                        <li class="day" id="37"></li>
-                                        <li class="day" id="38"></li>
-                                        <li class="day" id="39"></li>
-                                        <li class="day" id="40"></li>
-                                        <li class="day" id="41"></li>
-                                        <li class="day" id="42"></li>
-                                        </ul>
-
-                    </div>
-        </div>
+</div>
 
 
-        <div id="List" class="tabcontent">
-                         <div id="todoContainer">
-                                <div id="myDIV" class="header">
-                                    <h5>My To Do List</h5>
-                                    <input type="text" id="myInput" placeholder="Title...">
-                                    <button class="addBtn" onclick="newElement()">Add</button>
-                                </div>
-                            </div>
-                    <ul id="myUL">
-                    </ul>
-                 </div>
-
-
-
-                <div id="Resources" class="tabcontent">
-                <h4>Important Links</h4>
-
-                        <div class="links">
-
-                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.holynames-sea.org"  target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/HolyNamesAcademySeal.png/220px-HolyNamesAcademySeal.png" height="100" width= "100"></a></div>
-
-                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.familyid.com/pages/home" target="_blank"><img src="https://familyid-locomotive-production.s3.amazonaws.com/sites/5628e1ef1d9f580ddb000000/theme/images/familyid-logo.svg?1561123119" height="80" width= "180"></a></div>
-
-                            <div class="photoLinks"> <a class = "photoLinks" href="http://www.easybib.com/" target="_blank"><img src="http://s5304.pcdn.co/guides/wp-content/uploads/2017/04/EasyBib-Logo-2017-1024x320.png" height="80" width= "200"></a></div>
-
-                            <div class="photoLinks"> <a class = "photoLinks" href="https://www.turnitin.com/" target="_blank"><img src="http://turnitin.psu.edu/wp-content/uploads/sites/3973/2014/05/turnitinTransBack400px.gif" height="80" width= "130"></a></div>
-
-                            <div class="photoLinks"> <a href="https://membean.com/login" target="_blank"><img src="https://www.lhsimprint.com/wp-content/uploads/2017/02/membean-logo-plain.png" height="80" width= "180"></a></div>
-
-                             <div class="photoLinks"> <a href="https://www.naviance.com/" target="_blank"><img src="https://www.centralcatholichs.com/media/W1siZiIsIjIwMTgvMDYvMDcvNmVieWsxeTE1MV9OYXZpYW5jZS5wbmciXV0/Naviance.png" height="80" width= "180"></a></div>
-
-                            <div class="photoLinks"> <a href="https://www.noredink.com/" target="_blank"><img src="https://clever-partner-images.s3.amazonaws.com/NoRedInk_icon_1532966903.png" height="100" width= "100"></a></div>
-
-                            <div class="photoLinks"> <a href="https://www.office.com/?auth=2" target="_blank"><img src="https://uploads-ssl.webflow.com/56a1006de9a99a4669bfd05c/56a101432f2ef2655bb9334d_office365.png" height="100" width= "200"></a></div>
-
-                            <div class="photoLinks"> <a href="https://www.x2vol.com/index.html"  target="_blank"><img src="https://www.ewa.org/sites/main/files/imagecache/lightbox/main-images/ost_x2vol_300_dpi.png" height="140" width= "140"></a></div>
-
-                             <div class="photoLinks"> <a href="https://sms.holynames-sea.org/public/home.html" target="_blank"><img src="http://s3.amazonaws.com/graceschools-6-1-18/wp-content/uploads/sites/2/2019/02/06193923/PowerSchool-Logo.jpg" height="100" width= "100"></a></div>
-
-
-
-                        </div>
-
-                 <h4>Academic Help</h4>
-                        <table>
-                        <tr>
-                            <th>Service</th>
-                            <th>Information</th>
-                            <th>Contact</th>
-                        </tr>
-                        <tr>
-                            <td>Peer Mentoring</td>
-                            <td>Frosh Only! Two or more upperclassmen for each frosh homeroom</td>
-                            <td>Contact your homeroom teacher to find out who your Peer Mentors are!</td>
-                        </tr>
-                        <tr>
-                            <td>Peer Tutoring</td>
-                            <td>Email your academic mentor to sign up! Upperclassmen in NHS are avaliable to tutor in almost any subject!</td>
-                            <td> <a href="mailto:jhawes@holynames-sea.org"> Ms.Hawes (A-K)</a><br>
-                                 <a href= "mailto:emckenzie@holynames-sea.org">Ms.McKenzie (L-Z)</a></td>
-                        </tr>
-                        <tr>
-                            <td>NHS Tutoring in the Library on Grey Days</td>
-                            <td>Students a part of NHS will be in the library to help underclassmen. </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>College Counselors</td>
-                            <td>Email your college counselors to schedule an appointment with them!</td>
-                            <td><a href="mailto:mdiefenbach@holynames-sea.org"> Ms.Diefenbach (A-L)</a><br>
-                                 <a href= "mailto:atanaka@holynames-sea.org">Ms.Tanaka (M-Z)</a></td>
-                        </tr>
-                    </table>
-
+<!--
+            <form action="/action_page.php">
+        <div class="loginContainer">
+            <br>
+            <br>
+            <br>
+            <label for="uN">Username</label>
+                <input type="text" name="uN" required>
+            <br>
+            <label for="psWd">Password</label>
+                <input type="password" name="psWd" required>
+            <br>
+            <button type="submit" onclick="homePg()">Login</button>
             </div>
+        </form>
+        -->
 
-                <div id="Schedule" class="tabcontent">
 
-                <h4>Schedules</h4>
-                    <div class="creatingSchedule" onclick= "createSchedule()"> <button>Create Schedule </button><span class="classes" id="classes"></span></div>
-                    <div class="sDays">
-                        <div class="schoolDays">
-                            <ol id="mon">Monday
-                                <li class="p1"></li>
-                                <li class="p2"></li>
-                                <li class="p3"></li>
-                                <li class="p4"></li>
-                                <li class="p5"></li>
-                                <li class="p6"></li>
-                            </ol>
-                        </div>
+<div id="Home" class="tabcontent">
+    <button class="tablinkSubTab" onclick="openSubTab('Weekly',this, '#d3ddf0')">Weekly Calendar</button>
+    <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this, '#d3ddf0')">Monthly Calendar</button>
 
-                        <div class="schoolDays">
-                            <ol id="tues">Tuesday
-                                <li class="p1"></li>
-                                <li class="p3"></li>
-                                <li class="p4"></li>
-                                <li class="p5"></li>
-                                <li class="p6"></li>
-                                <li class="p2"></li>
-                            </ol>
-                        </div>
 
-                        <div class="schoolDays">
-                            <ol id="wed">Wednesday
-                                <li class="p1"></li>
-                                <li class="p4"></li>
-                                <li class="p5"></li>
-                                <li class="p6"></li>
-                                <li class="p2"></li>
-                                <li class="p3"></li>
-                            </ol>
-                        </div>
 
-                        <div class="schoolDays">
-                            <ol id="thurs">Thursday
-                                <li class="p1"></li>
-                                <li class="p5"></li>
-                                <li class="p6"></li>
-                                <li class="p2"></li>
-                                <li class="p3"></li>
-                                <li class="p4"></li>
-                            </ol>
-                        </div>
-                        <div class="schoolDays">
-                            <ol id="fri">Friday
-                                <li class="p1"></li>
-                                <li class="p6"></li>
-                                <li class="p2"></li>
-                                <li class="p3"></li>
-                                <li class="p4"></li>
-                                <li class="p5"></li>
-                            </ol>
-                        </div>
-                    </div>
+    <div id="Weekly" class="tabcontentSubTab">
+        <div class= "moving" ><button id="moveBackwardsWeeks" class= "arrowButtons" onclick="moveBackwardsThroughWeeks()"><i class="fa fa-chevron-left"></i></button>
+            <emsp></emsp>
+            <h4 id = "weekHeader"></h4>
+            <emsp></emsp>
+            <button class= "arrowButtons" onclick = "moveForwardsThroughWeeks()"><i class="fa fa-chevron-right"></i></button>
+        </div>
 
-                    <table>
-                        <tr>
-                            <th>Class</th>
-                            <th>Teacher</th>
-                            <th>Room</th>
-                        </tr>
-                        <tr>
-                            <td class="p1"></td>
-                            <td id="p1Teach"></td>
-                            <td id= "p1Room"></td>
-                        </tr>
-                        <tr>
-                            <td class= "p2"></td>
-                            <td id= "p2Teach"></td>
-                            <td id= "p2Room"></td>
-                        </tr>
-                        <tr>
-                            <td class= "p3"></td>
-                            <td id= "p3Teach"></td>
-                            <td id= "p3Room"></td>
-                        </tr>
-                        <tr>
-                            <td class= "p4"></td>
-                            <td id="p4Teach"></td>
-                            <td id= "p4Room"></td>
-                        </tr>
-                        <tr>
-                            <td class= "p5"></td>
-                            <td id= "p5Teach"></td>
-                            <td id= "p5Room"></td>
-                        </tr>
-                        <tr>
-                            <td class= "p6"></td>
-                            <td id= "p6Teach"></td>
-                            <td id= "p6Room"></td>
-                        </tr>
-                    </table>
-                    <br>
+        <button class="editEvents" onclick="infoEvent()"> <i class="fa fa-calendar-plus-o"></i>  </button>
+        <button class="editEvents" onclick= "editEvent()">  <i class="fa fa-pencil"></i>  </button>
+        <button class="editEvents" onclick= "deleteEvent()">  <i class="fa fa-trash"></i>  </button>
+        <br>
+        <br>
 
-                    <div class= "sampleSchedules">
-                        <div class= "diffSchedules">
-                         <ul id="maroon">Maroon Schedules
-                                <li>8:00-8:50: Period 1</li>
-                                <li>8:55-9:45: Period 2</li>
-                                <li>9:45-10:00: Break</li>
-                                <li>10:05-10:55: Period 3</li>
-                                <li>11:00-11:55: Period 4</li>
-                                <li>11:55-12:40: Lunch</li>
-                                <li>12:45-1:35: Period 5</li>
-                                <li>1:40-2:30: Period 6</li>
-                            </ul>
+        <br>
+        <div id="weekButtons">
+            <button onclick="setUpWeek(january,1)">JAN</button>
+            <button onclick="setUpWeek(february,1)">FEB</button>
+            <button onclick="setUpWeek(march,1)">MAR</button>
+            <button onclick="setUpWeek(april,1)">APR</button>
+            <button onclick="setUpWeek(may,1)">MAY</button>
+            <button onclick="setUpWeek(june,1)">JUN</button>
+            <button onclick="setUpWeek(july,1)">JUL</button>
+            <button onclick="setUpWeek(august,1)">AUG</button>
+            <button onclick="setUpWeek(september,1)">SEP</button>
+            <button onclick="setUpWeek(october,1)">OCT</button>
+            <button onclick="setUpWeek(november,1)">NOV</button>
+            <button onclick="setUpWeek(december,1)">DEC</button>
+        </div>
 
-                    </div>
+        <div class= "week2">
+            <div class="weekday">sun</div>
+            <div class="weekday">mon</div>
+            <div class="weekday">tue</div>
+            <div class="weekday">wed</div>
+            <div class="weekday">thu</div>
+            <div class="weekday">fri</div>
+            <div class="weekday">sat</div>
+            <div class="day" id="43"></div>
+            <div class="day" id= "44"></div>
+            <div class="day" id= "45"></div>
+            <div class="day" id= "46"></div>
+            <div class="day" id= "47"></div>
+            <div class="day" id= "48"></div>
+            <div class="day" id= "49"></div>
+        </div>
+    </div>
 
-                    <div class= "diffSchedules">
-                         <ul id="greyCougar">Grey/Cougar Schedules
-                                <li>8:00-8:45: Period 1</li>
-                                <li>8:50-9:35: Period 2</li>
-                                <li>9:35-9:45: Break</li>
-                                <li>9:50-10:35: Period 3</li>
-                                <li>10:40-11:25: Period 4</li>
-                                <li>11:30-12:10: Study Hall/Activity</li>
-                                <li>12:10-12:50: Lunch</li>
-                                <li>12:55-1:45: Period 5</li>
-                                <li>1:50-2:30: Period 6</li>
-                            </ul>
+    <div id="Monthly" class="tabcontentSubTab">
+        <div class= "moving" id= "moving">
+            <button id="moveBackwardsMonths" class= "arrowButtons" onclick = "moveBackwardsThroughMonths()"><i class="fa fa-chevron-left"></i></button>
+            <h4 id="heading"></h4>
+            <button class="arrowButtons" onclick = "moveForwardsThroughMonths()"><i class="fa fa-chevron-right"></i></button>
+        </div>
 
-                    </div>
+        <div id="eventBox" class="rectangle">
+            <span class="closeX">&times;</span>
+            <div id="eventsBoxMonthly"></div>
+        </div>
 
-                        <div class= "diffSchedules">
-                         <ul id="lateStart">Late Start Schedule
-                                <li>8:40-9:30 Period 1</li>
-                                <li>9:35-10:20: Period 2</li>
-                                <li>10:20-10:30: Break</li>
-                                <li>10:35-10:35: Period 3</li>
-                                <li>11:25-11:25: Period 4</li>
-                                <li>12:10-12:50: Lunch</li>
-                                <li>12:55-1:40: Period 5</li>
-                                <li>1:45-2:30: Period 6</li>
-                            </ul>
-                    
-                    </div>
+        <button class="editEvents" onclick="infoEvent()"> <i class="fa fa-calendar-plus-o"></i>  </button>
+        <button class="editEvents" onclick= "editEvent()">  <i class="fa fa-pencil"></i>  </button>
+        <button class="editEvents" onclick= "deleteEvent()">  <i class="fa fa-trash"></i>  </button>
 
-                        <div class= "diffSchedules">
-                         <ul id="liturgyStart">Liturgy Schedule
-                                <li>8:00-8:40 Period 1</li>
-                                <li>8:45-9:20: Period 2</li>
-                                <li>9:20-9:30: Break</li>
-                                <li>9:35-10:10: Period 4</li>
-                                <li>10:15-10:50: Period 3</li>
-                                <li>11:00-12:15: Liturgy</li>
-                                <li>12:15-1:00: Lunch</li>
-                                <li>1:05-1:40: Period 5</li>
-                                <li>1:50-2:30: Period 6</li>
-                            </ul>
+        <br>
+        <div id="monthButtons">
+            <button onclick="setUpMonth(january)">JAN</button>
+            <button onclick="setUpMonth(february)">FEB</button>
+            <button onclick="setUpMonth(march)">MAR</button>
+            <button onclick="setUpMonth(april)">APR</button>
+            <button onclick="setUpMonth(may)">MAY</button>
+            <button onclick="setUpMonth(june)">JUN</button>
+            <button onclick="setUpMonth(july)">JUL</button>
+            <button onclick="setUpMonth(august)">AUG</button>
+            <button onclick="setUpMonth(september)">SEP</button>
+            <button onclick="setUpMonth(october)">OCT</button>
+            <button onclick="setUpMonth(november)">NOV</button>
+            <button onclick="setUpMonth(december)">DEC</button>
+        </div>
 
-                    </div>
-                    </div>
+        <ul class="calendar">
+            <li class="weekday">sun</li>
+            <li class="weekday">mon</li>
+            <li class="weekday">tue</li>
+            <li class="weekday">wed</li>
+            <li class="weekday">thu</li>
+            <li class="weekday">fri</li>
+            <li class="weekday">sat</li>
+            <li class="day" id="1"></li>
+            <li class="day" id="2"></li>
+            <li class="day" id="3"></li>
+            <li class="day" id="4"></li>
+            <li class="day" id="5"></li>
+            <li class="day" id="6"></li>
+            <li class="day" id="7"></li>
+            <li class="day" id="8"></li>
+            <li class="day" id="9"></li>
+            <li class="day" id="10"></li>
+            <li class="day" id="11"></li>
+            <li class="day" id="12"></li>
+            <li class="day" id="13"></li>
+            <li class="day" id="14"></li>
+            <li class="day" id="15"></li>
+            <li class="day" id="16"></li>
+            <li class="day" id="17"></li>
+            <li class="day" id="18"></li>
+            <li class="day" id="19"></li>
+            <li class="day" id="20"></li>
+            <li class="day" id="21"></li>
+            <li class="day" id="22"></li>
+            <li class="day" id="23"></li>
+            <li class="day" id="24"></li>
+            <li class="day" id="25"></li>
+            <li class="day" id="26"></li>
+            <li class="day" id="27"></li>
+            <li class="day" id="28"></li>
+            <li class="day" id="29"></li>
+            <li class="day" id="30"></li>
+            <li class="day" id="31"></li>
+            <li class="day" id="32"></li>
+            <li class="day" id="33"></li>
+            <li class="day" id="34"></li>
+            <li class="day" id="35"></li>
+            <li class="day" id="36"></li>
+            <li class="day" id="37"></li>
+            <li class="day" id="38"></li>
+            <li class="day" id="39"></li>
+            <li class="day" id="40"></li>
+            <li class="day" id="41"></li>
+            <li class="day" id="42"></li>
+        </ul>
 
-                    <h4>Stairs</h4>
+    </div>
+</div>
 
-                    <div class="countingSteps" onclick= "countSteps()"> <button> How many stairs will I climb? </button><span class="steps" id="steps"></span></div>
-                    
-                    <table>
-                        <tr>
-                            <td>Daily</td>
-                            <td id="daySteps"></td>
-                        </tr>
-                        <tr>
-                            <td>Weekly</td>
-                            <td id="weekSteps"></td>
-                        </tr>
-                        <tr>
-                            <td>Monthly</td>
-                            <td id="monthSteps"></td>
-                        </tr>
-                        <tr>
-                            <td>Yearly</td>
-                            <td id="yearSteps"></td>
-                        </tr>
-                    </table>
 
-                </div>
+<div id="List" class="tabcontent">
+    <div class="todos">
+    <div id="todoContainer">
+        <div id="myDIV" class="header">
+            <h4 style="margin:5px">My To Do List</h4>
+            <br><br>
+            <input type="text" id="myInput" placeholder="Title...">
+            <span onclick="newElement()" class="addBtn" >Add</span>
+        </div>
+        <br>
+    </div>
+    <ul id="myUL">
+    </ul>
+    </div>
+</div>
+
+
+
+<div id="Resources" class="tabcontent">
+    <div class="resour">
+
+    <h4>Important Links</h4>
+
+    <div class="links">
+
+        <div class="photoLinks"> <a href="https://www.holynames-sea.org"  target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/HolyNamesAcademySeal.png/220px-HolyNamesAcademySeal.png" height="100" width= "100"></a></div>
+
+        <div class="photoLinks"> <a href="https://www.familyid.com/pages/home" target="_blank"><img src="https://familyid-locomotive-production.s3.amazonaws.com/sites/5628e1ef1d9f580ddb000000/theme/images/familyid-logo.svg?1561123119" height="80" width= "180"></a></div>
+
+        <div class="photoLinks"> <a href="http://www.easybib.com/" target="_blank"><img src="http://s5304.pcdn.co/guides/wp-content/uploads/2017/04/EasyBib-Logo-2017-1024x320.png" height="80" width= "200"></a></div>
+
+        <div class="photoLinks"> <a href="https://www.turnitin.com/" target="_blank"><img src="http://turnitin.psu.edu/wp-content/uploads/sites/3973/2014/05/turnitinTransBack400px.gif" height="80" width= "130"></a></div>
+
+        <div class="photoLinks"> <a href="https://membean.com/login" target="_blank"><img src="https://www.lhsimprint.com/wp-content/uploads/2017/02/membean-logo-plain.png" height="80" width= "180"></a></div>
+
+        <div class="photoLinks"> <a href="https://www.naviance.com/" target="_blank"><img src="https://www.centralcatholichs.com/media/W1siZiIsIjIwMTgvMDYvMDcvNmVieWsxeTE1MV9OYXZpYW5jZS5wbmciXV0/Naviance.png" height="80" width= "180"></a></div>
+
+        <div class="photoLinks"> <a href="https://www.noredink.com/" target="_blank"><img src="https://clever-partner-images.s3.amazonaws.com/NoRedInk_icon_1532966903.png" height="100" width= "100"></a></div>
+
+        <div class="photoLinks"> <a href="https://www.office.com/?auth=2" target="_blank"><img src="https://uploads-ssl.webflow.com/56a1006de9a99a4669bfd05c/56a101432f2ef2655bb9334d_office365.png" height="100" width= "200"></a></div>
+
+        <div class="photoLinks"> <a href="https://www.x2vol.com/index.html"  target="_blank"><img src="https://www.ewa.org/sites/main/files/imagecache/lightbox/main-images/ost_x2vol_300_dpi.png" height="140" width= "140"></a></div>
+
+        <div class="photoLinks"> <a href="https://sms.holynames-sea.org/public/home.html" target="_blank"><img src="http://s3.amazonaws.com/graceschools-6-1-18/wp-content/uploads/sites/2/2019/02/06193923/PowerSchool-Logo.jpg" height="100" width= "100"></a></div>
+
+
+
+    </div>
+
+    <h4>Academic Help</h4>
+    <table>
+        <tr>
+            <th>Service</th>
+            <th>Information</th>
+            <th>Contact</th>
+        </tr>
+        <tr>
+            <td>Peer Mentoring</td>
+            <td>Frosh Only! Two or more upperclassmen for each frosh homeroom</td>
+            <td>Contact your homeroom teacher to find out who your Peer Mentors are!</td>
+        </tr>
+        <tr>
+            <td>Peer Tutoring</td>
+            <td>Email your academic mentor to sign up! Upperclassmen in NHS are avaliable to tutor in almost any subject!</td>
+            <td> <a href="mailto:jhawes@holynames-sea.org"> Ms.Hawes (A-K)</a><br>
+                <a href= "mailto:emckenzie@holynames-sea.org">Ms.McKenzie (L-Z)</a></td>
+        </tr>
+        <tr>
+            <td>NHS Tutoring in the Library on Grey Days</td>
+            <td>Students a part of NHS will be in the library to help underclassmen. </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>College Counselors</td>
+            <td>Email your college counselors to schedule an appointment with them!</td>
+            <td><a href="mailto:mdiefenbach@holynames-sea.org"> Ms.Diefenbach (A-L)</a><br>
+                <a href= "mailto:atanaka@holynames-sea.org">Ms.Tanaka (M-Z)</a></td>
+        </tr>
+    </table>
+</div>
+
+</div>
+
+<div id="Schedule" class="tabcontent">
+    <div class="sched">
+
+    <h4>Schedules</h4>
+    <div class="creatingSchedule" onclick= "createSchedule()"> <button>Create Schedule </button><span class="classes" id="classes"></span></div>
+    <div class="sDays">
+        <div class="schoolDays">
+            <ol id="mon">Monday
+                <li class="p1"></li>
+                <li class="p2"></li>
+                <li class="p3"></li>
+                <li class="p4"></li>
+                <li class="p5"></li>
+                <li class="p6"></li>
+            </ol>
+        </div>
+
+        <div class="schoolDays">
+            <ol id="tues">Tuesday
+                <li class="p1"></li>
+                <li class="p3"></li>
+                <li class="p4"></li>
+                <li class="p5"></li>
+                <li class="p6"></li>
+                <li class="p2"></li>
+            </ol>
+        </div>
+
+        <div class="schoolDays">
+            <ol id="wed">Wednesday
+                <li class="p1"></li>
+                <li class="p4"></li>
+                <li class="p5"></li>
+                <li class="p6"></li>
+                <li class="p2"></li>
+                <li class="p3"></li>
+            </ol>
+        </div>
+
+        <div class="schoolDays">
+            <ol id="thurs">Thursday
+                <li class="p1"></li>
+                <li class="p5"></li>
+                <li class="p6"></li>
+                <li class="p2"></li>
+                <li class="p3"></li>
+                <li class="p4"></li>
+            </ol>
+        </div>
+        <div class="schoolDays">
+            <ol id="fri">Friday
+                <li class="p1"></li>
+                <li class="p6"></li>
+                <li class="p2"></li>
+                <li class="p3"></li>
+                <li class="p4"></li>
+                <li class="p5"></li>
+            </ol>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Class</th>
+            <th>Teacher</th>
+            <th>Room</th>
+        </tr>
+        <tr>
+            <td class="p1"></td>
+            <td id="p1Teach"></td>
+            <td id= "p1Room"></td>
+        </tr>
+        <tr>
+            <td class= "p2"></td>
+            <td id= "p2Teach"></td>
+            <td id= "p2Room"></td>
+        </tr>
+        <tr>
+            <td class= "p3"></td>
+            <td id= "p3Teach"></td>
+            <td id= "p3Room"></td>
+        </tr>
+        <tr>
+            <td class= "p4"></td>
+            <td id="p4Teach"></td>
+            <td id= "p4Room"></td>
+        </tr>
+        <tr>
+            <td class= "p5"></td>
+            <td id= "p5Teach"></td>
+            <td id= "p5Room"></td>
+        </tr>
+        <tr>
+            <td class= "p6"></td>
+            <td id= "p6Teach"></td>
+            <td id= "p6Room"></td>
+        </tr>
+    </table>
+    <br>
+
+    <div class= "sampleSchedules">
+        <div class= "diffSchedules">
+            <ul id="maroon">Maroon Schedules
+                <li>8:00-8:50: Period 1</li>
+                <li>8:55-9:45: Period 2</li>
+                <li>9:45-10:00: Break</li>
+                <li>10:05-10:55: Period 3</li>
+                <li>11:00-11:55: Period 4</li>
+                <li>11:55-12:40: Lunch</li>
+                <li>12:45-1:35: Period 5</li>
+                <li>1:40-2:30: Period 6</li>
+            </ul>
 
         </div>
+
+        <div class= "diffSchedules">
+            <ul id="greyCougar">Grey/Cougar Schedules
+                <li>8:00-8:45: Period 1</li>
+                <li>8:50-9:35: Period 2</li>
+                <li>9:35-9:45: Break</li>
+                <li>9:50-10:35: Period 3</li>
+                <li>10:40-11:25: Period 4</li>
+                <li>11:30-12:10: Study Hall/Activity</li>
+                <li>12:10-12:50: Lunch</li>
+                <li>12:55-1:45: Period 5</li>
+                <li>1:50-2:30: Period 6</li>
+            </ul>
+
+        </div>
+
+        <div class= "diffSchedules">
+            <ul id="lateStart">Late Start Schedule
+                <li>8:40-9:30 Period 1</li>
+                <li>9:35-10:20: Period 2</li>
+                <li>10:20-10:30: Break</li>
+                <li>10:35-10:35: Period 3</li>
+                <li>11:25-11:25: Period 4</li>
+                <li>12:10-12:50: Lunch</li>
+                <li>12:55-1:40: Period 5</li>
+                <li>1:45-2:30: Period 6</li>
+            </ul>
+
+        </div>
+
+        <div class= "diffSchedules">
+            <ul id="liturgyStart">Liturgy Schedule
+                <li>8:00-8:40 Period 1</li>
+                <li>8:45-9:20: Period 2</li>
+                <li>9:20-9:30: Break</li>
+                <li>9:35-10:10: Period 4</li>
+                <li>10:15-10:50: Period 3</li>
+                <li>11:00-12:15: Liturgy</li>
+                <li>12:15-1:00: Lunch</li>
+                <li>1:05-1:40: Period 5</li>
+                <li>1:50-2:30: Period 6</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <h4>Stairs</h4>
+
+    <div class="countingSteps" onclick= "countSteps()"> <button> How many stairs will I climb? </button><span class="steps" id="steps"></span></div>
+
+    <table>
+        <tr>
+            <td>Daily</td>
+            <td id="daySteps"></td>
+        </tr>
+        <tr>
+            <td>Weekly</td>
+            <td id="weekSteps"></td>
+        </tr>
+        <tr>
+            <td>Monthly</td>
+            <td id="monthSteps"></td>
+        </tr>
+        <tr>
+            <td>Yearly</td>
+            <td id="yearSteps"></td>
+        </tr>
+    </table>
+    </div>
+
+</div>
+
+</div>
 
 
 
