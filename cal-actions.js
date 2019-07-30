@@ -5,6 +5,13 @@
                 var y=document.getElementById("monthlyID");
                 var eventN= new Event('Meeting','Holy Names Academy','March','1','9:00 am','10:00 am');
 
+       /* var client = new HttpClient();
+        client.get('http://localhost:8080/user/user-id?id=1', function(response) {
+            console.log(response);
+        });
+        client.post('http://localhost:8080/user/create',JSON.stringify({userName:"mgerbino",password:"234"}),function(response){
+            console.log(response.status);
+        });*/
                 march.addNewEvent(eventN);
                 setUpMonth(march);
                 setUpWeek(march,1);
@@ -613,6 +620,34 @@ function extractAMPM(event){
     var AMPM = startTime.substring(startTime.length-2);
     return AMPM;
 }
+
+var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, false );
+        anHttpRequest.send( null );
+    }
+
+    this.post = function(aUrl, requestBody, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "POST", aUrl, true );
+        anHttpRequest.setRequestHeader("Content-Type","application/json");
+        anHttpRequest.send( requestBody );
+    }
+}
+
+
+//
 
 
 

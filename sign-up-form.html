@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="forms.css">
+    <title>Title</title>
+</head>
+
+<body>
+<div class="session">
+    <div class="left">
+        <i class="fa fa-rocket" style = "font-size: 70px; color: white; padding: 20px;"></i>
+    </div>
+    <form action="http://localhost:63342/star_tech_industries/index.html" class="log-in" autocomplete="off" name="signUpForm" method="post">
+        <h4><span>STAR TECH</span></h4>
+        <p>Welcome! Create an Account:</p>
+        <div class="floating-label">
+            <input placeholder="Create a Username" type="text" name="userName" id="userName" autocomplete="off">
+            <label for="userName">Username:</label>
+        </div>
+        <div class="floating-label">
+            <input placeholder="Create a Password" type="password" name="password" id="password" autocomplete="off">
+            <label for="password">Password:</label>
+        </div>
+        <div class="floating-label">
+            <input placeholder="Re-Enter Your Password" type="password" name="check" id="check" autocomplete="off">
+            <label for="password">Password:</label>
+        </div>
+        <button type="submit" onClick="createUser(signUpForm)">Create Account!</button>
+        <a class="formLink" href="http://localhost:63342/star_tech_industries/login-form.html" >Already have an account? Log In!</a>
+    </form>
+</div>
+<script src="form-actions.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Star-Tech-Login</title>
+    <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<div class="session">
+    <div class="left">
+            <i class="fa fa-rocket" data-fa-transform=rotate-45" style = "font-size: 70px; color: white; padding: 20px;"></i>
+    </div>
+    <form action="http://localhost:63342/star_tech_industries/index.html" class="login" name="loginForm" method="post">
+        <h4><span>STAR TECH</span></h4>
+        <p>Welcome back! Log in to your account to view today's schedule:</p>
+        <div class="floating-label">
+            <input placeholder="Username" type="text" name="userName" id="userName">
+            <label for="userName">Username:</label>
+        </div>
+        <div class="floating-label">
+            <input placeholder="Password" type="password" name="password" id="password" autocomplete="off">
+            <label for="password">Password:</label>
+        </div>
+        <button type="submit" onClick="validateUser(loginForm)">Log In!</button>
+        <a class="formLink" href="http://localhost:63342/star_tech_industries/sign-up-form.html" >Create an Account!</a>
+    </form>
+</div>
+<script src="form-actions.js"></script>
+
+</body>
+</html>

@@ -12,39 +12,16 @@
            
     <body>
          <header>Star Tech Planners, inc.</header>
-        
+
+         <h1 id="welcome"></h1>
         <button id="homeID" class="tablink" onclick="openPage('Home', this,'#73C6B6')">Home</button>
          <button  class="tablink" onclick="openPage('List', this,'#b0e0e6')">List</button>
          <button  class="tablink" onclick="openPage('Resources', this,'#b0e0e6')">Resources</button>
          <button class="tablink" onclick="openPage('Schedule', this,'#b0e0e6')">Schedule</button>
 
-
-         <!--
-                     <form action="/action_page.php">
-                 <div class="loginContainer">
-                     <br>
-                     <br>
-                     <br>
-                     <label for="uN">Username</label>
-                         <input type="text" name="uN" required>
-                     <br>
-                     <label for="psWd">Password</label>
-                         <input type="password" name="psWd" required>
-                     <br>
-                     <button type="submit" onclick="homePg()">Login</button>
-
-                     </div>
-
-
-                 </form>
-                 -->
-
-
         <div id="Home" class="tabcontent">
             <button class="tablinkSubTab" onclick="openSubTab('Weekly',this,'#A2D9CE')">Weekly Calendar</button>
             <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this,'#A2D9CE')">Monthly Calendar</button>
-
-
 
                 <div id="Weekly" class="tabcontentSubTab">
                     <div class= "moving" ><button id="moveBackwardsWeeks" class= "arrowButtons" onclick="moveBackwardsThroughWeeks()"><i class="fa fa-chevron-left"></i></button>
@@ -451,7 +428,9 @@
 
 
                 <script src="cal-actions.js"> </script>
-       
+                <script src="form-actions.js"> </script>
+
+
     </body>
         
 </html>
