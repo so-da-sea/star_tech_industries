@@ -1,25 +1,12 @@
 //TAB FUNCTIONS
 
-    window.onload= function homePg(){
-                var x=document.getElementById("homeID");
-                var y=document.getElementById("monthlyID");
-                var eventN= new Event('Meeting','Holy Names Academy','March','1','9:00 am','10:00 am');
 
-       /* var client = new HttpClient();
-        client.get('http://localhost:8080/user/user-id?id=1', function(response) {
-            console.log(response);
-        });
-        client.post('http://localhost:8080/user/create',JSON.stringify({userName:"mgerbino",password:"234"}),function(response){
-            console.log(response.status);
-        });*/
-                march.addNewEvent(eventN);
-                setUpMonth(march);
-                setUpWeek(march,1);
-                openPage('Home', x,'#bccceb');
-                openSubTab('Monthly',y,'#d3ddf0');
-                box.style.display="none";
-                setWeekendColor();
-            }
+/*
+        let currentUserMatch = getUserId();
+*/
+        //var userId = getUserId();
+
+        var client = new HttpClient();
 
         function openPage(pageName,elmnt,color) {
                 //hide all elements with tabcontent by default
@@ -77,6 +64,8 @@
                     currentMonthIndex = month.index-1;
                     var startingIndex = month.startingIndex;
                     var endValue = 35;
+                    var currentMonthName = monthArray[currentMonthIndex].monthName;
+                    var day;
 
                     this.hideRow();
                     if(month.numWeeks==5){
@@ -89,14 +78,28 @@
                         document.getElementById(i).style.backgroundColor="#e0e0e0";
                     }
                 document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020"
-                var e="";
+                var eventTitles="";
+                var eventArray = [];
                     for(var i = startingIndex; i<(month.numDays + startingIndex); i++) {
-                        e = month.getEventTitlesForDay(i-(startingIndex-1));
-                        document.getElementById(i).innerHTML+=i-(startingIndex-1) + e;
+                        eventTitles="";
+                        //e = month.getEventTitlesForDay(i-(startingIndex-1));
+                        //something like this for getting events maybe
+                        day = (i-(startingIndex-1)).toString();
+                        client.get('https://star-tech-service.herokuapp.com/event/events-for-user-day?id=' + userId + '&month=' + currentMonthName + '&day=' + day, function(response) {
+                            eventArray = JSON.parse(response);
+                            //console.log(response);
+                        });
+
+                        if(eventArray!=null) {
+                            for (var j = 0; j < eventArray.length; j++) {
+                                eventTitles += "<br>" + eventArray[j].title;
+                            }
+                        }
+                        document.getElementById(i).innerHTML += i - (startingIndex - 1) + eventTitles;
                         document.getElementById(i).style.backgroundColor="white";
                     }
                 setWeekendColor();
-                }
+            }
 
             function moveForwardsThroughMonths(){
                 if(currentMonthIndex==11)
@@ -233,23 +236,6 @@ var currentWeek = {m: january, w: 1};
 
             function infoEvent(){
 
-                // var defaultTitle = "Meeting";
-                // var defaultLocation = "HNA";
-                // var defaultMonth = "March";
-                // var defaultDay = "1";
-                // var defaultStartTime = "9:00AM";
-                // var defaultEndTime = "10:00AM";
-                //
-                //
-                // document.getElementsByName("eventTitle").setAttribute("value", "Meeting");
-                //
-                //
-                // document.getElementsByName("eventTitle")[0].setAttribute("value", defaultTitle);
-                // document.getElementsByName("eventLocation")[0].setAttribute("value", defaultLocation);
-                // document.getElementsByName("eventMonth")[0].setAttribute("value", defaultMonth);
-                // document.getElementsByName("eventDay")[0].setAttribute("value", defaultDay);
-                // document.getElementsByName("eventStart")[0].setAttribute("value", defaultStartTime);
-                // document.getElementsByName("eventEnd")[0].setAttribute("value", defaultEndTime);
                 eventAlert="";
                 var monthN;
 
@@ -306,19 +292,31 @@ var currentWeek = {m: january, w: 1};
                 }
 
                 window.alert(eventAlert);
-                var eventN = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
-                monthN.addNewEvent(eventN);
-                setUpMonth(monthN);
+                //var eventN = new Event(eventTitle,eventLocation,eventMonth,eventDay,eventStart,eventEnd);
+                //monthN.addNewEvent(eventN);
                 var weekNum = parseInt((parseInt(eventDay)+monthN.startingIndex-2)/7+1);
                 if(weekNum==5 && monthN.numWeeks!=5||weekNum==6)
                     setUpWeek(monthN.getNextMonth(),1);
                 else
                     setUpWeek(monthN,weekNum);
+
+                //should add event to db
+                client.post('https://star-tech-service.herokuapp.com/event/create',JSON.stringify(
+                    {userID:userId,
+                            title:eventTitle,
+                            location:eventLocation,
+                            month:eventMonth,
+                            day:eventDay,
+                            startTime:eventStart,
+                            endTime:eventEnd}),
+                    function(response){
+                        console.log(response);
+                    });
+                var calID = parseInt(eventDay)+monthArray[currentMonthIndex].startingIndex-1;
+                setUpMonth(monthN);
+                document.getElementById(calID).addEventListener("click", function(){eventsTextShow(eventDay)});
             }
 
-            function eventForm(){
-
-            }
 
 
 //LIST FUNCTIONS
@@ -422,16 +420,27 @@ var currentWeek = {m: january, w: 1};
 
     function eventsTextShow(dayIndex){
         var monthN=monthArray[currentMonthIndex];
-        var b = "There are no events on this day.";
-        var c = "There are no events on this day.";
-        if(monthN.eventsForMonth[dayIndex-1].length!=0) {
-            b = monthN.monthName + " " + dayIndex + ":" + "<br>";
-            b += monthN.getFullEventsForDay(dayIndex);
-        }
-        document.getElementById("eventsBoxMonthly").innerHTML=b;
-        box.style.display = "block";
-}
+        var boxText = "There are no events on this day.";
+        var events = "";
+        var eventArray = [];
+        // client.get('http://localhost:8080/event/events-for-user-day?id=' + userId + '&month=' + monthN.monthName + '&day=' + dayIndex, function(response) {
+        client.get('https://star-tech-service.herokuapp.com/event/events-for-user-day?id=' + userId + '&month=' + monthN.monthName + '&day=' + dayIndex, function(response) {
+            eventArray = JSON.parse(response);
+        });
 
+        if(eventArray!=null&&eventArray.length!=0) {
+            for (var j = 0; j < eventArray.length; j++) {
+                 events += "<br>" + eventArray[j].title;
+            }
+        }
+        boxText = monthN.monthName + " " + dayIndex + ":" + events;
+        document.getElementById("eventsBoxMonthly").innerHTML=boxText;
+        document.getElementById("eventBox").style.display = "block";
+}
+//
+function getFullEvent(event){
+        return event.title + "<br>" + event.location + "<br>" + event.startTime + "-" + event.endTime;
+}
 
 //SCHEDULE
 
@@ -544,10 +553,16 @@ function editEvent(){
 }
 
 function deleteEvent(){
+    //let currentMonthName = monthArray[currentMonthIndex].monthName;
     let deleteDay= window.prompt("Which day would you like to delete an event?", "1");
     let eventsForDayDelete = monthArray[currentMonthIndex].getFullEventsForDayEdit(deleteDay);
     let deleteEvent = window.prompt(eventsForDayDelete + "\n" + "Which event would you like to delete?","1");
     monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1), 1);
+
+    // client.delete('http://localhost:8080/event/delete-event',JSON.stringify({id:userId,month:currentMonthName,day:deleteDay,eventIndex:deleteEvent}),function(response){
+    //     console.log(response.status);
+    // });
+
     setUpMonth(monthArray[currentMonthIndex]);
     setUpWeek(currentWeek.m, currentWeek.w);
 }
@@ -664,34 +679,90 @@ var HttpClient = function() {
 }
 
 
-//
-
-
  // Get the modal
-            var modal = document.getElementById("myModal");
+ //            var modal = document.getElementById("myModal");
+ //
+ //            // Get the button that opens the modal
+ //            var btn = document.getElementById("addEvent");
+ //
+ //            // Get the <span> element that closes the modal
+ //            var span = document.getElementsByClassName("close")[0];
+ //
+ //            // When the user clicks the button, open the modal
+ //            btn.onclick = function() {
+ //              modal.style.display = "block";
+ //            }
+ //
+ //            // When the user clicks on <span> (x), close the modal
+ //            span.onclick = function() {
+ //              modal.style.display = "none";
+ //            }
+ //
+ //            // When the user clicks anywhere outside of the modal, close it
+ //            window.onclick = function(event) {
+ //              if (event.target == modal) {
+ //                modal.style.display = "none";
+ //              }
+ //            }
+var HttpClientAsync = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
 
-            // Get the button that opens the modal
-            var btn = document.getElementById("addEvent");
+        anHttpRequest.open( "GET", aUrl, true ); //async should be false //DETRIMENTAL!!!!!?
+        anHttpRequest.send( null );
+    }
 
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+    this.post = function(aUrl, requestBody, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
 
-            // When the user clicks the button, open the modal 
-            btn.onclick = function() {
-              modal.style.display = "block";
-            }
+        anHttpRequest.open( "POST", aUrl, true );
+        anHttpRequest.setRequestHeader("Content-Type","application/json");
+        anHttpRequest.send( requestBody );
+        anHttpRequest.responseType = 'json';
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-              modal.style.display = "none";
-            }
+        anHttpRequest.onerror = function() { // only triggers if the request couldn't be made at all
+            alert(`Network Error`);
+        };
+    }
+}
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
-              }
-            }
+var userId = sessionStorage.getItem('currentUserID');
+    var uN = sessionStorage.getItem('currentUserN');
+function setWelcomeMessage(){
+    document.getElementById("welcome").innerHTML= "Welcome, " + uN + "!";
+}
+
+window.onload= function homePg(){
+    var x=document.getElementById("homeID");
+    var y=document.getElementById("monthlyID");
+    var eventN= new Event('Meeting','Holy Names Academy','March','1','9:00 am','10:00 am');
+
+    /* var client = new HttpClient();
+     client.get('http://localhost:8080/user/user-id?id=1', function(response) {
+         console.log(response);
+     });
+     client.post('http://localhost:8080/user/create',JSON.stringify({userName:"mgerbino",password:"234"}),function(response){
+         console.log(response.status);
+     });*/
+    setWelcomeMessage();
+    march.addNewEvent(eventN);
+    setUpMonth(march);
+    setUpWeek(march,1);
+    openPage('Home', x,'#bccceb');
+    openSubTab('Monthly',y,'#d3ddf0');
+    box.style.display="none";
+    //setWeekendColor();
+
+}
+
 
 
 
