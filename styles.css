@@ -2,30 +2,33 @@
 body, html {
                 height: 100%;
                 margin: 0;
-                font-family: sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
+                font-weight: 300;
+                margin: 0;
         }
 
 
         .fa {
             font-size:20px;
-            color:#555;
+            color:#787878;
         }
         .editEvents{
             float: left;
             padding: 8px;
             border-radius: 5px;
-            background-color: #d3ddf0;
+            background-color: white;
             display: flex;
+            border: hidden;
         }
         .arrowButtons{
             border:none;
             padding: 6px;
             background: none;
-            color:black;
+            color:#787878;
         }
         .fa-chevron-left,.fa-chevron-right{
             font-size:15px;
-            color: black;
+            color: #787878;
         }
         /*    .tablink{*/
         /*    background-color: #bccceb;*/
@@ -50,19 +53,19 @@ body, html {
 
 
         .tabcontent{
-            color:black;
+            color:#555;
             display: none;
             padding: 100px 20px;
             height: 130%;
-            font-family:sans-serif;
+            font-family:inherit;
             display: inline-block;
         }
         .tabcontentSubTab{
-            color: black;
+            color:#555;
             display: none;
-            padding: 100px 20px;
+            padding: 10px 20px;
             height: 80%;
-            font-family: sans-serif;
+            font-family: inherit;
             display: inline-block;
         }
         .tablinkSubTab{
@@ -75,7 +78,7 @@ body, html {
             padding: 14px 16px;
             font-size: 15px;
 /*            width: 0%;*/
-            font-family: sans-serif;
+            font-family: inherit;
 /*            display: inline-block;*/
             overflow: auto;
 
@@ -101,9 +104,7 @@ body, html {
                 font-size: 140%;
                 display: inline-block;
                 vertical-align: middle;
-                color: black;
-                border: #d3ddf0 solid 3px;
-                padding: 3px;
+                color:#787878;
 
             }
 
@@ -129,11 +130,12 @@ body, html {
                 /*background-color:#f5f5f5;*/
                 /*color:#7B7D7D;*/
                 background: none;
-                color: black;
+                color: #787878;
                 font-weight: bold;
                 font-size: 15px;
                 display: inline-block;
                 position: sticky;
+                z-index: 1;
             }
 
             #monthButtons{
@@ -144,9 +146,8 @@ body, html {
             }
 
                 #moveBackwardsMonths{
-                    margin-left: 40%;
-                }
-                #moveBackwardsWeeks{
+                    margin-left: 42%;
+                } #moveBackwardsWeeks{
                     margin-left: 40%;
                 }
 
@@ -155,13 +156,13 @@ body, html {
                 padding: 1px;
                 grid-template-columns: auto auto auto auto auto auto auto;
                 grid-template-rows: 40px 90px 90px 90px 90px 90px;
-               background-color: black;
+               background-color:#555;
                grid-gap: 1px;
                border: none;
                 list-style: none;
             }
             .day{
-                color: black;
+                color: #555;
                 background-color: white;
                 padding: 10px;
                 font-size: 15px;
@@ -183,7 +184,8 @@ body, html {
            .weekday{
                text-align: center;
                font-size: 20px;
-               background-color: #7B7D7D;
+               background-color: #999e9e;
+               color: white;
            }
            .day, .may, .weekday{
                padding: 4px;
@@ -196,15 +198,15 @@ body, html {
            grid-template-columns: auto auto auto auto auto auto auto;
            grid-template-rows: 40px 350px;
            display:grid;
-           background-color: black;
+           background-color: #555;
            grid-gap: 1px;
            border-style: solid;
            border-width:1px;
-           border-color: black;
+           border-color: #555;
             }
 
            .events{
-                color:black;
+                color:#555;
                text-decoration-color: aqua;
                 text-align: center;
 
@@ -228,11 +230,11 @@ body, html {
             height: 150px;
             width: 300px;
             background-color: honeydew;
-            border: solid black 2px;
+            border: solid #555 2px;
             margin-left: 37%;
             margin-top: 5%;
             text-align:center;
-            color:black;
+            color:#555;
             overflow: auto;
             position: fixed;
             box-shadow: 10px 10px 10px #878787;
@@ -240,14 +242,14 @@ body, html {
         }
 
         #eventsBoxMonthly, #eventsBoxWeekly{
-            color: black;
+            color: #555;
         }
 
         .hourly{
             background-color: white;
-            color: black;
+            color: #555;
             padding: 5px;
-            border: black 1px solid;
+            border: #555 1px solid;
             overflow: auto;
         }
 
@@ -255,19 +257,19 @@ body, html {
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: auto auto auto auto auto;
-        color: black;
+        color: #555;
     }
 
     table {
-        color: black;
-        font-family: arial, sans-serif;
+        color: #555;
+        font-family: inherit;
         border-collapse: collapse;
         width: 50%;
     }
 
     td, th {
-        color: black;
-        border: 1px solid black;
+        color: #555;
+        border: 1px solid #555;
         text-align: left;
         padding: 8px;
     }
@@ -319,14 +321,8 @@ body, html {
         user-select: none;
     }
 
-      /* Set all odd list items to a different color (zebra-stripes) */
-    #myUl>*:nth-child(odd){
-        background: #f9f9f9  ;
-    }
-
-        /* Darker background-color on hover */
-    #myUl>*:hover {
-        background: #ddd;
+    .myList:hover{
+        background: blueviolet;
     }
 
         /* When clicked on, add a background color and strike out text */
@@ -336,7 +332,7 @@ body, html {
     }
 
         /* Add a "checked" mark when clicked on */
-    #myUl>*.checked::before {
+    #myUL>*.checked::before {
         content: '';
         position: absolute;
         border-color: #fff;
@@ -359,7 +355,7 @@ body, html {
         padding: 10px;
         width: 25%;
         background: #d3ddf0;
-        color: #555;
+        color: white;
         float: left;
         text-align: center;
         font-size: 16px;
@@ -410,30 +406,6 @@ body, html {
 
 }
 
-.navbar {
-    overflow: hidden;
-    background-color: #bccceb;
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
-.navbar a {
-    float: right;
-    display: block;
-    background-color: #bccceb;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 19px;
-}
-
-.navbar a:hover {
-    background: #d3ddf0;
-    color: white;
-}
-
 .resour, .sched, .todos{
     background-color: white;
     padding: 10px;
@@ -442,6 +414,78 @@ body, html {
 
 .fa fa-rocket{
     float: left;
+}
+
+.navbar {
+    overflow: visible;
+    background-color: #bccceb;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0px 10px 17px #999991 ;
+}
+
+.navbar a {
+    float: right;
+    font-size: 19px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 19px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    margin: 0;
+}
+
+.navbar a:hover{
+    background-color: #d3ddf0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #d9e5fa;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.fa-caret-down{
+    color: white;
+}
+
+.compName{
+    font-weight: bold;
 }
 
 

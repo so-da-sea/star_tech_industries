@@ -13,40 +13,24 @@
 <body>
 
 <div class="navbar">
+    <span><i class="fa fa-rocket" style = "font-size: 35px; color: white; padding: 5px; padding-right: 15px; display: inline-block"></i><span class="compName" style="color:white;font-size:30px;">STAR TECH</span></span>
+    <a href="#schedule" class="tablink" onclick="openPage('Schedule', this,'#d3ddf0')">Schedule</a>
+    <a href="#rescources" class="tablink" onclick="openPage('Resources', this,'#d3ddf0')"> Resources</a>
+    <a href="#lists" class="tablink" onclick="openPage('List', this, '#d3ddf0')">Lists</a>
 
-    <span><i class="fa fa-rocket" style = "font-size: 45px; color: white; padding: 5px; display: inline-block"></i><span style="color:white;font-size:30px;">Star Tech</span></span>
-
-    <a href="#contact" class="tablink" onclick="openPage('Schedule', this,'#d3ddf0')">Schedule</a>
-    <a href="#contact" class="tablink" onclick="openPage('Resources', this,'#d3ddf0')"> Resources</a>
-    <a href="#news" class="tablink" onclick="openPage('List', this, '#d3ddf0')">Lists</a>
-    <a href="#homeID" id="homeID" class="tablink" onclick="openPage('Home', this, '#d3ddf0')" > Home</a>
-
+    <div class="dropdown">
+        <button class="dropbtn" id="homeID" class="tablink" onclick="openPage('Home', this)">Home
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#week" class="tablinkSubTab" onclick="openPage('Home',this);openSubTab('Weekly',this, '#d3ddf0')">Weekly Calendar</a>
+            <a href="#month" id="monthlyID" class="tablinkSubTab" onclick="openPage('Home',this); openSubTab('Monthly',this, '#d3ddf0')">Monthly Calendar</a>
+        </div>
+    </div>
 </div>
 
 
-<!--
-            <form action="/action_page.php">
-        <div class="loginContainer">
-            <br>
-            <br>
-            <br>
-            <label for="uN">Username</label>
-                <input type="text" name="uN" required>
-            <br>
-            <label for="psWd">Password</label>
-                <input type="password" name="psWd" required>
-            <br>
-            <button type="submit" onclick="homePg()">Login</button>
-            </div>
-        </form>
-        -->
-
-
 <div id="Home" class="tabcontent">
-    <button class="tablinkSubTab" onclick="openSubTab('Weekly',this, '#d3ddf0')">Weekly Calendar</button>
-    <button id="monthlyID" class="tablinkSubTab" onclick="openSubTab('Monthly',this, '#d3ddf0')">Monthly Calendar</button>
-
-
 
     <div id="Weekly" class="tabcontentSubTab">
         <div class= "moving" ><button id="moveBackwardsWeeks" class= "arrowButtons" onclick="moveBackwardsThroughWeeks()"><i class="fa fa-chevron-left"></i></button>
@@ -195,8 +179,8 @@
         </div>
         <br>
     </div>
-    <ul id="myUL">
-    </ul>
+        <ul id="myUL" class="myList">
+        </ul>
     </div>
 </div>
 
