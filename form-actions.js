@@ -3,7 +3,7 @@ function getServiceBaseUrl() {
     if(window.location.hostname === 'star-tech-planners.herokuapp.com') {
        return 'https://star-tech-service.herokuapp.com/';
     } else {
-        return  'http://localhost:8080/star_tech_industries/';
+        return  'http://localhost:63342/star_tech_industries/';
     }
 }
 
@@ -12,7 +12,7 @@ function getUIBuildURL(path, item) {
     if(window.location.pathname.includes('herokuapp.com')) {
         url = 'https://star-tech-planners.herokuapp.com/';
     } else {
-        url = 'http://localhost:63342/ccf/star_tech_industries/';
+        url = 'http://localhost:63342/star_tech_industries/'; //        url = 'http://localhost:63342/ccf/star_tech_industries/';
     }
     item.href = url + path;
 }
@@ -26,7 +26,7 @@ var HttpClient = function() {
         }
 
         anHttpRequest.open( "GET", aUrl, false ); //async should be false //DETRIMENTAL!!!!!?
-        anHttpRequest.send( null );
+        //anHttpRequest.send( null );
     }
 
     this.post = function(aUrl, requestBody, aCallback) {
@@ -76,6 +76,11 @@ function createUser(theForm) {
         }), function(response) {
             console.log(response.status);
         });
+
+        var currentUserName = allUsersList[i].userName;
+        sessionStorage.setItem('currentUserN',currentUserName);
+        var currentUserId = allUsersList[i].id;
+        sessionStorage.setItem('currentUserID',currentUserId);
     }
     else{
         window.alert('Passwords must match!');
@@ -99,9 +104,9 @@ function validateUser(theForm){
     for(var i = 0; i<allUsersList.length;i++){
         if(allUsersList[i].userName === un) {
             unExists = true;
-            currentUserName = allUsersList[i].userName;
+            var currentUserName = allUsersList[i].userName;
             sessionStorage.setItem('currentUserN',currentUserName);
-            currentUserId = allUsersList[i].id;
+            var currentUserId = allUsersList[i].id;
             sessionStorage.setItem('currentUserID',currentUserId);
             //setUserId(allUsersList[i].id);
         }
