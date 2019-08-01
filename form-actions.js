@@ -94,7 +94,7 @@ function createUser(theForm) {
 
     var allUsersList = [];
     client.get(getServiceBaseUrl() + "user/all-users", function (response) {
-        allUsersList = response;
+        allUsersList = JSON.parse(response);
         //console.log(response);
     });
 
@@ -114,10 +114,10 @@ function createUser(theForm) {
             console.log(response.status);
         });
 
-        // var currentUserName = allUsersList[allUsersList.length-1].userName;
-        // localStorage.setItem('currentUserN',currentUserName);
-        // var currentUserId = allUsersList[allUsersList.length-1].id;
-        // sessionStorage.setItem('currentUserID',currentUserId);
+        var currentUserName = allUsersList[allUsersList.length-1].userName;
+        sessionStorage.setItem('currentUserN',currentUserName);
+        var currentUserId = allUsersList[allUsersList.length-1].id;
+        sessionStorage.setItem('currentUserID',currentUserId);
     }
     else{
         window.alert('Passwords must match!');
