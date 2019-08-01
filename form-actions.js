@@ -1,6 +1,6 @@
 
 function getServiceBaseUrl() {
-    if(window.location.pathname.includes('herokuapp.com')) {
+    if(window.location.hostname === 'star-tech-planners.herokuapp.com') {
        return 'https://star-tech-service.herokuapp.com/';
     } else {
         return  'http://localhost:8080/star_tech_industries/';
