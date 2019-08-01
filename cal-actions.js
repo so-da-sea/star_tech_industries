@@ -559,8 +559,18 @@ function deleteEvent(){
     let deleteEvent = window.prompt(eventsForDayDelete + "\n" + "Which event would you like to delete?","1");
     monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1), 1);
 
-    // client.delete('http://localhost:8080/event/delete-event',JSON.stringify({id:userId,month:currentMonthName,day:deleteDay,eventIndex:deleteEvent}),function(response){
+    // var event = client.get('http://localhost:8080/event/event-from-day?id='+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+deleteDay+"&eventId="+deleteEvent, function(response){
     //     console.log(response.status);
+    // });
+    // client.delete('http://localhost:8080/event/delete-event',JSON.stringify({
+    //     id:event.userID,
+    //     title:event.title,
+    //     month:event.month,
+    //     day:event.day,
+    //     startTime:event.startTime,
+    //     endTime:event.endTime}),
+    //     function(response){
+    //         console.log(response.status);
     // });
 
     setUpMonth(monthArray[currentMonthIndex]);

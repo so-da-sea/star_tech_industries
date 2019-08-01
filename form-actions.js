@@ -44,8 +44,19 @@ var HttpClient = function() {
             alert(`Network Error`);
         };
     }
-};
 
+    // this.delete = function(aUrl, requestBody, aCallback){
+    //     var anHttpRequest = new XMLHttpRequest();
+    //     anHttpRequest.onreadystatechange = function(){
+    //         if(anHttpRequest.readyState==4 && anHttpRequest.status ==200)
+    //             aCallback(anHttpRequest.responseText);
+    //     }
+    //
+    //     anHttpRequest.open( "DELETE", aUrl, true );
+    //     anHttpRequest.setRequestHeader("Content-Type","application/json");
+    //     anHttpRequest.send( null );
+    // }
+};
 
 var client = new HttpClient();
 var currentUserId = 0;
@@ -71,6 +82,11 @@ function createUser(theForm) {
     if(pw===valid) {
 
         client.post(getServiceBaseUrl() + 'user/create', JSON.stringify({
+        //currentUserName = allUsersList[allUsersList.length+1].userName;
+        //sessionStorage.setItem('currentUserN',currentUserName);
+        //currentUserId = allUsersList[allUsersList.length+1];
+        //sessionStorage.setItem('currentUserID',currentUserId);
+        //client.post('https://star-tech-service.herokuapp.com/user/create', JSON.stringify({
             userName: un,
             password: pw
         }), function(response) {
