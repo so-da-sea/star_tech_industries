@@ -1,15 +1,16 @@
 
 function getServiceBaseUrl() {
-    if(window.location.hostname === 'star-tech-planners.herokuapp.com') {
-       return 'https://star-tech-service.herokuapp.com/';
+    if (window.location.hostname === 'star-tech-planners.herokuapp.com') {
+        return 'https://star-tech-service.herokuapp.com/';
     } else {
         return  'http://localhost:63342/star_tech_industries/';
     }
 }
 
 function getUIBuildURL(path, item) {
+    if (path === undefined) path = '';
     var url;
-    if(window.location.pathname.includes('herokuapp.com')) {
+    if (window.location.hostname === 'star-tech-planners.herokuapp.com') {
         url = 'https://star-tech-planners.herokuapp.com/';
     } else {
         url = 'http://localhost:63342/star_tech_industries/'; //        url = 'http://localhost:63342/ccf/star_tech_industries/';
@@ -17,10 +18,23 @@ function getUIBuildURL(path, item) {
     item.href = url + path;
 }
 
-var HttpClient = function() {
-    this.get = function(aUrl, aCallback) {
+window.onload = function () {
+    var url;
+    if (window.location.hostname === 'star-tech-planners.herokuapp.com') {
+        url = 'https://star-tech-planners.herokuapp.com/';
+    } else {
+        url = 'http://localhost:63342/star_tech_industries/';
+    }
+    if (document.signUpForm !== undefined)
+        document.signUpForm.action = url + 'index.html';
+    if (document.loginForm !== undefined)
+        document.loginForm.action = url + 'index.html';
+};
+
+var HttpClient = function () {
+    this.get = function (aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
+        anHttpRequest.onreadystatechange = function () {
             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
                 aCallback(anHttpRequest.responseText);
         }
@@ -29,18 +43,18 @@ var HttpClient = function() {
         //anHttpRequest.send( null );
     }
 
-    this.post = function(aUrl, requestBody, aCallback) {
+    this.post = function (aUrl, requestBody, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
+        anHttpRequest.onreadystatechange = function () {
             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
                 aCallback(anHttpRequest.responseText);
         }
 
-        anHttpRequest.open( "POST", aUrl, true );
-        anHttpRequest.setRequestHeader("Content-Type","application/json");
-        anHttpRequest.send( requestBody );
+        anHttpRequest.open("POST", aUrl, true);
+        anHttpRequest.setRequestHeader("Content-Type", "application/json");
+        anHttpRequest.send(requestBody);
 
-        anHttpRequest.onerror = function() { // only triggers if the request couldn't be made at all
+        anHttpRequest.onerror = function () { // only triggers if the request couldn't be made at all
             alert(`Network Error`);
         };
     }
@@ -67,19 +81,19 @@ function createUser(theForm) {
     var valid = document.forms["signUpForm"]["check"].value;
 
     var allUsersList = [];
-    client.get(getServiceBaseUrl() + "user/all-users",function(response){
-        allUsersList=response;
+    client.get(getServiceBaseUrl() + "user/all-users", function (response) {
+        allUsersList = response;
         //console.log(response);
     });
 
-    for(var i = 0; i<allUsersList.length;i++){
-            if(allUsersList[i].userName === un) {
-                window.alert("This username is taken.");
-                document.forms["signUpForm"].setAttribute("action", getServiceBaseUrl() + "sign-up-form.html");
-            }
+    for (var i = 0; i < allUsersList.length; i++) {
+        if (allUsersList[i].userName === un) {
+            window.alert("This username is taken.");
+            document.forms["signUpForm"].setAttribute("action", getServiceBaseUrl() + "sign-up-form.html");
         }
+    }
 
-    if(pw===valid) {
+    if (pw === valid) {
 
         client.post(getServiceBaseUrl() + 'user/create', JSON.stringify({
         //currentUserName = allUsersList[allUsersList.length+1].userName;
@@ -89,7 +103,7 @@ function createUser(theForm) {
         //client.post('https://star-tech-service.herokuapp.com/user/create', JSON.stringify({
             userName: un,
             password: pw
-        }), function(response) {
+        }), function (response) {
             console.log(response.status);
         });
 
@@ -104,21 +118,21 @@ function createUser(theForm) {
     }
 }
 
-function validateUser(theForm){
-    var un    = document.forms["loginForm"]["userName"].value;
-    var pw    = document.forms["loginForm"]["password"].value;
+function validateUser(theForm) {
+    var un = document.forms["loginForm"]["userName"].value;
+    var pw = document.forms["loginForm"]["password"].value;
 
-    var unExists=false;
-    var pwExists=false;
+    var unExists = false;
+    var pwExists = false;
 
     var allUsersList = [];
-    client.get(getServiceBaseUrl() + "user/all-users",function(response){
-        allUsersList=JSON.parse(response);
+    client.get(getServiceBaseUrl() + "user/all-users", function (response) {
+        allUsersList = JSON.parse(response);
         console.log(response);
     });
 
-    for(var i = 0; i<allUsersList.length;i++){
-        if(allUsersList[i].userName === un) {
+    for (var i = 0; i < allUsersList.length; i++) {
+        if (allUsersList[i].userName === un) {
             unExists = true;
             var currentUserName = allUsersList[i].userName;
             sessionStorage.setItem('currentUserN',currentUserName);
@@ -126,23 +140,23 @@ function validateUser(theForm){
             sessionStorage.setItem('currentUserID',currentUserId);
             //setUserId(allUsersList[i].id);
         }
-        if(allUsersList[i].password === pw)
+        if (allUsersList[i].password === pw)
             pwExists = true;
     }
 
-    if(unExists==false || pwExists==false){
+    if (unExists == false || pwExists == false) {
         window.alert("Your username or password is incorrect!");
         document.forms["loginForm"].setAttribute("action", getServiceBaseUrl() + "login-form.html");
     }
 }
 
-function getUserId(){
+function getUserId() {
     return currentUserId;
 }
 
-function setUserId(id){
+function setUserId(id) {
     currentUserId = id;
-    document.getElementById("welcome").innerHTML= "Welcome, user " + currentUserId;
+    document.getElementById("welcome").innerHTML = "Welcome, user " + currentUserId;
 }
 
 
