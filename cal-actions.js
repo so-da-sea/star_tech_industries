@@ -85,7 +85,7 @@
                         //e = month.getEventTitlesForDay(i-(startingIndex-1));
                         //something like this for getting events maybe
                         day = (i-(startingIndex-1)).toString();
-                        client.get('https://star-tech-service.herokuapp.com/event/events-for-user-day?id=' + userId + '&month=' + currentMonthName + '&day=' + day, function(response) {
+                        client.get(getServiceBaseUrl() + 'event/events-for-user-day?id=' + userId + '&month=' + currentMonthName + '&day=' + day, function(response) {
                             eventArray = JSON.parse(response);
                             //console.log(response);
                         });
@@ -301,7 +301,7 @@ var currentWeek = {m: january, w: 1};
                     setUpWeek(monthN,weekNum);
 
                 //should add event to db
-                client.post('https://star-tech-service.herokuapp.com/event/create',JSON.stringify(
+                client.post(getServiceBaseUrl() + 'event/create',JSON.stringify(
                     {userID:userId,
                             title:eventTitle,
                             location:eventLocation,
@@ -424,7 +424,7 @@ var currentWeek = {m: january, w: 1};
         var events = "";
         var eventArray = [];
         // client.get('http://localhost:8080/event/events-for-user-day?id=' + userId + '&month=' + monthN.monthName + '&day=' + dayIndex, function(response) {
-        client.get('https://star-tech-service.herokuapp.com/event/events-for-user-day?id=' + userId + '&month=' + monthN.monthName + '&day=' + dayIndex, function(response) {
+        client.get(getServiceBaseUrl() + 'event/events-for-user-day?id=' + userId + '&month=' + monthN.monthName + '&day=' + dayIndex, function(response) {
             eventArray = JSON.parse(response);
         });
 

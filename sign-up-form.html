@@ -11,6 +11,8 @@
     <div class="left">
         <i class="fa fa-rocket" style = "font-size: 70px; color: white; padding: 20px;"></i>
     </div>
+    <!--    <form action="javascript:getUIBuildURL('index.html', this)" class="log-in" autocomplete="off" name="signUpForm" method="post">-->
+
     <form action="https://star-tech-planners.herokuapp.com/index.html" class="log-in" autocomplete="off" name="signUpForm" method="post">
         <h4><span>STAR TECH</span></h4>
         <p>Welcome! Create an Account:</p>
@@ -27,7 +29,11 @@
             <label for="password">Password:</label>
         </div>
         <button type="submit" onClick="createUser(signUpForm)">Create Account!</button>
-        <a class="formLink" href="https://star-tech-planners.herokuapp.com/login-form.html" >Already have an account? Log In!</a>
+        <a class="formLink"
+           onclick="getUIBuildURL('login-form.html', this)"
+           href=""
+        >
+        Already have an account? Log In!</a>
     </form>
 </div>
 <script src="form-actions.js"></script>

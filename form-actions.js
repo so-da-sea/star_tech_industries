@@ -1,3 +1,22 @@
+
+function getServiceBaseUrl() {
+    if(window.location.pathname.includes('herokuapp.com')) {
+       return 'https://star-tech-service.herokuapp.com/';
+    } else {
+        return  'http://localhost:8080/star_tech_industries/';
+    }
+}
+
+function getUIBuildURL(path, item) {
+    var url;
+    if(window.location.pathname.includes('herokuapp.com')) {
+        url = 'https://star-tech-planners.herokuapp.com/';
+    } else {
+        url = 'http://localhost:63342/ccf/star_tech_industries/';
+    }
+    item.href = url + path;
+}
+
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
@@ -25,18 +44,19 @@ var HttpClient = function() {
             alert(`Network Error`);
         };
     }
-}
+};
+
 
 var client = new HttpClient();
 var currentUserId = 0;
 
 function createUser(theForm) {
-    var un    = document.forms["signUpForm"]["userName"].value;
-    var pw    = document.forms["signUpForm"]["password"].value;
+    var un = document.forms["signUpForm"]["userName"].value;
+    var pw = document.forms["signUpForm"]["password"].value;
     var valid = document.forms["signUpForm"]["check"].value;
 
     var allUsersList = [];
-    client.get("https://star-tech-service.herokuapp.com/user/all-users",function(response){
+    client.get(getServiceBaseUrl() + "user/all-users",function(response){
         allUsersList=response;
         //console.log(response);
     });
@@ -44,13 +64,13 @@ function createUser(theForm) {
     for(var i = 0; i<allUsersList.length;i++){
             if(allUsersList[i].userName === un) {
                 window.alert("This username is taken.");
-                document.forms["signUpForm"].setAttribute("action","https://star-tech-planners.herokuapp.com/sign-up-form.html");
+                document.forms["signUpForm"].setAttribute("action", getServiceBaseUrl() + "sign-up-form.html");
             }
         }
 
     if(pw===valid) {
 
-        client.post('https://star-tech-service.herokuapp.com/user/create', JSON.stringify({
+        client.post(getServiceBaseUrl() + 'user/create', JSON.stringify({
             userName: un,
             password: pw
         }), function(response) {
@@ -59,7 +79,7 @@ function createUser(theForm) {
     }
     else{
         window.alert('Passwords must match!');
-        document.forms["signUpForm"].setAttribute("action","https://star-tech-planners.herokuapp.com/sign-up-form.html");
+        document.forms["signUpForm"].setAttribute("action", getServiceBaseUrl() + "sign-up-form.html");
     }
 }
 
@@ -71,7 +91,7 @@ function validateUser(theForm){
     var pwExists=false;
 
     var allUsersList = [];
-    client.get("https://star-tech-service.herokuapp.com/user/all-users",function(response){
+    client.get(getServiceBaseUrl() + "user/all-users",function(response){
         allUsersList=JSON.parse(response);
         console.log(response);
     });
@@ -91,7 +111,7 @@ function validateUser(theForm){
 
     if(unExists==false || pwExists==false){
         window.alert("Your username or password is incorrect!");
-        document.forms["loginForm"].setAttribute("action","https://star-tech-planners.herokuapp.com/login-form.html");
+        document.forms["loginForm"].setAttribute("action", getServiceBaseUrl() + "login-form.html");
     }
 }
 
