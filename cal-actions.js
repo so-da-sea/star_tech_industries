@@ -745,7 +745,7 @@ var HttpClientAsync = function() {
 }
 
 var userId = sessionStorage.getItem('currentUserID');
-    var uN = sessionStorage.getItem('currentUserN');
+    var uN = localStorage.getItem('currentUserN');
 function setWelcomeMessage(){
     document.getElementById("welcome").innerHTML= "Welcome, " + uN + "!";
 }
