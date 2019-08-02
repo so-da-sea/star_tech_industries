@@ -71,17 +71,17 @@ var HttpClient = function () {
         };
     }
 
-    // this.delete = function(aUrl, requestBody, aCallback){
-    //     var anHttpRequest = new XMLHttpRequest();
-    //     anHttpRequest.onreadystatechange = function(){
-    //         if(anHttpRequest.readyState==4 && anHttpRequest.status ==200)
-    //             aCallback(anHttpRequest.responseText);
-    //     }
-    //
-    //     anHttpRequest.open( "DELETE", aUrl, true );
-    //     anHttpRequest.setRequestHeader("Content-Type","application/json");
-    //     anHttpRequest.send( null );
-    // }
+    this.delete = function(aUrl, aCallback){
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function(){
+            if(anHttpRequest.readyState==4 && anHttpRequest.status ==200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "DELETE", aUrl, true );
+        anHttpRequest.setRequestHeader("Content-Type","application/json");
+        anHttpRequest.send( null );
+    }
 };
 
 var client = new HttpClient();
@@ -112,6 +112,10 @@ function createUser(theForm) {
             password: pw
         }), function (response) {
             console.log(response.status);
+        });
+
+        client.get(getServiceBaseUrl() + "user/all-users", function (response) {
+            allUsersList = JSON.parse(response);
         });
 
         var currentUserName = allUsersList[allUsersList.length-1].userName;
@@ -157,13 +161,29 @@ function validateUser(theForm) {
     }
 }
 
-function getUserId() {
-    return currentUserId;
+function addFreshEvent(theForm) {
+    var titleEvent = document.forms["newEvent"]["title"].value;
+    var locationEvent = document.forms["newEvent"]["location"].value;
+    var monthEvent = document.forms["newEvent"]["month"].value;
+    var dayEvent = document.forms["newEvent"]["day"].value;
+    var startTimeEvent = document.forms["newEvent"]["startTime"].value;
+    var endTimeEvent = document.forms["newEvent"]["endTime"].value;
+    //maybe check if all are valid
+    client.post('http://localhost:8080/event/create', JSON.stringify({
+        userID: userId,
+        title: titleEvent,
+        location: locationEvent,
+        month: monthEvent,
+        day: dayEvent,
+        startTime: startTimeEvent,
+        endTime: endTimeEvent,
+    }), function(response) {
+        console.log(response.status);
+    });
 }
 
-function setUserId(id) {
-    currentUserId = id;
-    document.getElementById("welcome").innerHTML = "Welcome, user " + currentUserId;
+function openAddForm(){
+    document.getElementById("addFreshEventForm").style.display = "block";
 }
 
 

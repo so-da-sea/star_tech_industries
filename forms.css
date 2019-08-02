@@ -141,6 +141,10 @@ a.formLink{
     margin-top:  40px;
 }
 
+#addFreshEventForm{
+    display: none;
+}
+
 
 
 

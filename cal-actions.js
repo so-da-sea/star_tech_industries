@@ -288,7 +288,6 @@ var currentWeek = {m: january, w: 1};
                 if (eventEnd!="" && eventEnd!=null){
                     fullEvent+= eventEnd+"<br><br>";
                     eventAlert+= eventEnd;
-
                 }
 
                 window.alert(eventAlert);
@@ -557,21 +556,16 @@ function deleteEvent(){
     let deleteDay= window.prompt("Which day would you like to delete an event?", "1");
     let eventsForDayDelete = monthArray[currentMonthIndex].getFullEventsForDayEdit(deleteDay);
     let deleteEvent = window.prompt(eventsForDayDelete + "\n" + "Which event would you like to delete?","1");
-    monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1), 1);
-
-    // var event = client.get('http://localhost:8080/event/event-from-day?id='+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+deleteDay+"&eventId="+deleteEvent, function(response){
-    //     console.log(response.status);
+    //monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1), 1);
+    // var event = null;
+    // client.get('http://localhost:8080/event/event-from-day?id='+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+deleteDay+"&eventId="+deleteEvent, function(response){
+    //     event = JSON.parse(event);
     // });
-    // client.delete('http://localhost:8080/event/delete-event',JSON.stringify({
-    //     id:event.userID,
-    //     title:event.title,
-    //     month:event.month,
-    //     day:event.day,
-    //     startTime:event.startTime,
-    //     endTime:event.endTime}),
-    //     function(response){
-    //         console.log(response.status);
-    // });
+    client.delete(getServiceBaseUrl() + "event/delete-event?id="+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+deleteDay+"&eventIndex="+deleteEvent.toString()+"",
+        function(response) {
+            if(response.status===200)
+            console.log(response.status);
+    });
 
     setUpMonth(monthArray[currentMonthIndex]);
     setUpWeek(currentWeek.m, currentWeek.w);
@@ -663,6 +657,10 @@ function extractAMPM(event){
     return AMPM;
 }
 
+function eventToString(event){
+    return "<br>" + event.title + "<br" + event.location + "<br" + event.startTime + "-" + event.endTime;
+}
+
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
@@ -714,35 +712,35 @@ var HttpClient = function() {
  //                modal.style.display = "none";
  //              }
  //            }
-var HttpClientAsync = function() {
-    this.get = function(aUrl, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-
-        anHttpRequest.open( "GET", aUrl, true ); //async should be false //DETRIMENTAL!!!!!?
-        anHttpRequest.send( null );
-    }
-
-    this.post = function(aUrl, requestBody, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-
-        anHttpRequest.open( "POST", aUrl, true );
-        anHttpRequest.setRequestHeader("Content-Type","application/json");
-        anHttpRequest.send( requestBody );
-        anHttpRequest.responseType = 'json';
-
-        anHttpRequest.onerror = function() { // only triggers if the request couldn't be made at all
-            alert(`Network Error`);
-        };
-    }
-}
+// var HttpClientAsync = function() {
+//     this.get = function(aUrl, aCallback) {
+//         var anHttpRequest = new XMLHttpRequest();
+//         anHttpRequest.onreadystatechange = function() {
+//             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+//                 aCallback(anHttpRequest.responseText);
+//         }
+//
+//         anHttpRequest.open( "GET", aUrl, true ); //async should be false //DETRIMENTAL!!!!!?
+//         anHttpRequest.send( null );
+//     }
+//
+//     this.post = function(aUrl, requestBody, aCallback) {
+//         var anHttpRequest = new XMLHttpRequest();
+//         anHttpRequest.onreadystatechange = function() {
+//             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+//                 aCallback(anHttpRequest.responseText);
+//         }
+//
+//         anHttpRequest.open( "POST", aUrl, true );
+//         anHttpRequest.setRequestHeader("Content-Type","application/json");
+//         anHttpRequest.send( requestBody );
+//         anHttpRequest.responseType = 'json';
+//
+//         anHttpRequest.onerror = function() { // only triggers if the request couldn't be made at all
+//             alert(`Network Error`);
+//         };
+//     }
+// }
 
 var userId = sessionStorage.getItem('currentUserID');
     var uN = sessionStorage.getItem('currentUserN');

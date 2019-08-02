@@ -36,4 +36,6 @@ class Event{
         return this.eventTitle + "\n" + this.eventLocation + "\n" + this.eventMonth + " " + this.eventDay + "\n" + this.eventStart + "-" + this.eventEnd + "\n";
     }
 
+
+
 }
