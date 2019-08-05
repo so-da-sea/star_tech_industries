@@ -183,7 +183,12 @@ function addFreshEvent(theForm) {
 }
 
 function openAddForm(){
-    document.getElementById("addFreshEventForm").style.display = "block";
+    if (document.getElementById("addFreshEventForm").style.display === "block") {
+        document.getElementById("addFreshEventForm").style.display = "none";
+    } else {
+        document.getElementById("addFreshEventForm").style.display = "block";
+    }
+    // document.getElementById("addFreshEventForm").style.display = "block";
 }
 
 
