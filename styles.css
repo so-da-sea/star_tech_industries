@@ -108,10 +108,10 @@ body, html {
 
             }
 
-            .highlight{
-                background-color: chartreuse;
-                padding-bottom: 10px;
-            }
+            /*.highlight{*/
+            /*    background-color: chartreuse;*/
+            /*    padding-bottom: 10px;*/
+            /*}*/
 /*            .button{*/
 /*                background-color: powderblue;*/
 /*                border-color: black;*/
@@ -125,6 +125,7 @@ body, html {
 /*            }*/
 
             #monthButtons > *,#weekButtons > *{
+
                 border-radius:0;
                 border:none;
                 /*background-color:#f5f5f5;*/
@@ -177,10 +178,7 @@ body, html {
             /*    background-color: #D4FCFC;*/
             /*}*/
 
-           .may{
-               background-color:#ededed;
-               color:#797D7F;
-           }
+
            .weekday{
                text-align: center;
                font-size: 20px;
@@ -223,34 +221,6 @@ body, html {
         .closeX:focus {
             color: #000;
             cursor: pointer;
-        }
-
-        .rectangle {
-            display: inline-block;
-            height: 150px;
-            width: 300px;
-            background-color: honeydew;
-            border: solid #555 2px;
-            margin-left: 37%;
-            margin-top: 5%;
-            text-align:center;
-            color:#555;
-            overflow: auto;
-            position: fixed;
-            box-shadow: 10px 10px 10px #878787;
-           
-        }
-
-        #eventsBoxMonthly, #eventsBoxWeekly{
-            color: #555;
-        }
-
-        .hourly{
-            background-color: white;
-            color: #555;
-            padding: 5px;
-            border: #555 1px solid;
-            overflow: auto;
         }
 
     .sDays{

@@ -5,7 +5,11 @@
     margin:  0;
 }
 
-html, body {
+body {
+    background: #f3f2f2;
+}
+
+.logInPage{
     height:  100vh;
     width:  100vw;
     margin:  0 0;
@@ -13,7 +17,9 @@ html, body {
     align-items:  flex-start;
     justify-content:  flex-start;
     background:  #f3f2f2;
+
 }
+
 h4 {
     font-size:  24px;
     font-weight:  600;
@@ -52,7 +58,7 @@ p {
     max-width:  200px;
     margin-bottom:  40px;}
 
-button {
+#submitLogIn{
     -webkit-appearance:  none;
     width:  auto;
     min-width:  100px;
@@ -70,11 +76,11 @@ button {
     border:  none;
     transition:  all .3s ease;
     outline: 0;}
-button:hover {
+#submitLogIn:hover {
      transform:  translateY(-3px);
      /*box-shadow:  0 2px 6px -1px rgba($primary, .65);*/
     box-shadow: 0 2px 6px -1px whitesmoke;}
-button:active {
+#submitLogIn:active {
      transform:  scale(.99);
  }
 

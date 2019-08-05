@@ -60,7 +60,7 @@
     var monthArray = new Array(january, february, march, april, may, june, july, august, september, october, november, december);
 
             function setUpMonth(month){//month being a month obj
-                    box.style.display = "none";
+                    // box.style.display = "none";
                     currentMonthIndex = month.index-1;
                     var startingIndex = month.startingIndex;
                     var endValue = 35;
@@ -137,7 +137,7 @@ var currentWeek = {m: january, w: 1};
                 var previousMonth = month.getPreviousMonth();
                 var e = "";
 
-               box.style.display = "none";
+
                currentWeek = {m: month, w: week};
 
                for(var i = 0; i<7; i++){
@@ -313,7 +313,6 @@ var currentWeek = {m: january, w: 1};
                     });
                 var calID = parseInt(eventDay)+monthArray[currentMonthIndex].startingIndex-1;
                 setUpMonth(monthN);
-                document.getElementById(calID).addEventListener("click", function(){eventsTextShow(eventDay)});
             }
 
 
@@ -406,37 +405,7 @@ var currentWeek = {m: january, w: 1};
         }
 
 
-//EVENT POP IN A BOX
 
-    var box= document.getElementById("eventBox");
-
-    var t=document.getElementsByClassName("closeX")[0];
-    t.addEventListener("click",closeBox);
-
-    function closeBox() {
-        box.style.display = "none";
-    }
-
-    function eventsTextShow(dayIndex){
-        var monthN=monthArray[currentMonthIndex];
-        var boxText = "There are no events on this day.";
-        var events = "";
-        var eventArray = [];
-        // client.get('http://localhost:8080/event/events-for-user-day?id=' + userId + '&month=' + monthN.monthName + '&day=' + dayIndex, function(response) {
-        client.get(getServiceBaseUrl() + 'event/events-for-user-day?id=' + userId + '&month=' + monthN.monthName + '&day=' + dayIndex, function(response) {
-            eventArray = JSON.parse(response);
-        });
-
-        if(eventArray!=null&&eventArray.length!=0) {
-            for (var j = 0; j < eventArray.length; j++) {
-                 events += "<br>" + eventArray[j].title;
-            }
-        }
-        boxText = monthN.monthName + " " + dayIndex + ":" + events;
-        document.getElementById("eventsBoxMonthly").innerHTML=boxText;
-        document.getElementById("eventBox").style.display = "block";
-}
-//
 function getFullEvent(event){
         return event.title + "<br>" + event.location + "<br>" + event.startTime + "-" + event.endTime;
 }
@@ -661,30 +630,30 @@ function eventToString(event){
     return "<br>" + event.title + "<br" + event.location + "<br" + event.startTime + "-" + event.endTime;
 }
 
-var HttpClient = function() {
-    this.get = function(aUrl, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-
-        anHttpRequest.open( "GET", aUrl, false );
-        anHttpRequest.send( null );
-    }
-
-    this.post = function(aUrl, requestBody, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-
-        anHttpRequest.open( "POST", aUrl, true );
-        anHttpRequest.setRequestHeader("Content-Type","application/json");
-        anHttpRequest.send( requestBody );
-    }
-}
+// var HttpClient = function() {
+//     this.get = function(aUrl, aCallback) {
+//         var anHttpRequest = new XMLHttpRequest();
+//         anHttpRequest.onreadystatechange = function() {
+//             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+//                 aCallback(anHttpRequest.responseText);
+//         }
+//
+//         anHttpRequest.open( "GET", aUrl, false );
+//         anHttpRequest.send( null );
+//     }
+//
+//     this.post = function(aUrl, requestBody, aCallback) {
+//         var anHttpRequest = new XMLHttpRequest();
+//         anHttpRequest.onreadystatechange = function() {
+//             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+//                 aCallback(anHttpRequest.responseText);
+//         }
+//
+//         anHttpRequest.open( "POST", aUrl, true );
+//         anHttpRequest.setRequestHeader("Content-Type","application/json");
+//         anHttpRequest.send( requestBody );
+//     }
+// }
 
 
  // Get the modal

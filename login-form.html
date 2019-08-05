@@ -9,7 +9,8 @@
 </head>
 
 <body>
-<div class="session">
+<div class="logInPage">
+<div class="session" >
     <div class="left">
             <i class="fa fa-rocket" data-fa-transform=rotate-45" style = "font-size: 70px; color: white; padding: 20px;"></i>
     </div>
@@ -24,9 +25,10 @@
             <input placeholder="Password" type="password" name="password" id="password" autocomplete="off">
             <label for="password">Password:</label>
         </div>
-        <button type="submit" onClick="validateUser(loginForm)">Log In!</button>
+        <button id= "submitLogIn" type="submit" onClick="validateUser(loginForm)">Log In!</button>
         <a class="formLink" href="" onclick="getUIBuildURL('sign-up-form.html',this)">Create an Account!</a>
     </form>
+</div>
 </div>
 <script src="form-actions.js"></script>
 
