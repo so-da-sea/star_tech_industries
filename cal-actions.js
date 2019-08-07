@@ -60,6 +60,7 @@
     var monthArray = new Array(january, february, march, april, may, june, july, august, september, october, november, december);
 
             function setUpMonth(month){//month being a month obj
+                    setUpWeek(month,1);
                     // box.style.display = "none";
                     currentMonthIndex = month.index-1;
                     var startingIndex = month.startingIndex;
@@ -82,14 +83,11 @@
                 var eventArray = [];
                     for(var i = startingIndex; i<(month.numDays + startingIndex); i++) {
                         eventTitles="";
-                        //e = month.getEventTitlesForDay(i-(startingIndex-1));
-                        //something like this for getting events maybe
                         day = (i-(startingIndex-1)).toString();
                         client.get(getServiceBaseUrl() + 'event/events-for-user-day?id=' + userId + '&month=' + currentMonthName + '&day=' + day, function(response) {
                             eventArray = JSON.parse(response);
-                            //console.log(response);
+                            //window.location.reload();
                         });
-
                         if(eventArray!=null) {
                             for (var j = 0; j < eventArray.length; j++) {
                                 eventTitles += "<br>" + eventArray[j].title;
@@ -99,6 +97,8 @@
                         document.getElementById(i).style.backgroundColor="white";
                     }
                 setWeekendColor();
+                localStorage.setItem('monthToSet',month.index-1);
+                localStorage.setItem('monthlyOrWeekly','Monthly');
             }
 
             function moveForwardsThroughMonths(){
@@ -130,12 +130,16 @@
             }
 
 //WEEK FUNCTIONS
+
+////?????!!!!! NEED TO REVIEW
 var currentWeek = {m: january, w: 1};
 
            function setUpWeek(month,week){
                 var startingIndex = month.startingIndex;
                 var previousMonth = month.getPreviousMonth();
-                var e = "";
+                var eventTitles = "";
+                var eventsArray = [];
+                var day;
 
 
                currentWeek = {m: month, w: week};
@@ -145,18 +149,22 @@ var currentWeek = {m: january, w: 1};
                     document.getElementById(i+43).style.backgroundColor = "white";
                 }
 
-               if(currentWeek.m==january && currentWeek.w==1){
+               if(month==january && week==1){
                    for (var i=startingIndex-1; i>0; i--){
                        document.getElementById(i+42).style.backgroundColor = "#e0e0e0";
                    }
                    for (var i=startingIndex-1; i<7; i++){
-                       e = month.getFullEventsForDay(i-startingIndex+2);
-                       document.getElementById(i+43).innerHTML += i-(startingIndex-2) + e;
+                       day=i-startingIndex+1;
+                       //e = month.getFullEventsForDay(i-startingIndex+2);
+                       day = i-(startingIndex-2);
+                       e = getEventTextForDay(month.monthName,day);
+                       document.getElementById(i+43).innerHTML += day + e;
                    }
                }
-               else if(currentWeek.m==december && currentWeek.w==5){
+               else if(month==december && week==5){
                    for (var i=startingIndex-1; i>0; i--){
-                       e = month.getFullEventsForDay((startingIndex)-i);
+                       //e = month.getFullEventsForDay((startingIndex)-i);
+                       e = getEventTextForDay(previousMonth.monthName,previousMonth.numDays-((startingIndex-1)-i));
                        document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i) + e;
                    }
                    for (var i=startingIndex-1; i<7; i++){
@@ -166,25 +174,41 @@ var currentWeek = {m: january, w: 1};
 
                 else if(week == 1){
                     for (var i=startingIndex-1; i>0; i--){
-                        e = previousMonth.getFullEventsForDay(previousMonth.numDays-((startingIndex-1)-i));
+                        //e = previousMonth.getFullEventsForDay(previousMonth.numDays-((startingIndex-1)-i));
+                        e = getEventTextForDay(previousMonth.monthName,previousMonth.numDays-((startingIndex-1)-i));
                         document.getElementById(i+42).innerHTML += previousMonth.numDays-((startingIndex-1)-i)+e;
                         document.getElementById(i+42).style.backgroundColor = "#e0e0e0";
                     }
                     e = "";
                     for (var i=startingIndex-1; i<7; i++){
-                        e = month.getFullEventsForDay(i-startingIndex+2);
+                        //e = month.getFullEventsForDay(i-startingIndex+2);
+                        e = getEventTextForDay(month.monthName,(i-(startingIndex-2)));
                         document.getElementById(i+43).innerHTML += (i-(startingIndex-2)) + e;
                     }
                 }
                 else{
                     for (var i = 1; i<=7; i++) {
-                        e = month.getFullEventsForDay(7*(week-1)+i-startingIndex+1);
+                        //e = month.getFullEventsForDay(7*(week-1)+i-startingIndex+1);
+                        e = getEventTextForDay(month.monthName, (7*(week-1)+i-startingIndex+1));
                         document.getElementById(i+42).innerHTML += (7*(week-1)+i-startingIndex+1) + e;
                     }
                 }
 
                 document.getElementById("weekHeader").innerHTML = month.monthName + " 2020";
-                setWeekendColor();
+               localStorage.setItem('monthlyOrWeekly','Weekly');
+               setWeekendColor();
+           }
+
+           function getEventTextForDay(monthName,day){
+               var eventsArray = [];
+               var fullEvents = "";
+               client.get(getServiceBaseUrl() + 'event/events-for-user-day?id=' + userId + '&month=' + monthName + '&day=' + day, function(response) {
+                   eventsArray = JSON.parse(response);
+               });
+               for (var i = 0; i<eventsArray.length; i++){
+                   fullEvents += "<br>" + eventsArray[i].title + "<br>" + eventsArray[i].location + "<br>" + eventsArray[i].startTime + "-" + eventsArray[i].endTime + "<br>";
+               }
+               return fullEvents;
            }
 
             function moveBackwardsThroughWeeks(){
@@ -310,6 +334,7 @@ var currentWeek = {m: january, w: 1};
                             endTime:eventEnd}),
                     function(response){
                         console.log(response);
+                        window.location.reload();
                     });
                 var calID = parseInt(eventDay)+monthArray[currentMonthIndex].startingIndex-1;
                 setUpMonth(monthN);
@@ -518,22 +543,21 @@ function editEvent(){
     let editEvent = window.prompt(eventsForDayEdit + "Which event would you like to edit?","1");
     monthArray[currentMonthIndex].eventsForMonth[editDay-1].splice(parseInt(editEvent-1),1);
     infoEvent();
+    //openAddForm('month');
+    client.delete(getServiceBaseUrl() + "event/delete-event?id="+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+editDay+"&eventIndex="+editEvent,
+        function() {
+            window.location.reload();
+        });
 }
 
 function deleteEvent(){
-    //let currentMonthName = monthArray[currentMonthIndex].monthName;
+    let currentMonthName = monthArray[currentMonthIndex].monthName;
     let deleteDay= window.prompt("Which day would you like to delete an event?", "1");
-    let eventsForDayDelete = monthArray[currentMonthIndex].getFullEventsForDayEdit(deleteDay);
-    let deleteEvent = window.prompt(eventsForDayDelete + "\n" + "Which event would you like to delete?","1");
-    //monthArray[currentMonthIndex].eventsForMonth[deleteDay-1].splice(parseInt(deleteEvent-1), 1);
-    // var event = null;
-    // client.get('http://localhost:8080/event/event-from-day?id='+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+deleteDay+"&eventId="+deleteEvent, function(response){
-    //     event = JSON.parse(event);
-    // });
-    client.delete(getServiceBaseUrl() + "event/delete-event?id="+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+deleteDay+"&eventIndex="+deleteEvent.toString()+"",
-        function(response) {
-            if(response.status===200)
-            console.log(response.status);
+    //let eventsForDayDelete = monthArray[currentMonthIndex].getFullEventsForDayEdit(deleteDay);
+    let deleteEvent = window.prompt("Which event would you like to delete?","1");
+    client.delete(getServiceBaseUrl() + "event/delete-event?id="+userId+"&month="+currentMonthName+"&day="+deleteDay+"&eventIndex="+deleteEvent,
+        function() {
+            window.location.reload();
     });
 
     setUpMonth(monthArray[currentMonthIndex]);
@@ -630,114 +654,48 @@ function eventToString(event){
     return "<br>" + event.title + "<br" + event.location + "<br" + event.startTime + "-" + event.endTime;
 }
 
-// var HttpClient = function() {
-//     this.get = function(aUrl, aCallback) {
-//         var anHttpRequest = new XMLHttpRequest();
-//         anHttpRequest.onreadystatechange = function() {
-//             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-//                 aCallback(anHttpRequest.responseText);
-//         }
-//
-//         anHttpRequest.open( "GET", aUrl, false );
-//         anHttpRequest.send( null );
-//     }
-//
-//     this.post = function(aUrl, requestBody, aCallback) {
-//         var anHttpRequest = new XMLHttpRequest();
-//         anHttpRequest.onreadystatechange = function() {
-//             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-//                 aCallback(anHttpRequest.responseText);
-//         }
-//
-//         anHttpRequest.open( "POST", aUrl, true );
-//         anHttpRequest.setRequestHeader("Content-Type","application/json");
-//         anHttpRequest.send( requestBody );
-//     }
-// }
-
-
- // Get the modal
- //            var modal = document.getElementById("myModal");
- //
- //            // Get the button that opens the modal
- //            var btn = document.getElementById("addEvent");
- //
- //            // Get the <span> element that closes the modal
- //            var span = document.getElementsByClassName("close")[0];
- //
- //            // When the user clicks the button, open the modal
- //            btn.onclick = function() {
- //              modal.style.display = "block";
- //            }
- //
- //            // When the user clicks on <span> (x), close the modal
- //            span.onclick = function() {
- //              modal.style.display = "none";
- //            }
- //
- //            // When the user clicks anywhere outside of the modal, close it
- //            window.onclick = function(event) {
- //              if (event.target == modal) {
- //                modal.style.display = "none";
- //              }
- //            }
-// var HttpClientAsync = function() {
-//     this.get = function(aUrl, aCallback) {
-//         var anHttpRequest = new XMLHttpRequest();
-//         anHttpRequest.onreadystatechange = function() {
-//             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-//                 aCallback(anHttpRequest.responseText);
-//         }
-//
-//         anHttpRequest.open( "GET", aUrl, true ); //async should be false //DETRIMENTAL!!!!!?
-//         anHttpRequest.send( null );
-//     }
-//
-//     this.post = function(aUrl, requestBody, aCallback) {
-//         var anHttpRequest = new XMLHttpRequest();
-//         anHttpRequest.onreadystatechange = function() {
-//             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-//                 aCallback(anHttpRequest.responseText);
-//         }
-//
-//         anHttpRequest.open( "POST", aUrl, true );
-//         anHttpRequest.setRequestHeader("Content-Type","application/json");
-//         anHttpRequest.send( requestBody );
-//         anHttpRequest.responseType = 'json';
-//
-//         anHttpRequest.onerror = function() { // only triggers if the request couldn't be made at all
-//             alert(`Network Error`);
-//         };
-//     }
-// }
+function getMonthFromMonthName(monthName){
+        for (var i = 0; i<12; i++){
+            if (monthArray[i].monthName==monthName){
+                return monthArray[i]
+            }
+        }
+}
 
 var userId = sessionStorage.getItem('currentUserID');
-    var uN = sessionStorage.getItem('currentUserN');
+var uN = sessionStorage.getItem('currentUserN');
+if(sessionStorage.getItem('newUser')=="true"){
+    var allUsersList = [];
+    client.get(getServiceBaseUrl() + "user/all-users", function (response) {
+        allUsersList = JSON.parse(response);});
+    userId = allUsersList[allUsersList.length-1].id;
+    uN = allUsersList[allUsersList.length-1].userName;
+}
+
 function setWelcomeMessage(){
     document.getElementById("welcome").innerHTML= "Welcome, " + uN + "!";
 }
 
 window.onload= function homePg(){
+    sessionStorage.setItem('monthlyOrWeekly','Monthly');
     var x=document.getElementById("homeID");
     var y=document.getElementById("monthlyID");
     var eventN= new Event('Meeting','Holy Names Academy','March','1','9:00 am','10:00 am');
-
-    /* var client = new HttpClient();
-     client.get('http://localhost:8080/user/user-id?id=1', function(response) {
-         console.log(response);
-     });
-     client.post('http://localhost:8080/user/create',JSON.stringify({userName:"mgerbino",password:"234"}),function(response){
-         console.log(response.status);
-     });*/
     setWelcomeMessage();
     march.addNewEvent(eventN);
-    setUpMonth(march);
-    setUpWeek(march,1);
+    // if(localStorage.getItem('monthToSet')!=null)
+    //     setUpMonth(monthArray[localStorage.getItem('monthToSet')]);
+    // else
+    //     setUpMonth(august);
+    setUpMonth(january);
+    setUpWeek(january,1);
     openPage('Home', x,'#bccceb');
-    openSubTab('Monthly',y,'#d3ddf0');
-    box.style.display="none";
+    if(localStorage.getItem('monthlyOrWeekly'=='Monthly'))
+        openSubTab('Monthly', y, '#d3ddf0');
+    else
+        openSubTab('Monthly', y, '#d3ddf0');
+    //box.style.display="none";
     //setWeekendColor();
-
 }
 
 

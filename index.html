@@ -39,7 +39,7 @@
             <button class= "arrowButtons" onclick = "moveForwardsThroughWeeks()"><i class="fa fa-chevron-right"></i></button>
         </div>
 
-        <button class="editEvents" onclick="openAddForm()"> <i class="fa fa-calendar-plus-o"></i>  </button> <!--onclick="infoEvent()"-->
+        <button class="editEvents" onclick="openAddForm('week')"> <i class="fa fa-calendar-plus-o"></i>  </button>
         <button class="editEvents" onclick= "editEvent()">  <i class="fa fa-pencil"></i>  </button>
         <button class="editEvents" onclick= "deleteEvent()">  <i class="fa fa-trash"></i>  </button>
         <br>
@@ -59,6 +59,37 @@
             <button onclick="setUpWeek(october,1)">OCT</button>
             <button onclick="setUpWeek(november,1)">NOV</button>
             <button onclick="setUpWeek(december,1)">DEC</button>
+        </div>
+
+        <div class="addFreshEventForm">
+            <form action="#" method="post" class="addEventForm" name="newEventW">
+                <!--                        title, location, month, day, start time, end time-->
+                <div class="floating-label">
+                    <input placeholder="Name of Event" type="text" name="title" id="titleW">
+                    <label for="titleW">Name of Event:</label>
+                </div>
+                <div class="floating-label">
+                    <input placeholder="Location of Event" type="text" name="location" id="locationW">
+                    <label for="locationW">Location of Event:</label>
+                </div>
+                <div class="floating-label">
+                    <input placeholder="Month" type="text" name="month" id="monthW">
+                    <label for="monthW">Month:</label>
+                </div>
+                <div class="floating-label">
+                    <input placeholder="Day" type="text" name="day" id="dayW">
+                    <label for="dayW">Day:</label>
+                </div>
+                <div class="floating-label">
+                    <input type="time" name="startTime" id="startTimeW">
+                    <label for="startTimeW">Start Time:</label>
+                </div>
+                <div class="floating-label">
+                    <input type="time" name="endTime" id="endTimeW">
+                    <label for="endTimeW">End Time:</label>
+                </div>
+                <input type="submit" name="submit" class="submit" title="submit" onclick="addFreshEvent(this,'week')">
+            </form>
         </div>
 
         <div class= "week2">
@@ -88,7 +119,7 @@
         </div>
 
 
-        <button class="editEvents" onclick="openAddForm()"> <i class="fa fa-calendar-plus-o"></i>  </button>
+        <button class="editEvents" onclick="openAddForm('month')"> <i class="fa fa-calendar-plus-o"></i>  </button>
         <button class="editEvents" onclick= "editEvent()">  <i class="fa fa-pencil"></i>  </button>
         <button class="editEvents" onclick= "deleteEvent()">  <i class="fa fa-trash"></i>  </button>
 
@@ -109,36 +140,68 @@
         </div>
 
         <div id="welcome"></div>
-        <div id="addFreshEventForm">
-            <form action="#" method="post" class="addEventForm" name="newEvent">
+        <div class="addFreshEventForm">
+            <form action="#" method="post" class="addEventForm" name="newEventM">
                 <!--                        title, location, month, day, start time, end time-->
                 <div class="floating-label">
-                    <input placeholder="Meeting" type="text" name="title" id="title">
-                    <label for="title">Name of Event:</label>
+                    <input placeholder="Name of Event" type="text" name="title" id="titleM">
+                    <label for="titleM">Name of Event:</label>
                 </div>
                 <div class="floating-label">
-                    <input placeholder="Holy Names" type="text" name="location" id="location">
-                    <label for="location">Location of Event:</label>
+                    <input placeholder="Location" type="text" name="location" id="locationM">
+                    <label for="locationM">Location of Event:</label>
                 </div>
                 <div class="floating-label">
-                    <input placeholder="March" type="text" name="month" id="month">
-                    <label for="month">Month Of Event:</label>
+                    <input placeholder="Month" type="text" name="month" id="monthM">
+                    <label for="monthM">Month Of Event:</label>
                 </div>
                 <div class="floating-label">
-                    <input placeholder="1" type="text" name="day" id="day">
-                    <label for="day">Day of Event:</label>
+                    <input placeholder="Day" type="text" name="day" id="dayM">
+                    <label for="dayM">Day of Event:</label>
                 </div>
                 <div class="floating-label">
-                    <input placeholder="9:00am" type="time" name="startTime" id="startTime">
-                    <label for="startTime">Start Time:</label>
+                    <input type="time" name="startTime" id="startTimeM">
+                    <label for="startTimeM">Start Time:</label>
                 </div>
                 <div class="floating-label">
-                    <input placeholder="10:00am" type="time" name="endTime" id="endTime">
-                    <label for="endTime">End Time:</label>
+                    <input type="time" name="endTime" id="endTimeM">
+                    <label for="endTimeM">End Time:</label>
                 </div>
-                <input type="submit" name="submit" class="submit" title="submit" onclick="addFreshEvent(this)">
+                <input type="submit" name="submit" class="submit" title="submit" onclick="addFreshEvent(this,'month')">
             </form>
         </div>
+
+<!--        <div class="editEventForm">-->
+<!--            <form action="#" method="post" class="addEventForm" name="newEventM">-->
+<!--                &lt;!&ndash;                        title, location, month, day, start time, end time&ndash;&gt;-->
+<!--                <div class="floating-label">-->
+<!--                    <input placeholder="Name of Event" type="text" name="title" id="t">-->
+<!--                    <label for="titleM">Name of Event:</label>-->
+<!--                </div>-->
+<!--                <div class="floating-label">-->
+<!--                    <input placeholder="Location" type="text" name="location" id="l">-->
+<!--                    <label for="locationM">Location of Event:</label>-->
+<!--                </div>-->
+<!--                <div class="floating-label">-->
+<!--                    <input placeholder="Month" type="text" name="month" id="m">-->
+<!--                    <label for="monthM">Month Of Event:</label>-->
+<!--                </div>-->
+<!--                <div class="floating-label">-->
+<!--                    <input placeholder="Day" type="text" name="day" id="d">-->
+<!--                    <label for="dayM">Day of Event:</label>-->
+<!--                </div>-->
+<!--                <div class="floating-label">-->
+<!--                    <input type="time" name="startTime" id="st">-->
+<!--                    <label for="startTimeM">Start Time:</label>-->
+<!--                </div>-->
+<!--                <div class="floating-label">-->
+<!--                    <input type="time" name="endTime" id="et">-->
+<!--                    <label for="endTimeM">End Time:</label>-->
+<!--                </div>-->
+<!--                <input type="submit" name="submit" class="submit" title="submit" onclick="addFreshEvent(this,'month')">-->
+<!--            </form>-->
+<!--        </div>-->
+
 
         <ul class="calendar">
             <li class="weekday">sun</li>
@@ -285,7 +348,8 @@
     <div class="sched">
 
     <h4>Schedules</h4>
-    <div class="creatingSchedule" onclick= "createSchedule()"> <button>Create Schedule </button><span class="classes" id="classes"></span></div>
+
+    <div class="creatingSchedule" onclick= "createSchedule(this)"> <button>Create Schedule </button><span class="classes" id="classes"></span></div>
     <div class="sDays">
         <div class="schoolDays">
             <ol id="mon">Monday

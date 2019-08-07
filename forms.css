@@ -9,18 +9,7 @@ body {
     background: #f3f2f2;
 }
 
-.logInPage{
-    height:  100vh;
-    width:  100vw;
-    margin:  0 0;
-    display:  flex;
-    align-items:  flex-start;
-    justify-content:  flex-start;
-    background:  #f3f2f2;
-
-}
-
-.signInPage{
+.logInPage, .signInPage{
     height:  100vh;
     width:  100vw;
     margin:  0 0;
@@ -158,7 +147,7 @@ a.formLink{
     margin-top:  40px;
 }
 
-#addFreshEventForm{
+.addFreshEventForm{
     display: none;
 }
 

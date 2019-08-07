@@ -102,6 +102,7 @@ function createUser(theForm) {
             if(allUsersList[i].userName === un) {
                 window.alert("This username is taken.");
                 document.forms["signUpForm"].setAttribute("action", rollBackForInvalid("sign-up-form.html"));
+                break;
             }
         }
 
@@ -114,14 +115,7 @@ function createUser(theForm) {
             console.log(response.status);
         });
 
-        client.get(getServiceBaseUrl() + "user/all-users", function (response) {
-            allUsersList = JSON.parse(response);
-        });
-
-        var currentUserName = allUsersList[allUsersList.length-1].userName;
-        sessionStorage.setItem('currentUserN',currentUserName);
-        var currentUserId = allUsersList[allUsersList.length-1].id;
-        sessionStorage.setItem('currentUserID',currentUserId);
+        sessionStorage.setItem('newUser',"true");
     }
     else{
         window.alert('Passwords must match!');
@@ -145,11 +139,11 @@ function validateUser(theForm) {
     for (var i = 0; i < allUsersList.length; i++) {
         if (allUsersList[i].userName === un) {
             unExists = true;
+            sessionStorage.setItem('newUser',false);
             var currentUserName = allUsersList[i].userName;
             sessionStorage.setItem('currentUserN',currentUserName);
             var currentUserId = allUsersList[i].id;
             sessionStorage.setItem('currentUserID',currentUserId);
-            //setUserId(allUsersList[i].id);
         }
         if (allUsersList[i].password === pw)
             pwExists = true;
@@ -161,13 +155,29 @@ function validateUser(theForm) {
     }
 }
 
-function addFreshEvent(theForm) {
-    var titleEvent = document.forms["newEvent"]["title"].value;
-    var locationEvent = document.forms["newEvent"]["location"].value;
-    var monthEvent = document.forms["newEvent"]["month"].value;
-    var dayEvent = document.forms["newEvent"]["day"].value;
-    var startTimeEvent = document.forms["newEvent"]["startTime"].value;
-    var endTimeEvent = document.forms["newEvent"]["endTime"].value;
+function addFreshEvent(theForm,monthOrWeek) {
+    var titleEvent;
+    var locationEvent;
+    var monthEvent;
+    var dayEvent;
+    var startTimeEvent;
+    var endTimeEvent;
+    if (monthOrWeek=='month') {
+        titleEvent = document.forms["newEventM"]["title"].value;
+        locationEvent = document.forms["newEventM"]["location"].value;
+        monthEvent = document.forms["newEventM"]["month"].value;
+        dayEvent = document.forms["newEventM"]["day"].value;
+        startTimeEvent = document.forms["newEventM"]["startTime"].value;
+        endTimeEvent = document.forms["newEventM"]["endTime"].value;
+    }
+    else{
+        titleEvent = document.forms["newEventW"]["title"].value;
+        locationEvent = document.forms["newEventW"]["location"].value;
+        monthEvent = document.forms["newEventW"]["month"].value;
+        dayEvent = document.forms["newEventW"]["day"].value;
+        startTimeEvent = document.forms["newEventW"]["startTime"].value;
+        endTimeEvent = document.forms["newEventW"]["endTime"].value;
+    }
     //maybe check if all are valid
     client.post('http://localhost:8080/event/create', JSON.stringify({
         userID: userId,
@@ -180,15 +190,23 @@ function addFreshEvent(theForm) {
     }), function(response) {
         console.log(response.status);
     });
+    localStorage.setItem('monthToSet',getMonthFromMonthName(monthEvent).index-1);
 }
 
-function openAddForm(){
-    if (document.getElementById("addFreshEventForm").style.display === "block") {
-        document.getElementById("addFreshEventForm").style.display = "none";
-    } else {
-        document.getElementById("addFreshEventForm").style.display = "block";
+function openAddForm(weekOrMonth){
+    if (weekOrMonth=='week') {
+        if (document.getElementsByClassName("addFreshEventForm")[0].style.display === "block") {
+            document.getElementsByClassName("addFreshEventForm")[0].style.display = "none";
+        } else {
+            document.getElementsByClassName("addFreshEventForm")[0].style.display = "block";
+        }
     }
-    // document.getElementById("addFreshEventForm").style.display = "block";
+    else {
+        if (document.getElementsByClassName("addFreshEventForm")[1].style.display === "block") {
+            document.getElementsByClassName("addFreshEventForm")[1].style.display = "none";
+        } else {
+            document.getElementsByClassName("addFreshEventForm")[1].style.display = "block";
+        }    }
 }
 
 

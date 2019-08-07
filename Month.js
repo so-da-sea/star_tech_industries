@@ -61,8 +61,13 @@ class Month {
 
     getFullEventsForDay(day){
         var fullEvents = "";
-        for(var i = 0; i<this.getEventsArrayForDay(day).length;i++) {
-            fullEvents += this.getEventsArrayForDay(day)[i].fullEvent + "<br>";
+        var allEvents = [];
+        client.get(getServiceBaseUrl()+"/event/events-for-user-day?id=" + userId + "&month=" + this.monthName + " &day=" + day,
+            function(response){
+                allEvents = JSON.parse(response);
+            });
+        for(var i = 0; i<allEvents.length;i++) {
+            fullEvents += "<br>" + allEvents[i].title + "<br>" + allEvents[i].location + "<br>" + allEvents[i].startTime + "-" + allEvents[i].endTime;
         }
     return fullEvents;
     }
