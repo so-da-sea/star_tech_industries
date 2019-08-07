@@ -179,7 +179,7 @@ function addFreshEvent(theForm,monthOrWeek) {
         endTimeEvent = document.forms["newEventW"]["endTime"].value;
     }
     //maybe check if all are valid
-    client.post('http://localhost:8080/event/create', JSON.stringify({
+    client.post(getServiceBaseUrl()+ "/event/create", JSON.stringify({
         userID: userId,
         title: titleEvent,
         location: locationEvent,
@@ -188,7 +188,7 @@ function addFreshEvent(theForm,monthOrWeek) {
         startTime: startTimeEvent,
         endTime: endTimeEvent,
     }), function(response) {
-        console.log(response.status);
+        window.location.reload();
     });
     localStorage.setItem('monthToSet',getMonthFromMonthName(monthEvent).index-1);
 }
