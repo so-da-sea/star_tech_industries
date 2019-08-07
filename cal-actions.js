@@ -80,17 +80,17 @@
                     }
                 document.getElementById("heading").innerHTML = month.monthName.substring(0,1).toUpperCase() + month.monthName.substring(1).toLowerCase() + " 2020"
                 var eventTitles="";
-                var eventArray = [];
+                var allEventsForMonth = [];
+                client.get(getServiceBaseUrl()+"/event/all-events-for-month?id="+userId+"&month="+currentMonthName+"&from="+1+"&to="+month.numDays,
+                    function(response){
+                        allEventsForMonth = JSON.parse(response);
+                    });
                     for(var i = startingIndex; i<(month.numDays + startingIndex); i++) {
                         eventTitles="";
                         day = (i-(startingIndex-1)).toString();
-                        client.get(getServiceBaseUrl() + 'event/events-for-user-day?id=' + userId + '&month=' + currentMonthName + '&day=' + day, function(response) {
-                            eventArray = JSON.parse(response);
-                            //window.location.reload();
-                        });
-                        if(eventArray!=null) {
-                            for (var j = 0; j < eventArray.length; j++) {
-                                eventTitles += "<br>" + eventArray[j].title;
+                        for (var j = 0; j<allEventsForMonth.length;j++){
+                            if (day == allEventsForMonth[j].day){
+                                eventTitles += "<br>" + allEventsForMonth[j].title;
                             }
                         }
                         document.getElementById(i).innerHTML += i - (startingIndex - 1) + eventTitles;
@@ -98,7 +98,7 @@
                     }
                 setWeekendColor();
                 localStorage.setItem('monthToSet',month.index-1);
-                localStorage.setItem('monthlyOrWeekly','Monthly');
+                // localStorage.setItem('monthlyOrWeekly','Monthly');
             }
 
             function moveForwardsThroughMonths(){
@@ -195,7 +195,7 @@ var currentWeek = {m: january, w: 1};
                 }
 
                 document.getElementById("weekHeader").innerHTML = month.monthName + " 2020";
-               localStorage.setItem('monthlyOrWeekly','Weekly');
+               // localStorage.setItem('monthlyOrWeekly','Weekly');
                setWeekendColor();
            }
 
@@ -539,11 +539,18 @@ function getFullEvent(event){
 
 function editEvent(){
     let editDay= window.prompt("Which day would you like to edit an event?", "1");
-    let eventsForDayEdit = monthArray[currentMonthIndex].getFullEventsForDayEdit(editDay);
-    let editEvent = window.prompt(eventsForDayEdit + "Which event would you like to edit?","1");
+    let eventsForDayEdit = [];
+    client.get(getServiceBaseUrl()+"event/events-for-user-day?id="+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+editDay,
+        function(){
+            eventsForDayEdit = JSON.parse(response);
+        });
+    var eventsText = "";
+    for (var i = 0; i<eventsForDayEdit.length;i++) {
+        eventsText += eventsForDayEdit[i].title;
+    }
+    let editEvent = window.prompt(eventsText + "Which event would you like to edit?","1");
     monthArray[currentMonthIndex].eventsForMonth[editDay-1].splice(parseInt(editEvent-1),1);
     infoEvent();
-    //openAddForm('month');
     client.delete(getServiceBaseUrl() + "event/delete-event?id="+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+editDay+"&eventIndex="+editEvent,
         function() {
             window.location.reload();
@@ -554,7 +561,16 @@ function deleteEvent(){
     let currentMonthName = monthArray[currentMonthIndex].monthName;
     let deleteDay= window.prompt("Which day would you like to delete an event?", "1");
     //let eventsForDayDelete = monthArray[currentMonthIndex].getFullEventsForDayEdit(deleteDay);
-    let deleteEvent = window.prompt("Which event would you like to delete?","1");
+    let eventsForDayDelete = [];
+    client.get(getServiceBaseUrl()+"event/events-for-user-day?id="+userId+"&month="+monthArray[currentMonthIndex].monthName+"&day="+deleteDay,
+        function(){
+            eventsForDayDelete = JSON.parse(response);
+        });
+    var eventsText = "";
+    for (var i = 0; i<eventsForDayDelete.length;i++){
+        eventsText += eventsForDayDelete[i].title;
+    }
+    let deleteEvent = window.prompt(eventsText + "Which event would you like to delete?","1");
     client.delete(getServiceBaseUrl() + "event/delete-event?id="+userId+"&month="+currentMonthName+"&day="+deleteDay+"&eventIndex="+deleteEvent,
         function() {
             window.location.reload();
@@ -676,24 +692,22 @@ function setWelcomeMessage(){
     document.getElementById("welcome").innerHTML= "Welcome, " + uN + "!";
 }
 
-window.onload= function homePg(){
-    sessionStorage.setItem('monthlyOrWeekly','Monthly');
-    var x=document.getElementById("homeID");
-    var y=document.getElementById("monthlyID");
-    var eventN= new Event('Meeting','Holy Names Academy','March','1','9:00 am','10:00 am');
+window.onload= function homePg() {
+    sessionStorage.setItem('monthlyOrWeekly', 'Monthly');
+    var x = document.getElementById("homeID");
+    var y = document.getElementById("monthlyID");
+    var eventN = new Event('Meeting', 'Holy Names Academy', 'March', '1', '9:00 am', '10:00 am');
     setWelcomeMessage();
     march.addNewEvent(eventN);
-    // if(localStorage.getItem('monthToSet')!=null)
-    //     setUpMonth(monthArray[localStorage.getItem('monthToSet')]);
-    // else
-    //     setUpMonth(august);
-    setUpMonth(january);
-    setUpWeek(january,1);
+    if (localStorage.getItem('monthToSet') != null) {
+        setUpMonth(monthArray[localStorage.getItem('monthToSet')]);
+        setUpWeek(monthArray[localStorage.getItem('monthToSet')], 1);
+    } else{
+        setUpMonth(january);
+        setUpWeek(january, 1);
+    }
     openPage('Home', x,'#bccceb');
-    if(localStorage.getItem('monthlyOrWeekly'=='Monthly'))
-        openSubTab('Monthly', y, '#d3ddf0');
-    else
-        openSubTab('Monthly', y, '#d3ddf0');
+    openSubTab('Monthly', y, '#d3ddf0');
     //box.style.display="none";
     //setWeekendColor();
 }
