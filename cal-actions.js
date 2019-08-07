@@ -701,10 +701,8 @@ window.onload= function homePg() {
     march.addNewEvent(eventN);
     if (localStorage.getItem('monthToSet') != null) {
         setUpMonth(monthArray[localStorage.getItem('monthToSet')]);
-        setUpWeek(monthArray[localStorage.getItem('monthToSet')], 1);
     } else{
         setUpMonth(january);
-        setUpWeek(january, 1);
     }
     openPage('Home', x,'#bccceb');
     openSubTab('Monthly', y, '#d3ddf0');
